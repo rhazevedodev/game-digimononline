@@ -3,13 +3,14 @@ package br.com.digimon.infra.controller;
 import br.com.digimon.app.dto.CriarUsuarioDTO;
 import br.com.digimon.app.usecase.UsuarioUseCase;
 import br.com.digimon.domain.port.in.Usuario;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -18,9 +19,11 @@ public class UsuarioController {
     private UsuarioUseCase usuarioUseCase;
 
     @PostMapping
-    public ResponseEntity<Void> criarUsuario(@RequestBody CriarUsuarioDTO criarUsuarioDTO) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<Void> criarUsuario(@RequestBody @Valid CriarUsuarioDTO criarUsuarioDTO) {
+        log.info("Recebida requisição para criar usuário");
         usuarioUseCase.criarUsuario(criarUsuarioDTO);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
 

@@ -21,3 +21,12 @@ spring:
 flyway:
   enabled: true
   locations: classpath:db/migration
+
+#Logging
+  logging:
+    level:
+      root: INFO
+      org.springframework.web: WARN
+      br.com.digimon: DEBUG  # Mostra tudo do seu projeto em debug
+    pattern:
+      console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
