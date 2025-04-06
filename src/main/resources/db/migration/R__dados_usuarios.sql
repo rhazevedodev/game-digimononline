@@ -1,0 +1,78 @@
+INSERT INTO usuario (
+  nome_usuario,
+  email,
+  senha,
+  data_nascimento,
+  criado_por,
+  criado_em,
+  pontos_digitais,
+  slots_digimon,
+  indicacao,
+  ultima_alteracao,
+  ultima_alteracao_por
+) VALUES
+(
+  'rafael_test',
+  'rafael@email.com',
+  '$2a$10$8xvYHdY9k4X.bGsE9z9EvuOz6FZGhRMSRHMtGAKnC7CebdcAPrlca',
+  '2000-01-01',
+  'admin',
+  CURRENT_TIMESTAMP,
+  100,
+  3,
+  NULL,
+  CURRENT_TIMESTAMP,
+  'admin'
+),
+(
+  'ana_dev',
+  'ana@email.com',
+  '$2a$10$8xvYHdY9k4X.bGsE9z9EvuOz6FZGhRMSRHMtGAKnC7CebdcAPrlca',
+  '1998-05-20',
+  'admin',
+  CURRENT_TIMESTAMP,
+  50,
+  2,
+  'rafael@email.com',
+  CURRENT_TIMESTAMP,
+  'rafael_test'
+),
+(
+  'mario_gamer',
+  'mario@email.com',
+  '$2a$10$8xvYHdY9k4X.bGsE9z9EvuOz6FZGhRMSRHMtGAKnC7CebdcAPrlca',
+  '1992-09-12',
+  'admin',
+  CURRENT_TIMESTAMP,
+  200,
+  5,
+  NULL,
+  CURRENT_TIMESTAMP,
+  'ana_dev'
+),
+(
+  'lucia_digimon',
+  'lucia@email.com',
+  '$2a$10$8xvYHdY9k4X.bGsE9z9EvuOz6FZGhRMSRHMtGAKnC7CebdcAPrlca',
+  '2001-03-30',
+  'sistema',
+  CURRENT_TIMESTAMP,
+  75,
+  2,
+  'mario@email.com',
+  CURRENT_TIMESTAMP,
+  'mario_gamer'
+),
+(
+  'tester01',
+  'teste01@email.com',
+  '$2a$10$8xvYHdY9k4X.bGsE9z9EvuOz6FZGhRMSRHMtGAKnC7CebdcAPrlca',
+  '1990-11-11',
+  'sistema',
+  CURRENT_TIMESTAMP,
+  0,
+  1,
+  NULL,
+  CURRENT_TIMESTAMP,
+  'sistema'
+);

@@ -1,0 +1,12 @@
+🔄 Fluxo de entrada resumido
+Usuário envia uma requisição HTTP (ex: POST /digimons)
+
+Controller (na infra/controller) recebe a requisição
+
+Controller chama um caso de uso (use case) via uma port de entrada (interface)
+
+O caso de uso executa a lógica usando as entidades do domain
+
+Se necessário, o caso de uso chama uma port de saída para acessar banco de dados, APIs externas etc.
+
+O resultado volta pela mesma cadeia até o controller, que responde ao usuário

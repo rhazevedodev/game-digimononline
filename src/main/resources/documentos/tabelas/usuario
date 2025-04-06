@@ -1,0 +1,51 @@
+Tabela: usuario
+
+Campos:
+
+1. id
+   - Tipo: BIGINT
+   - Descrição: Chave primária com auto incremento
+
+2. nome_usuario
+   - Tipo: VARCHAR(50)
+   - Descrição: Nome do jogador/usuário
+
+3. email
+   - Tipo: VARCHAR(100)
+   - Descrição: E-mail do usuário (valor único)
+
+4. senha
+   - Tipo: VARCHAR(255)
+   - Descrição: Senha com suporte a hash seguro (ex: bcrypt, argon2)
+
+5. data_nascimento
+   - Tipo: DATE
+   - Descrição: Data de nascimento do usuário
+
+6. criado_por
+   - Tipo: VARCHAR(50)
+   - Descrição: Nome ou ID de quem criou o registro (admin, sistema, etc.)
+
+7. criado_em
+   - Tipo: TIMESTAMP
+   - Descrição: Data e hora da criação (valor padrão automático)
+
+8. ultima_alteracao
+   - Tipo: TIMESTAMP
+   - Descrição: Data e hora da última modificação no registro
+
+9. ultima_alteracao_por
+   - Tipo: VARCHAR(50)
+   - Descrição: Nome ou ID de quem fez a última alteração
+
+10. pontos_digitais
+    - Tipo: INT
+    - Descrição: Quantidade de pontos digitais acumulados (valor inicial: 0)
+
+11. slots_digimon
+    - Tipo: INT
+    - Descrição: Quantidade de espaços disponíveis para Digimons (valor padrão: 1)
+
+12. indicacao
+    - Tipo: VARCHAR(100)
+    - Descrição: Código de indicação ou e-mail de quem indicou o jogador
