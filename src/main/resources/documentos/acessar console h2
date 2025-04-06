@@ -1,1 +1,1 @@
-jdbc:h2:mem:testdb
+jdbc:h2:mem:testdba
