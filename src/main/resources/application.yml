@@ -30,3 +30,20 @@ flyway:
       br.com.digimon: DEBUG  # Mostra tudo do seu projeto em debug
     pattern:
       console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+
+#Configurações do Actuator
+management:
+  metrics:
+    export:
+        prometheus:
+            enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "metrics,health,info"
+
+#info:
+#  app:
+#    name: Game - Digimon Online
+#    description: Jogo de Digimon Online.
+#    version: 1.0.0

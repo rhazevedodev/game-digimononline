@@ -30,6 +30,7 @@ public class UsuarioUseCase implements Usuario {
         log.info("Usuário criado com sucesso: {}", criarUsuarioDTO.getEmail());
     }
 
+
     public UsuarioEntity montarObjetoUsuario(CriarUsuarioDTO criarUsuarioDTO) {
         log.info("Montando objeto UsuarioEntity a partir de CriarUsuarioDTO: {}", criarUsuarioDTO.getEmail());
         UsuarioEntity usuarioEntity = new UsuarioEntity();
@@ -44,11 +45,11 @@ public class UsuarioUseCase implements Usuario {
         log.info("Iniciando validações para criação de usuário: {}", criarUsuarioDTO.getEmail());
 
         if (verificarSeNomeUsuarioJaExiste(criarUsuarioDTO)) {
-            throw new NomeUsuarioJaExisteException("Nome de usuário já existe");
+            throw new NomeUsuarioJaExisteException("Nome de usuário já cadastrado no sistema");
         }
 
         if(verificarSeEmailJaExiste(criarUsuarioDTO)) {
-            throw new EmailJaExisteException("Email já existe");
+            throw new EmailJaExisteException("Email já cadastrado no sistema");
         }
     }
 

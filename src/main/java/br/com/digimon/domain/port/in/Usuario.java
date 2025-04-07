@@ -4,4 +4,5 @@ import br.com.digimon.app.dto.CriarUsuarioDTO;
 
 public interface Usuario {
     void criarUsuario(CriarUsuarioDTO criarUsuarioDTO);
+
 }
