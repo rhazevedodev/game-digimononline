@@ -3,13 +3,16 @@ package br.com.digimon.infra.repository.impl;
 import br.com.digimon.domain.entity.UsuarioEntity;
 import br.com.digimon.domain.port.out.UsuarioRepositoryPort;
 import br.com.digimon.infra.repository.SpringDataUsuarioRepository;
+import br.com.digimon.shared.exception.UsuarioNaoExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Optional;
+
 @Slf4j
 @Repository
-public  class UsuarioRepositoryAdapter implements UsuarioRepositoryPort {
+public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort {
 
     @Autowired
     private  SpringDataUsuarioRepository springDataUsuarioRepository;
@@ -36,5 +39,18 @@ public  class UsuarioRepositoryAdapter implements UsuarioRepositoryPort {
             log.debug("Email já existe: {}", email);
         }
         return exists;
+    }
+
+    @Override
+    public boolean veriricarPrimeiroAcesso(String usuario) {
+        Optional<Object> response = springDataUsuarioRepository.findByNomeUsuario(usuario);
+        if (response.isPresent()) {
+            UsuarioEntity usuarioEntity = (UsuarioEntity) response.get();
+            return usuarioEntity.isPrimeiroAcesso();
+        }
+        if(response.isEmpty()){
+            throw new UsuarioNaoExisteException("Usuário não existe");
+        }
+        return false;
     }
 }

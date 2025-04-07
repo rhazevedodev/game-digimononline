@@ -1,6 +1,7 @@
 package br.com.digimon.app.usecase;
 
 import br.com.digimon.app.dto.CriarUsuarioDTO;
+import br.com.digimon.app.dto.RespostaPadraoDTO;
 import br.com.digimon.domain.entity.UsuarioEntity;
 import br.com.digimon.domain.port.in.Usuario;
 import br.com.digimon.domain.port.out.UsuarioRepositoryPort;
@@ -28,6 +29,19 @@ public class UsuarioUseCase implements Usuario {
         usuarioRepositoryPort.criarUsuario(montarObjetoUsuario(criarUsuarioDTO));
 
         log.info("Usuário criado com sucesso: {}", criarUsuarioDTO.getEmail());
+    }
+
+    @Override
+    public RespostaPadraoDTO veriricarPrimeiroAcesso(String usuario) {
+        log.info("Verificando primeiro acesso do usuário: {}", usuario);
+        boolean primeiroAcesso = usuarioRepositoryPort.veriricarPrimeiroAcesso(usuario);
+        if(primeiroAcesso){
+            log.info("Primeiro acesso confirmado para o usuário: {}", usuario);
+            return new RespostaPadraoDTO("Primeiro acesso confirmado");
+        } else {
+            log.info("Não é o primeiro acesso para o usuário: {}", usuario);
+            return new RespostaPadraoDTO("Não é o primeiro acesso");
+        }
     }
 
 

@@ -8,4 +8,6 @@ public interface UsuarioRepositoryPort {
     boolean verificarSeNomeUsuarioJaExiste(String nomeUsuario);
 
     boolean verificarSeEmailJaExiste(String email);
+
+    boolean veriricarPrimeiroAcesso(String usuario);
 }

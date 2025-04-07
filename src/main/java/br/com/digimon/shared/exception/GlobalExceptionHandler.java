@@ -27,4 +27,10 @@ public class GlobalExceptionHandler {
         ErrorDetails errorDetails = new ErrorDetails(HttpStatus.CONFLICT.value(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(UsuarioNaoExisteException.class)
+    public ResponseEntity<?> handleUsuarioNaoExisteException(UsuarioNaoExisteException ex, WebRequest request) {
+        ErrorDetails errorDetails = new ErrorDetails(HttpStatus.NOT_FOUND.value(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
 }

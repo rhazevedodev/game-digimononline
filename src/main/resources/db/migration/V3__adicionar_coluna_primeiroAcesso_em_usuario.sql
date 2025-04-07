@@ -1,0 +1,2 @@
+ALTER TABLE usuario
+ADD COLUMN primeiro_acesso BOOLEAN DEFAULT TRUE;
