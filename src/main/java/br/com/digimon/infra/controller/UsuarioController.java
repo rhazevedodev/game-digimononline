@@ -1,12 +1,7 @@
 package br.com.digimon.infra.controller;
 
 import br.com.digimon.app.dto.CriarUsuarioDTO;
-import br.com.digimon.app.dto.RespostaPadraoDTO;
-import br.com.digimon.app.usecase.UsuarioUseCase;
-import br.com.digimon.domain.port.in.Usuario;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import br.com.digimon.app.usecase.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 public class UsuarioController {
 
     @Autowired
-    private UsuarioUseCase usuarioUseCase;
+    private UsuarioService usuarioService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -31,7 +26,7 @@ public class UsuarioController {
     //})
     public ResponseEntity<Void> criarUsuario(@RequestBody @Valid CriarUsuarioDTO criarUsuarioDTO) {
         log.info("Recebida requisição para criar usuário");
-        usuarioUseCase.criarUsuario(criarUsuarioDTO);
+        usuarioService.criarUsuario(criarUsuarioDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -43,7 +38,7 @@ public class UsuarioController {
     @GetMapping("/primeiroAcesso/{usuario}")
     public ResponseEntity<?> verificarPrimeiroAcesso(@PathVariable String usuario) {
         log.info("Verificando se é o primeiro acesso do usuario: {}", usuario);
-        return ResponseEntity.ok(usuarioUseCase.veriricarPrimeiroAcesso(usuario));
+        return ResponseEntity.ok(usuarioService.veriricarPrimeiroAcesso(usuario));
     }
 
 

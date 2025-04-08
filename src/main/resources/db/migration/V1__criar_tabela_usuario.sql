@@ -1,5 +1,5 @@
 CREATE TABLE usuario (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    id BIGSERIAL PRIMARY KEY,
     nome_usuario VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
@@ -8,7 +8,7 @@ CREATE TABLE usuario (
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     ultima_alteracao TIMESTAMP,
     ultima_alteracao_por VARCHAR(50),
-    pontos_digitais INT DEFAULT 0,
-    slots_digimon INT DEFAULT 1,
+    pontos_digitais INTEGER DEFAULT 0,
+    slots_digimon INTEGER DEFAULT 1,
     indicacao VARCHAR(100)
 );

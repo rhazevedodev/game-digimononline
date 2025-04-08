@@ -10,4 +10,6 @@ public interface UsuarioRepositoryPort {
     boolean verificarSeEmailJaExiste(String email);
 
     boolean veriricarPrimeiroAcesso(String usuario);
+
+    UsuarioEntity findByUsername(String username);
 }

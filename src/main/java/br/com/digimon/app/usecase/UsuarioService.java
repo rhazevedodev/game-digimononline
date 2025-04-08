@@ -9,15 +9,19 @@ import br.com.digimon.shared.exception.EmailJaExisteException;
 import br.com.digimon.shared.exception.NomeUsuarioJaExisteException;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class UsuarioUseCase implements Usuario {
+public class UsuarioService implements Usuario {
 
     @Autowired
     private UsuarioRepositoryPort usuarioRepositoryPort;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional
@@ -25,6 +29,9 @@ public class UsuarioUseCase implements Usuario {
         log.info("Iniciando criação de usuário: {}", criarUsuarioDTO.getEmail());
 
         validacoesCriarUsuario(criarUsuarioDTO);
+
+        String senhaCriptografada = passwordEncoder.encode(criarUsuarioDTO.getSenha());
+        criarUsuarioDTO.setSenha(senhaCriptografada);
 
         usuarioRepositoryPort.criarUsuario(montarObjetoUsuario(criarUsuarioDTO));
 

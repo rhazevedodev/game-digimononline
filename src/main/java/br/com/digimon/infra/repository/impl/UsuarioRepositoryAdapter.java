@@ -53,4 +53,14 @@ public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort {
         }
         return false;
     }
+
+    @Override
+    public UsuarioEntity findByUsername(String username) {
+        Optional<Object> usuarioEntity = springDataUsuarioRepository.findByNomeUsuario(username);
+        if (usuarioEntity.isPresent()) {
+            return (UsuarioEntity) usuarioEntity.get();
+        } else {
+            throw new UsuarioNaoExisteException("Usuário não encontrado");
+        }
+    }
 }
