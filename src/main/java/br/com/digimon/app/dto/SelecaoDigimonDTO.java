@@ -11,9 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class SelecaoDigimonDTO {
 
-    private String nomeUsuario;
     private String nomeDigimon;
     private String apelidoDigimon;
-
 
 }

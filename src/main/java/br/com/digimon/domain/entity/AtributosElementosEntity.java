@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class AtributosElementoEntity {
+public class AtributosElementosEntity {
 
     @NotNull
     private int elementoPrimitivo;

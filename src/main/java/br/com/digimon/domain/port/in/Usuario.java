@@ -5,6 +5,6 @@ import br.com.digimon.app.dto.RespostaPadraoDTO;
 
 public interface Usuario {
     void criarUsuario(CriarUsuarioDTO criarUsuarioDTO);
-    RespostaPadraoDTO veriricarPrimeiroAcesso(String usuario);
+    RespostaPadraoDTO verificarPrimeiroAcesso(String usuario);
 
 }

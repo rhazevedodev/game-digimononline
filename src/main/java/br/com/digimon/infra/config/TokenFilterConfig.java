@@ -1,4 +1,4 @@
-package br.com.digimon.app.config;
+package br.com.digimon.infra.config;
 
 import br.com.digimon.domain.port.out.TokenRepositoryPort;
 import jakarta.servlet.FilterChain;

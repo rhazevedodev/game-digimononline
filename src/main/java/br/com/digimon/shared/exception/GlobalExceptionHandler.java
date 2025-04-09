@@ -1,6 +1,6 @@
 package br.com.digimon.shared.exception;
 
-import br.com.digimon.shared.exception.model.ErrorDetails;
+import br.com.digimon.shared.model.ErrorDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -33,4 +33,12 @@ public class GlobalExceptionHandler {
         ErrorDetails errorDetails = new ErrorDetails(HttpStatus.NOT_FOUND.value(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(ApelidoDigimonJaEscolhidoException.class)
+    public ResponseEntity<?> handleApelidoDigimonJaEscolhidoException(ApelidoDigimonJaEscolhidoException ex, WebRequest request) {
+        ErrorDetails errorDetails = new ErrorDetails(HttpStatus.CONFLICT.value(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);
+    }
+
+
 }

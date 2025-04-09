@@ -67,7 +67,7 @@ public class DigimonEntity {
     private AtributosModificadoresEntity atributosModificadores;
 
     @Embedded
-    private AtributosElementoEntity atributosElementos;
+    private AtributosElementosEntity atributosElementos;
 
     private LocalDate dataCadastro = LocalDate.now();
 

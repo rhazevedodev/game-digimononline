@@ -1,4 +1,4 @@
-package br.com.digimon.shared.exception.util;
+package br.com.digimon.shared.util;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
@@ -57,4 +57,5 @@ public class JwtUtil {
                 .getBody()
                 .getExpiration();
     }
+
 }

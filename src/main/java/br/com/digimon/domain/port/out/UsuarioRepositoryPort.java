@@ -9,7 +9,9 @@ public interface UsuarioRepositoryPort {
 
     boolean verificarSeEmailJaExiste(String email);
 
-    boolean veriricarPrimeiroAcesso(String usuario);
+    boolean verificarPrimeiroAcesso(String usuario);
 
     UsuarioEntity findByUsername(String username);
+
+    boolean validarJogadorExiste(Long idJogador);
 }

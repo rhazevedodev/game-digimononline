@@ -2,8 +2,7 @@ package br.com.digimon.app.service;
 
 import br.com.digimon.app.command.TokenCommand;
 import br.com.digimon.domain.entity.TokenEntity;
-import br.com.digimon.domain.port.out.TokenRepositoryPort;
-import br.com.digimon.shared.exception.util.JwtUtil;
+import br.com.digimon.shared.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,7 +10,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;

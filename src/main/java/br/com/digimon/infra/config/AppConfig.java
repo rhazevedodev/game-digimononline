@@ -1,7 +1,7 @@
-package br.com.digimon.app.config;
+package br.com.digimon.infra.config;
 
 import br.com.digimon.domain.port.out.TokenRepositoryPort;
-import br.com.digimon.infra.repository.impl.TokenRepositoryAdapter;
+import br.com.digimon.infra.repository.impl.TokenRepositoryAdapterImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +10,6 @@ public class AppConfig {
 
     @Bean
     public TokenRepositoryPort tokenRepositoryPort() {
-        return new TokenRepositoryAdapter();
+        return new TokenRepositoryAdapterImpl();
     }
 }

@@ -21,4 +21,8 @@ public class TokenCommand {
     public void criarToken(TokenEntity tokenEntity) {
         tokenService.criarToken(tokenEntity);
     }
+
+    public String obterUsuarioPorToken(String token) {
+        return tokenService.obterUsuarioPorToken(token);
+    }
 }

@@ -1,4 +1,4 @@
-package br.com.digimon.shared.exception.model;
+package br.com.digimon.shared.model;
 
 public class ErrorDetails {
     private int statusCode;

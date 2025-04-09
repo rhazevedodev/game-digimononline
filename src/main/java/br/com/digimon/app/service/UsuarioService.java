@@ -43,9 +43,9 @@ public class UsuarioService implements Usuario {
     }
 
     @Override
-    public RespostaPadraoDTO veriricarPrimeiroAcesso(String usuario) {
+    public RespostaPadraoDTO verificarPrimeiroAcesso(String usuario) {
         log.info("Verificando primeiro acesso do usuário: {}", usuario);
-        boolean primeiroAcesso = usuarioRepositoryPort.veriricarPrimeiroAcesso(usuario);
+        boolean primeiroAcesso = usuarioRepositoryPort.verificarPrimeiroAcesso(usuario);
         if(primeiroAcesso){
             log.info("Primeiro acesso confirmado para o usuário: {}", usuario);
             return new RespostaPadraoDTO("Primeiro acesso confirmado");
@@ -54,7 +54,6 @@ public class UsuarioService implements Usuario {
             return new RespostaPadraoDTO("Não é o primeiro acesso");
         }
     }
-
 
     private UsuarioEntity montarObjetoUsuario(CriarUsuarioDTO criarUsuarioDTO) {
         log.info("Montando objeto UsuarioEntity a partir de CriarUsuarioDTO: {}", criarUsuarioDTO.getEmail());
@@ -65,6 +64,18 @@ public class UsuarioService implements Usuario {
         usuarioEntity.setDataNascimento(criarUsuarioDTO.getDataNascimento());
         return usuarioEntity;
     }
+
+    public UsuarioEntity obterUsuarioPorNome(String nomeUsuario) {
+        log.info("Buscando usuário pelo nome: {}", nomeUsuario);
+        return usuarioRepositoryPort.findByUsername(nomeUsuario);
+    }
+
+    public boolean validarJogadorExiste(Long idJogador) {
+        log.info("Verificando se o jogador existe: {}", idJogador);
+        return usuarioRepositoryPort.validarJogadorExiste(idJogador);
+    }
+
+
 
 
 }

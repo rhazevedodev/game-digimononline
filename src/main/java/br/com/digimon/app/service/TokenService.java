@@ -1,6 +1,7 @@
 package br.com.digimon.app.service;
 
 import br.com.digimon.domain.entity.TokenEntity;
+import br.com.digimon.domain.port.in.Token;
 import br.com.digimon.domain.port.out.TokenRepositoryPort;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-public class TokenService {
+public class TokenService implements Token {
 
     @Autowired
     private TokenRepositoryPort tokenRepositoryPort;
@@ -39,5 +40,14 @@ public class TokenService {
     public void criarToken(TokenEntity tokenEntity) {
         log.info("Criando novo token: {}", tokenEntity.getToken());
         tokenRepositoryPort.criarToken(tokenEntity);
+    }
+
+    public String obterUsuarioPorToken(String token) {
+        log.info("Obtendo usuário por token: {}", token);
+        Optional<TokenEntity> tokenEntityOptional = tokenRepositoryPort.findByToken(token);
+        if (tokenEntityOptional.isPresent()) {
+            return tokenEntityOptional.get().getUsername();
+        }
+        return null;
     }
 }

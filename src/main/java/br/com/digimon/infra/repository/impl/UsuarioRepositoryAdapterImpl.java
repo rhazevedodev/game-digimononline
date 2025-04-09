@@ -2,7 +2,7 @@ package br.com.digimon.infra.repository.impl;
 
 import br.com.digimon.domain.entity.UsuarioEntity;
 import br.com.digimon.domain.port.out.UsuarioRepositoryPort;
-import br.com.digimon.infra.repository.SpringDataUsuarioRepository;
+import br.com.digimon.infra.repository.jpa.SpringDataUsuarioRepository;
 import br.com.digimon.shared.exception.UsuarioNaoExisteException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Slf4j
 @Repository
-public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort {
+public class UsuarioRepositoryAdapterImpl implements UsuarioRepositoryPort {
 
     @Autowired
     private  SpringDataUsuarioRepository springDataUsuarioRepository;
@@ -42,8 +42,11 @@ public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort {
     }
 
     @Override
-    public boolean veriricarPrimeiroAcesso(String usuario) {
+    public boolean verificarPrimeiroAcesso(String usuario) {
         Optional<UsuarioEntity> response = springDataUsuarioRepository.findByNomeUsuario(usuario);
+        if (response.isEmpty()) {
+            throw new UsuarioNaoExisteException("Usuário não encontrado: " + usuario);
+        }
         return response.get().isPrimeiroAcesso();
     }
 
@@ -52,6 +55,16 @@ public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort {
         Optional<UsuarioEntity> usuarioEntity = springDataUsuarioRepository.findByNomeUsuario(username);
         if (usuarioEntity.isPresent()) {
             return usuarioEntity.get();
+        } else {
+            throw new UsuarioNaoExisteException("Usuário não encontrado");
+        }
+    }
+
+    @Override
+    public boolean validarJogadorExiste(Long idJogador) {
+        Optional<UsuarioEntity> usuarioEntity = springDataUsuarioRepository.findById(idJogador);
+        if (usuarioEntity.isPresent()) {
+            return true;
         } else {
             throw new UsuarioNaoExisteException("Usuário não encontrado");
         }

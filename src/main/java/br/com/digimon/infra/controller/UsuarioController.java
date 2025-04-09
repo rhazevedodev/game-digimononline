@@ -38,7 +38,7 @@ public class UsuarioController {
     @GetMapping("/primeiroAcesso/{usuario}")
     public ResponseEntity<?> verificarPrimeiroAcesso(@PathVariable String usuario) {
         log.info("Verificando se é o primeiro acesso do usuario: {}", usuario);
-        return ResponseEntity.ok(usuarioService.veriricarPrimeiroAcesso(usuario));
+        return ResponseEntity.ok(usuarioService.verificarPrimeiroAcesso(usuario));
     }
 
 

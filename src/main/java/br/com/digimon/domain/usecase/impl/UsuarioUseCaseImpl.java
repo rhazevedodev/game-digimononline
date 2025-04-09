@@ -5,6 +5,7 @@ import br.com.digimon.domain.port.out.UsuarioRepositoryPort;
 import br.com.digimon.domain.usecase.UsuarioUseCase;
 import br.com.digimon.shared.exception.EmailJaExisteException;
 import br.com.digimon.shared.exception.NomeUsuarioJaExisteException;
+import br.com.digimon.shared.exception.UsuarioNaoExisteException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,14 @@ public class UsuarioUseCaseImpl implements UsuarioUseCase {
 
         if(verificarSeEmailJaExiste(criarUsuarioDTO)) {
             throw new EmailJaExisteException("Email já cadastrado no sistema");
+        }
+    }
+
+    @Override
+    public void validarJogadorExiste(Long idJogador) {
+        log.info("Validando se o jogador existe: {}", idJogador);
+        if (!usuarioRepositoryPort.validarJogadorExiste(idJogador)) {
+            throw new UsuarioNaoExisteException("Usuário não encontrado");
         }
     }
 

@@ -1,4 +1,4 @@
-package br.com.digimon.app.config;
+package br.com.digimon.infra.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
