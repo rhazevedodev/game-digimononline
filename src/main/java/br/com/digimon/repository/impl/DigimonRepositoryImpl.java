@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Slf4j
 @Repository
 public class DigimonRepositoryImpl implements DigimonRepository {
@@ -27,5 +29,15 @@ public class DigimonRepositoryImpl implements DigimonRepository {
     @Override
     public int countBySacrificadoFalseAndIdJogador(Long id) {
         return springDataDigimonRepository.countBySacrificadoFalseAndIdJogador(id);
+    }
+
+    @Override
+    public List<DigimonEntity> findByIdJogadorAndSacrificadoFalse(Long id) {
+        return springDataDigimonRepository.findByIdJogadorAndSacrificadoFalse(id);
+    }
+
+    @Override
+    public DigimonEntity getDigimonById(Long id) {
+        return springDataDigimonRepository.getDigimonById(id);
     }
 }

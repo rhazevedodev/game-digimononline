@@ -48,10 +48,16 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.carregarPontosDigitais(request));
     }
 
-    @GetMapping("validarSlotsDigimon")
+    @GetMapping("/validarSlotsDigimon")
     public ResponseEntity<?> validarSlotsDigimon(HttpServletRequest request) {
         log.info("Validando slots de digimon do usuario: ");
         return ResponseEntity.ok(continuarJornadaService.validarSlotsDigimon(request));
+    }
+
+    @GetMapping("/obterDigimons")
+    public ResponseEntity<?> obterDigimons(HttpServletRequest request) {
+        log.info("Carregando digimons do usuario: ");
+        return ResponseEntity.ok(continuarJornadaService.carregarDigimonsContinuarJornada(request));
     }
 
 

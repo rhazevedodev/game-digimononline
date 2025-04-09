@@ -2,6 +2,7 @@ package br.com.digimon.service;
 
 
 import br.com.digimon.domain.*;
+import br.com.digimon.domain.dto.ContinuarJornadaDTO;
 import br.com.digimon.domain.dto.SelecaoDigimonDTO;
 import br.com.digimon.domain.enums.EnumDigimonRookie;
 import br.com.digimon.domain.enums.EnumElementos;
@@ -14,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -46,5 +49,25 @@ public class DigimonService{
         int quantidadeDigimons = digimonRepository.countBySacrificadoFalseAndIdJogador(id);
         log.info("Quantidade de Digimons encontrados: {}", quantidadeDigimons);
         return quantidadeDigimons;
+    }
+
+
+    public List<DigimonEntity> findByIdJogadorAndSacrificadoFalse(Long id) {
+        log.info("Buscando Digimons para o jogador: {}", id);
+        List<DigimonEntity> digimons = digimonRepository.findByIdJogadorAndSacrificadoFalse(id);
+        log.info("Quantidade de Digimons encontrados: {}", digimons.size());
+        return digimons;
+    }
+
+    public DigimonEntity getDigimonById(Long idDigimon) {
+        log.info("Buscando Digimon pelo ID: {}", idDigimon);
+        DigimonEntity digimon = digimonRepository.getDigimonById(idDigimon);
+        if (digimon != null) {
+            log.info("Digimon encontrado: {}", digimon.getNome());
+            return digimon;
+        } else {
+            log.warn("Nenhum Digimon encontrado com o ID: {}", idDigimon);
+            return null;
+        }
     }
 }
