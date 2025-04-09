@@ -1,6 +1,5 @@
-package br.com.digimon.app.usecase;
+package br.com.digimon.app.service;
 
-import br.com.digimon.app.dto.AuthRequestDTO;
 import br.com.digimon.domain.entity.UsuarioEntity;
 import br.com.digimon.domain.port.out.UsuarioRepositoryPort;
 import org.springframework.beans.factory.annotation.Autowired;

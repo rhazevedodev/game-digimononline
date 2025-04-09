@@ -1,18 +1,20 @@
-package br.com.digimon.app.usecase;
+package br.com.digimon.app.service;
 
+import br.com.digimon.app.command.TokenCommand;
 import br.com.digimon.domain.entity.TokenEntity;
-import br.com.digimon.domain.port.out.TokenRepository;
+import br.com.digimon.domain.port.out.TokenRepositoryPort;
 import br.com.digimon.shared.exception.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -22,10 +24,10 @@ public class AuthService {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private TokenRepository tokenRepository;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    private TokenCommand tokenCommand;
 
     public String login(String usuario, String senha) {
         log.info("Iniciando processo de login para o usuário: {}", usuario);
@@ -35,6 +37,15 @@ public class AuthService {
 
         Authentication authentication = authenticationManager.authenticate(authToken); // <-- isso valida a senha com BCrypt automaticamente
 
+        // 1. Verifica se já existe um token válido
+        Optional<TokenEntity> tokenExistente = tokenCommand.verificarSeJaExisteTokenValido(usuario);
+
+        if (tokenExistente.isPresent()) {
+            log.info("Token já existente e válido encontrado. Reutilizando.");
+            return tokenExistente.get().getToken();
+        }
+
+        // 2. Caso contrário, gera um novo token
         String jwt = jwtUtil.generateToken(usuario);
         Date expiration = jwtUtil.getExpirationDateFromToken(jwt);
 
@@ -43,13 +54,8 @@ public class AuthService {
         tokenEntity.setUsername(usuario);
         tokenEntity.setExpirationTime(expiration.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
 
-        tokenRepository.save(tokenEntity);
+        tokenCommand.criarToken(tokenEntity);
 
         return jwt;
-    }
-
-    public boolean isTokenValid(String token) {
-        return jwtUtil.isTokenValid(token) &&
-                tokenRepository.findByToken(token).isPresent();
     }
 }

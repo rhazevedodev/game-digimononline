@@ -1,6 +1,6 @@
 package br.com.digimon.app.config;
 
-import br.com.digimon.domain.port.out.TokenRepository;
+import br.com.digimon.domain.port.out.TokenRepositoryPort;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 public class TokenFilterConfig extends OncePerRequestFilter {
 
     @Autowired
-    private TokenRepository tokenRepository;
+    private TokenRepositoryPort tokenRepositoryPort;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -34,7 +34,7 @@ public class TokenFilterConfig extends OncePerRequestFilter {
         if(authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
 
-            tokenRepository.findByToken(token)
+            tokenRepositoryPort.findByToken(token)
                     .filter(t -> t.getExpirationTime().isAfter(LocalDateTime.now()))
                     .ifPresent(t -> {
                         UserDetails userDetails = userDetailsService.loadUserByUsername(t.getUsername());

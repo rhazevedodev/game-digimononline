@@ -8,7 +8,7 @@ import java.util.Optional;
 
 
 public interface SpringDataUsuarioRepository extends JpaRepository<UsuarioEntity, Long> {
-    Optional<Object> findByNomeUsuario(String nomeUsuario);
+    Optional<UsuarioEntity> findByNomeUsuario(String nomeUsuario);
     Optional<Object> findByEmail(String email);
 
     // Aqui você pode adicionar métodos personalizados, se necessário

@@ -1,7 +1,7 @@
 package br.com.digimon.infra.controller;
 
 import br.com.digimon.app.dto.CriarUsuarioDTO;
-import br.com.digimon.app.usecase.UsuarioService;
+import br.com.digimon.app.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,13 +1,11 @@
 package br.com.digimon.infra.controller;
 
 import br.com.digimon.app.dto.AuthRequestDTO;
-import br.com.digimon.app.usecase.AuthService;
+import br.com.digimon.app.dto.ValidarTokenDTO;
+import br.com.digimon.app.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")

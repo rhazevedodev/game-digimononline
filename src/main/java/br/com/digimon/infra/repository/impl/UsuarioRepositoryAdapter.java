@@ -43,22 +43,15 @@ public class UsuarioRepositoryAdapter implements UsuarioRepositoryPort {
 
     @Override
     public boolean veriricarPrimeiroAcesso(String usuario) {
-        Optional<Object> response = springDataUsuarioRepository.findByNomeUsuario(usuario);
-        if (response.isPresent()) {
-            UsuarioEntity usuarioEntity = (UsuarioEntity) response.get();
-            return usuarioEntity.isPrimeiroAcesso();
-        }
-        if(response.isEmpty()){
-            throw new UsuarioNaoExisteException("Usuário não existe");
-        }
-        return false;
+        Optional<UsuarioEntity> response = springDataUsuarioRepository.findByNomeUsuario(usuario);
+        return response.get().isPrimeiroAcesso();
     }
 
     @Override
     public UsuarioEntity findByUsername(String username) {
-        Optional<Object> usuarioEntity = springDataUsuarioRepository.findByNomeUsuario(username);
+        Optional<UsuarioEntity> usuarioEntity = springDataUsuarioRepository.findByNomeUsuario(username);
         if (usuarioEntity.isPresent()) {
-            return (UsuarioEntity) usuarioEntity.get();
+            return usuarioEntity.get();
         } else {
             throw new UsuarioNaoExisteException("Usuário não encontrado");
         }
