@@ -7,4 +7,5 @@ public interface SpringDataDigimonRepository extends JpaRepository<DigimonEntity
 
     boolean existsByNome(String apelidoDigimon);
 
+    int countBySacrificadoFalseAndIdJogador(Long id);
 }

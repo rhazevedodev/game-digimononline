@@ -2,7 +2,6 @@ package br.com.digimon.service;
 
 
 import br.com.digimon.domain.TokenEntity;
-import br.com.digimon.service.command.TokenCommand;
 import br.com.digimon.utils.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,11 @@ public class AuthService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private TokenCommand tokenCommand;
+    private TokenService tokenService;
+
+    public AuthService(TokenService tokenService) {
+        this.tokenService = tokenService;
+    }
 
     public String login(String usuario, String senha) {
         log.info("Iniciando processo de login para o usuário: {}", usuario);
@@ -37,7 +39,7 @@ public class AuthService {
         Authentication authentication = authenticationManager.authenticate(authToken); // <-- isso valida a senha com BCrypt automaticamente
 
         // 1. Verifica se já existe um token válido
-        Optional<TokenEntity> tokenExistente = tokenCommand.verificarSeJaExisteTokenValido(usuario);
+        Optional<TokenEntity> tokenExistente = tokenService.verificarSeJaExisteTokenValido(usuario);
 
         if (tokenExistente.isPresent()) {
             log.info("Token já existente e válido encontrado. Reutilizando.");
@@ -53,7 +55,7 @@ public class AuthService {
         tokenEntity.setUsername(usuario);
         tokenEntity.setExpirationTime(expiration.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
 
-        tokenCommand.criarToken(tokenEntity);
+        tokenService.criarToken(tokenEntity);
 
         return jwt;
     }

@@ -6,4 +6,6 @@ public interface DigimonRepository {
 
     boolean verificarSeApelidoDigimonJaExiste(String apelidoDigimon);
     DigimonEntity criarDigimon(DigimonEntity digimonSelecionado);
+
+    int countBySacrificadoFalseAndIdJogador(Long id);
 }

@@ -8,7 +8,6 @@ import br.com.digimon.exception.EmailJaExisteException;
 import br.com.digimon.exception.NomeUsuarioJaExisteException;
 import br.com.digimon.exception.UsuarioNaoExisteException;
 import br.com.digimon.repository.UsuarioRepository;
-import br.com.digimon.service.command.TokenCommand;
 import br.com.digimon.utils.HeaderExtract;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.transaction.Transactional;
@@ -16,6 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -27,8 +28,14 @@ public class UsuarioService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private TokenCommand tokenCommand;
+    private DigimonService digimonService;
+
+    private TokenService tokenService;
+
+    public UsuarioService(DigimonService digimonService, TokenService tokenService) {
+        this.digimonService = digimonService;
+        this.tokenService = tokenService;
+    }
 
     @Transactional
     public void criarUsuario(CriarUsuarioDTO criarUsuarioDTO) {
@@ -101,11 +108,10 @@ public class UsuarioService {
         return usuarioRepositoryPort.verificarSeEmailJaExiste(criarUsuarioDTO.getEmail());
     }
 
-
     public int carregarPontosDigitais(HttpServletRequest request) {
         try {
             String jwt = HeaderExtract.extrairTokenDoHeader(request);
-            String nomeUsuario = tokenCommand.obterUsuarioPorToken(jwt);
+            String nomeUsuario = tokenService.obterUsuarioPorToken(jwt);
             UsuarioEntity usuarioEntity = usuarioRepositoryPort.findByUsername(nomeUsuario);
             return usuarioEntity.getPontosDigitais();
         } catch (Exception e) {
@@ -113,4 +119,6 @@ public class UsuarioService {
             throw new RuntimeException("Erro ao carregar pontos digitais: " + e.getMessage());
         }
     }
+
+
 }

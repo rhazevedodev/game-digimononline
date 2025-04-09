@@ -2,10 +2,12 @@ package br.com.digimon.controller;
 
 
 import br.com.digimon.domain.dto.CriarUsuarioDTO;
+import br.com.digimon.service.ContinuarJornadaService;
 import br.com.digimon.service.UsuarioService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,8 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+    @Autowired
+    private ContinuarJornadaService continuarJornadaService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -42,6 +46,12 @@ public class UsuarioController {
     public ResponseEntity<?> carregarPontosDigitais(HttpServletRequest request) {
         log.info("Carregando pontos digitais do usuario: ");
         return ResponseEntity.ok(usuarioService.carregarPontosDigitais(request));
+    }
+
+    @GetMapping("validarSlotsDigimon")
+    public ResponseEntity<?> validarSlotsDigimon(HttpServletRequest request) {
+        log.info("Validando slots de digimon do usuario: ");
+        return ResponseEntity.ok(continuarJornadaService.validarSlotsDigimon(request));
     }
 
 

@@ -23,4 +23,9 @@ public class DigimonRepositoryImpl implements DigimonRepository {
     public DigimonEntity criarDigimon(DigimonEntity digimonSelecionado) {
         return springDataDigimonRepository.save(digimonSelecionado);
     }
+
+    @Override
+    public int countBySacrificadoFalseAndIdJogador(Long id) {
+        return springDataDigimonRepository.countBySacrificadoFalseAndIdJogador(id);
+    }
 }
