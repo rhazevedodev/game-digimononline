@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DigimonController {
 
     @Autowired
+
     private SelecionarDigimonService selecionarDigimonService;
 
     @PostMapping("/selecionar")

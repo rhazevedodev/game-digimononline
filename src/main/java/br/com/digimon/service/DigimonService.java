@@ -40,7 +40,7 @@ public class DigimonService{
             log.info("Criando novo Digimon: {}", digimonSelecionado.getNome());
             return digimonRepository.criarDigimon(digimonSelecionado);
       }
-      
+
     public int verificarQuantidadeDigimon(Long id){
         log.info("Verificando quantidade de Digimons para o jogador: {}", id);
         int quantidadeDigimons = digimonRepository.countBySacrificadoFalseAndIdJogador(id);

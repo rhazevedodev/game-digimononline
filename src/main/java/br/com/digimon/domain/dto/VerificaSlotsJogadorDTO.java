@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class VerificaSlotsJogadorDTO {
 
-    private Long idJogador;
+    private int digimonsAtivos;
     private int slotsDigimon;
 }
