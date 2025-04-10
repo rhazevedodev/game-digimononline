@@ -21,11 +21,17 @@ public class SecurityConfig {
     @Autowired
     private TokenFilterConfig tokenFilterConfig;
 
+    // Método estático para externalizar os paths
+    public static String[] getPermitAllPaths() {
+        return new String[]{"/auth/**", "/usuarios", "/h2-console/**",
+                "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui/index.html"};
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/**", "/usuarios", "/h2-console/**").permitAll()
+                        .requestMatchers(getPermitAllPaths()).permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .anyRequest().authenticated()
                 )
