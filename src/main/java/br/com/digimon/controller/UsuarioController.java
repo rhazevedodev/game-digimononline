@@ -60,6 +60,12 @@ public class UsuarioController {
         return ResponseEntity.ok(continuarJornadaService.carregarDigimonsContinuarJornada(request));
     }
 
+    @GetMapping("/carregarColunaEsquerdaFixa/{idDigimon}")
+    public ResponseEntity<?> carregarColunaEsquerdaFixa(@PathVariable Long idDigimon) {
+        log.info("Carregando coluna esquerda fixa do usuário");
+        return ResponseEntity.ok(continuarJornadaService.carregarImagemDigimon(idDigimon));
+    }
+
 
 
 

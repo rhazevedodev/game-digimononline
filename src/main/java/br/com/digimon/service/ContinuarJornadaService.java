@@ -91,6 +91,4 @@ public class ContinuarJornadaService {
         }
         return carregarImagemContinuarJornadaDTO;
     }
-
-
 }
