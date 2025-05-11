@@ -21,8 +21,8 @@ public class DigimonController {
     @PostMapping("/selecionar")
     public ResponseEntity<?> selecionarDigimon(@Valid @RequestBody SelecaoDigimonDTO selecaoDigimonDTO, HttpServletRequest request) {
         log.info("Iniciando seleção de Digimon : {}",selecaoDigimonDTO.getApelidoDigimon());
-       ;
-        return ResponseEntity.ok(selecionarDigimonService.selecionarDigimon(selecaoDigimonDTO, request));
+
+        return selecionarDigimonService.selecionarDigimon(selecaoDigimonDTO, request);
     }
 
 

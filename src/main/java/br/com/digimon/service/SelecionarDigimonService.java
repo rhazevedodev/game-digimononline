@@ -9,6 +9,7 @@ import br.com.digimon.utils.AtributosBaseDigimons;
 import br.com.digimon.utils.HeaderExtract;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,7 @@ public class SelecionarDigimonService {
 
     public ResponseEntity<?> selecionarDigimon(SelecaoDigimonDTO selecaoDigimonDTO, HttpServletRequest request) {
         log.info("Selecionando Digimon: {}", selecaoDigimonDTO.getNomeDigimon());
-        try{
+        try {
             String jwt = HeaderExtract.extrairTokenDoHeader(request);
             String nomeUsuario = tokenService.obterUsuarioPorToken(jwt);
             UsuarioEntity usuarioEntity = usuarioService.obterUsuarioPorNome(nomeUsuario);
@@ -51,6 +52,9 @@ public class SelecionarDigimonService {
 
             log.info("Digimon selecionado com sucesso para o usuário: {}", nomeUsuario);
             return ResponseEntity.ok(novoDigimon);
+        } catch (ApelidoDigimonJaEscolhidoException e) {
+            log.warn("Apelido já escolhido: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         } catch (Exception e) {
             log.error("Erro ao selecionar o Digimon: {}", e.getMessage());
             return ResponseEntity.status(500).body("Erro ao selecionar o Digimon");
