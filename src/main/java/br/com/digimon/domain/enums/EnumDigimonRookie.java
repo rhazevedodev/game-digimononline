@@ -53,6 +53,15 @@ public enum EnumDigimonRookie {
         return elemento;
     }
 
+    public static String getDescricaoById(int id) {
+        for (EnumDigimonRookie digimon : EnumDigimonRookie.values()) {
+            if (digimon.getId() == id) {
+                return digimon.getDescricao();
+            }
+        }
+        throw new RuntimeException("ID de Digimon Rookie inválido: " + id);
+    }
+
     public static String getIdByDescricao(String descricao) {
         for (EnumDigimonRookie digimon : EnumDigimonRookie.values()) {
             if (digimon.getDescricao().equals(descricao)) {

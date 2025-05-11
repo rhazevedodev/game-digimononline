@@ -36,7 +36,7 @@ public class UsuarioEntity {
     private String criadoPor = "usuario";
 
     @Column
-    private Date criadoEm = new Date();
+    private LocalDateTime criadoEm = LocalDateTime.now();
 
     @Column
     private LocalDateTime ultimaAlteracao;

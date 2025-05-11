@@ -125,4 +125,13 @@ public class UsuarioService {
     }
 
 
+    public UsuarioEntity getJogadorById(Long idJogador) {
+        log.info("Buscando jogador pelo ID: {}", idJogador);
+        Optional<UsuarioEntity> usuarioOptional = usuarioRepositoryPort.findById(idJogador);
+        if (usuarioOptional.isPresent()) {
+            return usuarioOptional.get();
+        } else {
+            throw new UsuarioNaoExisteException("Usuário não encontrado");
+        }
+    }
 }

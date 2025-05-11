@@ -2,13 +2,14 @@ package br.com.digimon.service;
 
 
 import br.com.digimon.domain.*;
+import br.com.digimon.domain.dto.AtributosBaseDTO;
 import br.com.digimon.domain.dto.ContinuarJornadaDTO;
 import br.com.digimon.domain.dto.SelecaoDigimonDTO;
-import br.com.digimon.domain.enums.EnumDigimonRookie;
-import br.com.digimon.domain.enums.EnumElementos;
+import br.com.digimon.domain.enums.*;
 import br.com.digimon.exception.ApelidoDigimonJaEscolhidoException;
 import br.com.digimon.repository.DigimonRepository;
 import br.com.digimon.utils.AtributosBaseDigimons;
+import br.com.digimon.utils.Data;
 import br.com.digimon.utils.HeaderExtract;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -16,18 +17,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
 public class DigimonService{
 
-    @Autowired
     private DigimonRepository digimonRepository;
 
     private TokenService tokenService;
 
-    public DigimonService(TokenService tokenService) {
+    public DigimonService(DigimonRepository digimonRepository, TokenService tokenService) {
+        this.digimonRepository = digimonRepository;
         this.tokenService = tokenService;
     }
 
@@ -70,4 +73,11 @@ public class DigimonService{
             return null;
         }
     }
+
+
+
+
+
+
+
 }

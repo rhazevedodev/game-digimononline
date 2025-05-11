@@ -75,4 +75,14 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
         log.debug("Atualizando usuário no banco: {}", usuario.getEmail());
         springDataUsuarioRepository.save(usuario);
     }
+
+    @Override
+    public Optional<UsuarioEntity> findById(Long idJogador) {
+        Optional<UsuarioEntity> usuarioEntity = springDataUsuarioRepository.findById(idJogador);
+        if (usuarioEntity.isPresent()) {
+            return usuarioEntity;
+        } else {
+            throw new UsuarioNaoExisteException("Usuário não encontrado");
+        }
+    }
 }
