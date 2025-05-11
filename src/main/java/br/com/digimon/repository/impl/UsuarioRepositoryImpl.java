@@ -69,4 +69,10 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
             throw new UsuarioNaoExisteException("Usuário não encontrado");
         }
     }
+
+    @Override
+    public void salvarUsuario(UsuarioEntity usuario) {
+        log.debug("Atualizando usuário no banco: {}", usuario.getEmail());
+        springDataUsuarioRepository.save(usuario);
+    }
 }

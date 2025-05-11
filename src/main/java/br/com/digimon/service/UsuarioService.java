@@ -63,6 +63,10 @@ public class UsuarioService {
         }
     }
 
+    public void atualizarUsuario(UsuarioEntity usuario){
+        usuarioRepositoryPort.salvarUsuario(usuario);
+    }
+
     private UsuarioEntity montarObjetoUsuario(CriarUsuarioDTO criarUsuarioDTO) {
         log.info("Montando objeto UsuarioEntity a partir de CriarUsuarioDTO: {}", criarUsuarioDTO.getEmail());
         UsuarioEntity usuarioEntity = new UsuarioEntity();

@@ -14,4 +14,6 @@ public interface UsuarioRepository {
     UsuarioEntity findByUsername(String username);
 
     boolean validarJogadorExiste(Long idJogador);
+
+    void salvarUsuario(UsuarioEntity usuario);
 }

@@ -1,6 +1,7 @@
 package br.com.digimon.service;
 
 import br.com.digimon.domain.*;
+import br.com.digimon.domain.dto.RespostaPadraoDTO;
 import br.com.digimon.domain.dto.SelecaoDigimonDTO;
 import br.com.digimon.domain.enums.EnumDigimonRookie;
 import br.com.digimon.domain.enums.EnumElementos;
@@ -51,6 +52,13 @@ public class SelecionarDigimonService {
             DigimonEntity novoDigimon = selecionarDigimonCompleto(digimonSelecionado);
 
             log.info("Digimon selecionado com sucesso para o usuário: {}", nomeUsuario);
+
+            RespostaPadraoDTO primeiroAcesso = usuarioService.verificarPrimeiroAcesso(nomeUsuario);
+            if(primeiroAcesso.getMensagem().equals("Primeiro acesso confirmado")){
+                usuarioEntity.setPrimeiroAcesso(false);
+                usuarioService.atualizarUsuario(usuarioEntity);
+            }
+
             return ResponseEntity.ok(novoDigimon);
         } catch (ApelidoDigimonJaEscolhidoException e) {
             log.warn("Apelido já escolhido: {}", e.getMessage());
