@@ -74,6 +74,23 @@ public class DigimonService{
         }
     }
 
+    public Map<String, Object> carregarVidaEnergia(Long idDigimonUsuario) {
+        Map<String, Object> response = new LinkedHashMap<>();
+
+        DigimonEntity digimon = getDigimonById(idDigimonUsuario);
+        response.put("nivel", digimon.getNivel());
+        response.put("vida", digimon.getAtributos().getPontosVida());
+        response.put("baseVida", digimon.getAtributosBase().getBaseVida());
+        response.put("manipulavelVida", digimon.getAtributosManipulaveis().getManipulaveisVida());
+        response.put("modificadoresVida", digimon.getAtributosModificadores().getModificadorVida());
+        response.put("energia", digimon.getAtributos().getPontosEnergia());
+        response.put("baseEnergia", digimon.getAtributosBase().getBaseEnergia());
+        response.put("manipulavelEnergia", digimon.getAtributosManipulaveis().getManipulaveisEnergia());
+        response.put("modificadoresEnergia", digimon.getAtributosModificadores().getModificadorEnergia());
+
+        return response;
+    }
+
 
 
 
