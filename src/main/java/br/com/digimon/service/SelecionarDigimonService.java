@@ -24,17 +24,21 @@ public class SelecionarDigimonService {
 
     private TokenService tokenService;
 
-    public SelecionarDigimonService(DigimonService digimonService, UsuarioService usuarioService, TokenService tokenService) {
+    private LogService logService;
+
+    public SelecionarDigimonService(DigimonService digimonService, UsuarioService usuarioService, TokenService tokenService, LogService logService) {
         this.digimonService = digimonService;
         this.usuarioService = usuarioService;
         this.tokenService = tokenService;
+        this.logService = logService;
     }
 
     public ResponseEntity<?> selecionarDigimon(SelecaoDigimonDTO selecaoDigimonDTO, HttpServletRequest request) {
         log.info("Selecionando Digimon: {}", selecaoDigimonDTO.getNomeDigimon());
+        String nomeUsuario = "";
         try {
             String jwt = HeaderExtract.extrairTokenDoHeader(request);
-            String nomeUsuario = tokenService.obterUsuarioPorToken(jwt);
+            nomeUsuario = tokenService.obterUsuarioPorToken(jwt);
             UsuarioEntity usuarioEntity = usuarioService.obterUsuarioPorNome(nomeUsuario);
 
             DigimonEntity digimonSelecionado = new DigimonEntity();
@@ -62,9 +66,19 @@ public class SelecionarDigimonService {
             return ResponseEntity.ok(novoDigimon);
         } catch (ApelidoDigimonJaEscolhidoException e) {
             log.warn("Apelido já escolhido: {}", e.getMessage());
+            LogEntity logEntity = new LogEntity();
+            logEntity.setAcao("FALHA SELEÇÃO DIGIMON");
+            logEntity.setDetalhes("Falha ao selecionar Digimon para o usuario: " + nomeUsuario + ", Erro: " + e.getMessage());
+
+            logService.saveLog(logEntity);
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         } catch (Exception e) {
             log.error("Erro ao selecionar o Digimon: {}", e.getMessage());
+            LogEntity logEntity = new LogEntity();
+            logEntity.setAcao("FALHA SELEÇÃO DIGIMON");
+            logEntity.setDetalhes("Falha ao selecionar Digimon para o usuario: " + nomeUsuario + ", Erro: " + e.getMessage());
+
+            logService.saveLog(logEntity);
             return ResponseEntity.status(500).body("Erro ao selecionar o Digimon");
         }
     }
