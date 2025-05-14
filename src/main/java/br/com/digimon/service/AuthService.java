@@ -1,8 +1,10 @@
 package br.com.digimon.service;
 
 
+import br.com.digimon.domain.LogEntity;
 import br.com.digimon.domain.TokenEntity;
 import br.com.digimon.utils.JwtUtil;
+import com.google.gson.internal.NonNullElementWrapperList;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,6 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.LoginContext;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;
@@ -24,11 +27,8 @@ public class AuthService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
     private TokenService tokenService;
-
-    public AuthService(TokenService tokenService) {
-        this.tokenService = tokenService;
-    }
 
     public String login(String usuario, String senha) {
         log.info("Iniciando processo de login para o usuário: {}", usuario);
@@ -56,7 +56,6 @@ public class AuthService {
         tokenEntity.setExpirationTime(expiration.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime());
 
         tokenService.criarToken(tokenEntity);
-
         return jwt;
     }
 }
