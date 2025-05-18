@@ -92,9 +92,9 @@ public class DigimonService{
     }
 
 
-
-
-
+    public Boolean verificarExistenciaDigimon(Long idDigimon) {
+        return digimonRepository.existsById(idDigimon);
+    }
 
 
 }

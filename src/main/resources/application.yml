@@ -1,4 +1,7 @@
 spring:
+#Configurações do Spring
+  profiles:
+    active: dev
 #Configurações do banco de dados
   datasource:
     url: jdbc:postgresql://localhost:5432/gameDigimonOnline
@@ -13,10 +16,10 @@ spring:
     show-sql: true
 
 #Ativa o H2
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
 
 # Ativa o Flyway
 flyway:

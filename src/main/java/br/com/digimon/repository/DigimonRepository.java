@@ -14,4 +14,6 @@ public interface DigimonRepository {
     List<DigimonEntity> findByIdJogadorAndSacrificadoFalse(Long id);
 
     DigimonEntity getDigimonById(Long id);
+
+    Boolean existsById(Long idDigimon);
 }

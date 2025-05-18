@@ -40,4 +40,9 @@ public class DigimonRepositoryImpl implements DigimonRepository {
     public DigimonEntity getDigimonById(Long id) {
         return springDataDigimonRepository.getDigimonById(id);
     }
+
+    @Override
+    public Boolean existsById(Long idDigimon) {
+        return springDataDigimonRepository.existsById(idDigimon);
+    }
 }
