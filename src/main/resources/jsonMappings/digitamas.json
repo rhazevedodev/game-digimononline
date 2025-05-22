@@ -1,0 +1,24 @@
+{
+  "digitamas": {
+    "Digitama 1": {
+      "possibleBaby1": ["Koromon", "Tsunomon"],
+      "image": "C:/Users/rafae/Desktop/Projetos/game-digimononline-frontend/assets/digimons/digitama1.jpg"
+    },
+    "Digitama 2": {
+      "possibleBaby1": ["Yokomon", "Bukamon"],
+      "image": "C:/Users/rafae/Desktop/Projetos/game-digimononline-frontend/assets/digimons/digitama2.jpeg"
+    },
+    "Digitama 3": {
+      "possibleBaby1": ["Motimon", "Tokomon"],
+      "image": "C:/Users/rafae/Desktop/Projetos/game-digimononline-frontend/assets/digimons/digitama3.jpeg"
+    },
+    "Digitama 4": {
+      "possibleBaby1": ["Tokomon", "Yokomon"],
+      "image": "C:/Users/rafae/Desktop/Projetos/game-digimononline-frontend/assets/digimons/digitama4.jpeg"
+    },
+    "Digitama 5": {
+      "possibleBaby1": ["Koromon", "Tsunomon", "Yokomon", "Bukamon", "Motimon", "Tokomon"],
+      "image": "C:/Users/rafae/Desktop/Projetos/game-digimononline-frontend/assets/digimons/digitama5.jpeg"
+    }
+  }
+}

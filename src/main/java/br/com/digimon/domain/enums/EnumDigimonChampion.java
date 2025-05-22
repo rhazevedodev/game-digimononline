@@ -33,9 +33,6 @@ public enum EnumDigimonChampion {
     BOLTMON(27, "Boltmon", "METAL", "./imagens/digimons/champions/boltmon.jpg"),
     DUSKMON(28, "Duskmon", "TREVAS", "./imagens/digimons/champions/duskmon.jpg");
 
-
-
-
     private int id;
     private String descricao;
     private String elemento;

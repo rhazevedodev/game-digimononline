@@ -1,0 +1,172 @@
+{
+  "digimonsChampions": [
+    {
+      "id": 1,
+      "nome": "Greymon",
+      "elemento": "FOGO",
+      "urlImg": "./imagens/digimons/champions/greymon2.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "Garurumon",
+      "elemento": "GELO",
+      "urlImg": "./imagens/digimons/champions/garurumon.jpg"
+    },
+    {
+      "id": 3,
+      "nome": "Birdramon",
+      "elemento": "VENTO",
+      "urlImg": "./imagens/digimons/champions/birdramon.jpg"
+    },
+    {
+      "id": 4,
+      "nome": "Kabuterimon",
+      "elemento": "RAIO",
+      "urlImg": "./imagens/digimons/champions/kabuterimon.jpg"
+    },
+    {
+      "id": 5,
+      "nome": "Togemon",
+      "elemento": "PLANTA",
+      "urlImg": "./imagens/digimons/champions/togemon.jpg"
+    },
+    {
+      "id": 6,
+      "nome": "Ikkakumon",
+      "elemento": "ÁGUA",
+      "urlImg": "./imagens/digimons/champions/ikkakumon.png"
+    },
+    {
+      "id": 7,
+      "nome": "Angemon",
+      "elemento": "LUZ",
+      "urlImg": "./imagens/digimons/champions/angemon.jpg"
+    },
+    {
+      "id": 8,
+      "nome": "Tailmon",
+      "elemento": "LUZ",
+      "urlImg": "./imagens/digimons/champions/tailmon.jpg"
+    },
+    {
+      "id": 9,
+      "nome": "Exveemon",
+      "elemento": "FOGO",
+      "urlImg": "./imagens/digimons/champions/exveemon.jpg"
+    },
+    {
+      "id": 10,
+      "nome": "Stingmon",
+      "elemento": "TERRA",
+      "urlImg": "./imagens/digimons/champions/stingmon.jpg"
+    },
+    {
+      "id": 11,
+      "nome": "Gatomon",
+      "elemento": "LUZ",
+      "urlImg": "./imagens/digimons/champions/gatomon.jpg"
+    },
+    {
+      "id": 12,
+      "nome": "Devimon",
+      "elemento": "TREVAS",
+      "urlImg": "./imagens/digimons/champions/devimon.jpg"
+    },
+    {
+      "id": 13,
+      "nome": "Kyubimon",
+      "elemento": "FOGO",
+      "urlImg": "./imagens/digimons/champions/kyubimon.jpg"
+    },
+    {
+      "id": 14,
+      "nome": "Gargomon",
+      "elemento": "TERRA",
+      "urlImg": "./imagens/digimons/champions/gargomon.jpg"
+    },
+    {
+      "id": 15,
+      "nome": "Aquilamon",
+      "elemento": "VENTO",
+      "urlImg": "./imagens/digimons/champions/aquilamon.jpg"
+    },
+    {
+      "id": 16,
+      "nome": "Ankylomon",
+      "elemento": "TERRA",
+      "urlImg": "./imagens/digimons/champions/ankylomon.jpg"
+    },
+    {
+      "id": 17,
+      "nome": "Growlmon",
+      "elemento": "TERRA",
+      "urlImg": "./imagens/digimons/champions/growlmon.jpg"
+    },
+    {
+      "id": 18,
+      "nome": "Antylamon",
+      "elemento": "LUZ",
+      "urlImg": "./imagens/digimons/champions/antylamon.jpg"
+    },
+    {
+      "id": 19,
+      "nome": "Hookmon",
+      "elemento": "TERRA",
+      "urlImg": "./imagens/digimons/champions/hookmon.jpg"
+    },
+    {
+      "id": 20,
+      "nome": "Grizzlymon",
+      "elemento": "TERRA",
+      "urlImg": "./imagens/digimons/champions/grizzlymon.jpg"
+    },
+    {
+      "id": 21,
+      "nome": "Dinorexmon",
+      "elemento": "TERRA",
+      "urlImg": "./imagens/digimons/champions/dinorexmon.jpg"
+    },
+    {
+      "id": 22,
+      "nome": "Strikedramon",
+      "elemento": "TERRA",
+      "urlImg": "./imagens/digimons/champions/strikedramon.jpg"
+    },
+    {
+      "id": 23,
+      "nome": "Myotismon",
+      "elemento": "TREVAS",
+      "urlImg": "./imagens/digimons/champions/myotismon.jpg"
+    },
+    {
+      "id": 24,
+      "nome": "Megaseadramon",
+      "elemento": "ÁGUA",
+      "urlImg": "./imagens/digimons/champions/megaseadramon.jpg"
+    },
+    {
+      "id": 25,
+      "nome": "Skullgreymon",
+      "elemento": "TREVAS",
+      "urlImg": "./imagens/digimons/champions/skullgreymon.jpg"
+    },
+    {
+      "id": 26,
+      "nome": "Risegreymon",
+      "elemento": "FOGO",
+      "urlImg": "./imagens/digimons/champions/risegreymon.jpg"
+    },
+    {
+      "id": 27,
+      "nome": "Boltmon",
+      "elemento": "METAL",
+      "urlImg": "./imagens/digimons/champions/boltmon.jpg"
+    },
+    {
+      "id": 28,
+      "nome": "Duskmon",
+      "elemento": "TREVAS",
+      "urlImg": "./imagens/digimons/champions/duskmon.jpg"
+    }
+  ]
+}

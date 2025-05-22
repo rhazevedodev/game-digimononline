@@ -1,0 +1,11 @@
+{
+  "digimonsBaby2": [
+    { "id": 1, "nome": "Koromon" },
+    { "id": 2, "nome": "Tsunomon" },
+    { "id": 3, "nome": "Yokomon" },
+    { "id": 4, "nome": "Motimon" },
+    { "id": 5, "nome": "Tanemon" },
+    { "id": 6, "nome": "Bukamon" },
+    { "id": 7, "nome": "Tokomon" }
+  ]
+}

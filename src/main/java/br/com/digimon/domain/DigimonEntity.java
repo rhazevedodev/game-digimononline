@@ -26,6 +26,12 @@ public class DigimonEntity {
     @NotNull(message = "O campo idJogador é obrigatório")
     private Long idJogador;
 
+    private int idDigitama;
+
+    private int idBaby1;
+
+    private int idBaby2;
+
     private int idRookie;
 
     private int tierRookie;
