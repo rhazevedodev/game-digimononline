@@ -6,14 +6,17 @@ import br.com.digimon.domain.dto.AtributosBaseDTO;
 import br.com.digimon.domain.dto.ContinuarJornadaDTO;
 import br.com.digimon.domain.dto.SelecaoDigimonDTO;
 import br.com.digimon.domain.enums.*;
+import br.com.digimon.domain.fromJson.DigitamasJson;
 import br.com.digimon.exception.ApelidoDigimonJaEscolhidoException;
 import br.com.digimon.repository.DigimonRepository;
 import br.com.digimon.utils.AtributosBaseDigimons;
 import br.com.digimon.utils.Data;
+import br.com.digimon.utils.GetByJsonUtils;
 import br.com.digimon.utils.HeaderExtract;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -94,6 +97,11 @@ public class DigimonService{
 
     public Boolean verificarExistenciaDigimon(Long idDigimon) {
         return digimonRepository.existsById(idDigimon);
+    }
+
+    @Cacheable(value = "digitamasJson")
+    public DigitamasJson getDigitamasByJson() {
+        return GetByJsonUtils.carregarDigitamas();
     }
 
 

@@ -1,24 +1,34 @@
 {
-  "digitamas": {
-    "Digitama 1": {
+  "digitamas": [
+    {
+      "nome": "Digitama 1",
+      "idValue": "1",
       "possibleBaby1": ["Koromon", "Tsunomon"],
-      "image": "C:/Users/rafae/Desktop/Projetos/game-digimononline-frontend/assets/digimons/digitama1.jpg"
+      "image": "../assets/digimons/digitama/digitama1.jpg"
     },
-    "Digitama 2": {
+    {
+      "nome": "Digitama 2",
+      "idValue": "2",
       "possibleBaby1": ["Yokomon", "Bukamon"],
-      "image": "C:/Users/rafae/Desktop/Projetos/game-digimononline-frontend/assets/digimons/digitama2.jpeg"
+      "image": "../assets/digimons/digitama/digitama2.jpeg"
     },
-    "Digitama 3": {
+    {
+      "nome": "Digitama 3",
+      "idValue": "3",
       "possibleBaby1": ["Motimon", "Tokomon"],
-      "image": "C:/Users/rafae/Desktop/Projetos/game-digimononline-frontend/assets/digimons/digitama3.jpeg"
+      "image": "../assets/digimons/digitama/digitama3.jpeg"
     },
-    "Digitama 4": {
+    {
+      "nome": "Digitama 4",
+      "idValue": "4",
       "possibleBaby1": ["Tokomon", "Yokomon"],
-      "image": "C:/Users/rafae/Desktop/Projetos/game-digimononline-frontend/assets/digimons/digitama4.jpeg"
+      "image": "../assets/digimons/digitama/digitama4.jpeg"
     },
-    "Digitama 5": {
+    {
+      "nome": "Digitama 5",
+      "idValue": "5",
       "possibleBaby1": ["Koromon", "Tsunomon", "Yokomon", "Bukamon", "Motimon", "Tokomon"],
-      "image": "C:/Users/rafae/Desktop/Projetos/game-digimononline-frontend/assets/digimons/digitama5.jpeg"
+      "image": "../assets/digimons/digitama/digitama5.jpeg"
     }
-  }
+  ]
 }

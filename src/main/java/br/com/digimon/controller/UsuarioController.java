@@ -25,11 +25,6 @@ public class UsuarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    //@Operation(summary = "Criar um novo usuario")
-    //@ApiResponses(value = {
-    //        @ApiResponse(responseCode = "201", description = "Usuário criado com sucesso"),
-    //        @ApiResponse(responseCode = "409", description = "Usuário ou Email já cadastrados no sistema")
-    //})
     public ResponseEntity<Void> criarUsuario(@RequestBody @Valid CriarUsuarioDTO criarUsuarioDTO) {
         log.info("Recebida requisição para criar usuário");
         usuarioService.criarUsuario(criarUsuarioDTO);
