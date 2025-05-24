@@ -1,11 +1,14 @@
 package br.com.digimon.controller;
 
+import br.com.digimon.domain.DigimonEntity;
 import br.com.digimon.domain.LogEntity;
 import br.com.digimon.domain.dto.SelecaoDigimonDTO;
+import br.com.digimon.domain.dto.SelecaoDigitamaDTO;
 import br.com.digimon.domain.fromJson.DigitamasJson;
 import br.com.digimon.service.DigimonService;
 import br.com.digimon.service.LogService;
 import br.com.digimon.service.SelecionarDigimonService;
+import br.com.digimon.service.SelecionarDigitamaService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +26,9 @@ public class DigimonController {
 
     @Autowired
     private SelecionarDigimonService selecionarDigimonService;
+
+    @Autowired
+    private SelecionarDigitamaService selecionarDigitamaService;
 
     @Autowired
     private DigimonService digimonService;
@@ -56,6 +62,14 @@ public class DigimonController {
         log.info("Requisição para carregar digitamas recebida");
         DigitamasJson response = digimonService.getDigitamasByJson();
         log.info("Digitamas carregadas: {}", response);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("/selecionarDigitama")
+    public ResponseEntity<?> selecionarDigitama(@RequestBody SelecaoDigitamaDTO selecaoDigitamaDTO, HttpServletRequest request) {
+        log.info("Requisição para selecionar digitama recebida");
+        DigimonEntity response = selecionarDigitamaService.selecionarDigitama(selecaoDigitamaDTO,request);
+        log.info("Digitama selecionada: {}", response);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
