@@ -2,7 +2,7 @@ package br.com.digimon.controller;
 
 import br.com.digimon.domain.LogEntity;
 import br.com.digimon.domain.dto.AuthRequestDTO;
-import br.com.digimon.domain.dto.RespostaPadraoDTO;
+import br.com.digimon.domain.dto.ResponsePadraoDTO;
 import br.com.digimon.service.AuthService;
 import br.com.digimon.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class AuthController {
             logEntity.setDetalhes("Falha ao realizar login para o usuário: " + authRequest.getUsuario() + ", Erro: " + e.getMessage());
 
             logService.saveLog(logEntity);
-            return ResponseEntity.status(401).body(new RespostaPadraoDTO("Login falhou: " + e.getMessage()));
+            return ResponseEntity.status(401).body(new ResponsePadraoDTO("Login falhou: " + e.getMessage()));
         }
     }
 }

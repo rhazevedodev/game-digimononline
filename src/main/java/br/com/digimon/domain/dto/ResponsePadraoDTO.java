@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SelecaoDigitamaDTO {
-
-    private Long idDigimon;
-    private int idDigitama;
+public class ResponsePadraoDTO {
+    private String mensagem;
 }

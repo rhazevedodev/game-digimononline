@@ -9,9 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SelecaoDigimonDTO {
-
-    private String nomeDigimon;
-    private String apelidoDigimon;
-
+public class RequestChocarDigitamaDTO {
+    private String idDigitama;
 }

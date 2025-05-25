@@ -2,22 +2,14 @@ package br.com.digimon.service;
 
 
 import br.com.digimon.domain.*;
-import br.com.digimon.domain.dto.AtributosBaseDTO;
-import br.com.digimon.domain.dto.ContinuarJornadaDTO;
-import br.com.digimon.domain.dto.SelecaoDigimonDTO;
 import br.com.digimon.domain.enums.*;
-import br.com.digimon.domain.fromJson.DigitamasJson;
-import br.com.digimon.exception.ApelidoDigimonJaEscolhidoException;
+import br.com.digimon.domain.fromJson.ListaDigimonBabys1Json;
+import br.com.digimon.domain.fromJson.ListaDigitamasJson;
+import br.com.digimon.domain.fromJson.ListaAtributosBaseDigimonsBaby1;
 import br.com.digimon.repository.DigimonRepository;
-import br.com.digimon.utils.AtributosBaseDigimons;
-import br.com.digimon.utils.Data;
 import br.com.digimon.utils.GetByJsonUtils;
-import br.com.digimon.utils.HeaderExtract;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
@@ -100,10 +92,21 @@ public class DigimonService{
     }
 
     @Cacheable(value = "digitamasJson")
-    public DigitamasJson getDigitamasByJson() {
+    public ListaDigitamasJson getDigitamasByJson() {
+        log.info("Carregando Digitamas do cache ou JSON");
         return GetByJsonUtils.carregarDigitamas();
     }
 
+    @Cacheable(value = "digiBabys1Json")
+    public ListaDigimonBabys1Json getDigiBabys1() {
+        log.info("Carregando DigiBabys1 do cache ou JSON");
+        return GetByJsonUtils.carregarDigiBabys1();
+    }
 
+    @Cacheable(value = "atributosBaseDigiBabys1Json")
+    public ListaAtributosBaseDigimonsBaby1 getAtributosBaseDigiBabys1() {
+        log.info("Carregando DigiBabys1 do cache ou JSON");
+        return GetByJsonUtils.carregarAtributosBaseDigimonsBaby1();
+    }
 
 }

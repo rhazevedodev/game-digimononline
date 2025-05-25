@@ -1,8 +1,8 @@
 package br.com.digimon.service;
 
 import br.com.digimon.domain.*;
-import br.com.digimon.domain.dto.RespostaPadraoDTO;
-import br.com.digimon.domain.dto.SelecaoDigimonDTO;
+import br.com.digimon.domain.dto.ResponsePadraoDTO;
+import br.com.digimon.domain.dto.RequestSelecaoDigimonDTO;
 import br.com.digimon.domain.enums.EnumDigimonRookie;
 import br.com.digimon.domain.enums.EnumElementos;
 import br.com.digimon.exception.ApelidoDigimonJaEscolhidoException;
@@ -33,8 +33,8 @@ public class SelecionarDigimonService {
         this.logService = logService;
     }
 
-    public ResponseEntity<?> selecionarDigimon(SelecaoDigimonDTO selecaoDigimonDTO, HttpServletRequest request) {
-        log.info("Selecionando Digimon: {}", selecaoDigimonDTO.getNomeDigimon());
+    public ResponseEntity<?> selecionarDigimon(RequestSelecaoDigimonDTO requestSelecaoDigimonDTO, HttpServletRequest request) {
+        log.info("Selecionando Digimon: {}", requestSelecaoDigimonDTO.getNomeDigimon());
         String nomeUsuario = "";
         try {
             String jwt = HeaderExtract.extrairTokenDoHeader(request);
@@ -43,21 +43,21 @@ public class SelecionarDigimonService {
 
             DigimonEntity digimonSelecionado = new DigimonEntity();
             digimonSelecionado.setIdJogador(usuarioEntity.getId());
-            digimonSelecionado.setIdRookie(Integer.parseInt(digimonService.getIdByDescricao(selecaoDigimonDTO.getNomeDigimon())));
+            digimonSelecionado.setIdRookie(Integer.parseInt(digimonService.getIdByDescricao(requestSelecaoDigimonDTO.getNomeDigimon())));
 
-            boolean apelidoJaEscolhido = digimonService.verificarSeApelidoDigimonJaExiste(selecaoDigimonDTO.getApelidoDigimon());
+            boolean apelidoJaEscolhido = digimonService.verificarSeApelidoDigimonJaExiste(requestSelecaoDigimonDTO.getApelidoDigimon());
 
             if (apelidoJaEscolhido) {
                 throw new ApelidoDigimonJaEscolhidoException("Esse apelido de digimon já foi escolhido, escolha outro!");
             } else {
-                digimonSelecionado.setNome(selecaoDigimonDTO.getApelidoDigimon());
+                digimonSelecionado.setNome(requestSelecaoDigimonDTO.getApelidoDigimon());
             }
 
             DigimonEntity novoDigimon = selecionarDigimonCompleto(digimonSelecionado);
 
             log.info("Digimon selecionado com sucesso para o usuário: {}", nomeUsuario);
 
-            RespostaPadraoDTO primeiroAcesso = usuarioService.verificarPrimeiroAcesso(nomeUsuario);
+            ResponsePadraoDTO primeiroAcesso = usuarioService.verificarPrimeiroAcesso(nomeUsuario);
             if(primeiroAcesso.getMensagem().equals("Primeiro acesso confirmado")){
                 usuarioEntity.setPrimeiroAcesso(false);
                 usuarioService.atualizarUsuario(usuarioEntity);

@@ -1,0 +1,64 @@
+{
+  "digimonsBaby1": [
+    {
+      "nome": "Botamon",
+      "baseVida": 80,
+      "baseEnergia": 70,
+      "baseForca": 3,
+      "baseInteligencia": 4,
+      "baseAgilidade": 2,
+      "baseConhecimento": 5,
+      "baseResistencia": 1
+    },
+    {
+      "nome": "Punimon",
+      "baseVida": 90,
+      "baseEnergia": 60,
+      "baseForca": 2,
+      "baseInteligencia": 3,
+      "baseAgilidade": 4,
+      "baseConhecimento": 1,
+      "baseResistencia": 5
+    },
+    {
+      "nome": "Yuramon",
+      "baseVida": 70,
+      "baseEnergia": 80,
+      "baseForca": 4,
+      "baseInteligencia": 2,
+      "baseAgilidade": 3,
+      "baseConhecimento": 5,
+      "baseResistencia": 1
+    },
+    {
+      "nome": "Pabumon",
+      "baseVida": 100,
+      "baseEnergia": 50,
+      "baseForca": 1,
+      "baseInteligencia": 5,
+      "baseAgilidade": 2,
+      "baseConhecimento": 3,
+      "baseResistencia": 4
+    },
+    {
+      "nome": "Pichimon",
+      "baseVida": 60,
+      "baseEnergia": 90,
+      "baseForca": 5,
+      "baseInteligencia": 1,
+      "baseAgilidade": 4,
+      "baseConhecimento": 2,
+      "baseResistencia": 3
+    },
+    {
+      "nome": "Poyomon",
+      "baseVida": 50,
+      "baseEnergia": 100,
+      "baseForca": 3,
+      "baseInteligencia": 2,
+      "baseAgilidade": 5,
+      "baseConhecimento": 4,
+      "baseResistencia": 1
+    }
+  ]
+}

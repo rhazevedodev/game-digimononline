@@ -3,7 +3,7 @@ package br.com.digimon.service;
 
 import br.com.digimon.domain.UsuarioEntity;
 import br.com.digimon.domain.dto.CriarUsuarioDTO;
-import br.com.digimon.domain.dto.RespostaPadraoDTO;
+import br.com.digimon.domain.dto.ResponsePadraoDTO;
 import br.com.digimon.exception.EmailJaExisteException;
 import br.com.digimon.exception.NomeUsuarioJaExisteException;
 import br.com.digimon.exception.UsuarioNaoExisteException;
@@ -51,15 +51,15 @@ public class UsuarioService {
         log.info("Usuário criado com sucesso: {}", criarUsuarioDTO.getEmail());
     }
 
-    public RespostaPadraoDTO verificarPrimeiroAcesso(String usuario) {
+    public ResponsePadraoDTO verificarPrimeiroAcesso(String usuario) {
         log.info("Verificando primeiro acesso do usuário: {}", usuario);
         boolean primeiroAcesso = usuarioRepositoryPort.verificarPrimeiroAcesso(usuario);
         if(primeiroAcesso){
             log.info("Primeiro acesso confirmado para o usuário: {}", usuario);
-            return new RespostaPadraoDTO("Primeiro acesso confirmado");
+            return new ResponsePadraoDTO("Primeiro acesso confirmado");
         } else {
             log.info("Não é o primeiro acesso para o usuário: {}", usuario);
-            return new RespostaPadraoDTO("Não é o primeiro acesso");
+            return new ResponsePadraoDTO("Não é o primeiro acesso");
         }
     }
 

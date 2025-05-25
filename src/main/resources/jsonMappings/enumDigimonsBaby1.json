@@ -1,11 +1,10 @@
 {
   "digimonsBaby1": [
-    { "id": 1, "nome": "Botamon" },
-    { "id": 2, "nome": "Punimon" },
-    { "id": 3, "nome": "Yuramon" },
-    { "id": 4, "nome": "Pabumon" },
-    { "id": 5, "nome": "Yuramon" },
-    { "id": 6, "nome": "Pichimon" },
-    { "id": 7, "nome": "Poyomon" }
+    { "id": 1, "nome": "Botamon", "image": "../assets/digimons/baby1/botamon.jpg", "elemento": "Fogo" },
+    { "id": 2, "nome": "Punimon", "image": "../assets/digimons/baby1/punimon.jpg", "elemento": "Agua" },
+    { "id": 3, "nome": "Yuramon", "image": "../assets/digimons/baby1/yuramon.jpg", "elemento": "Vento" },
+    { "id": 4, "nome": "Pabumon", "image": "../assets/digimons/baby1/pabumon.jpg", "elemento": "Terra" },
+    { "id": 5, "nome": "Pichimon", "image": "../assets/digimons/baby1/pichimon.jpg", "elemento": "Agua" },
+    { "id": 6, "nome": "Poyomon", "image": "../assets/digimons/baby1/poyomon.jpg", "elemento": "Luz" }
   ]
 }

@@ -50,7 +50,7 @@ public class DigimonEntity {
 
     @NotBlank(message = "O campo nome é obrigatório")
     @Size(min = 4, max = 20, message = "O campo nome deve ter entre 4 e 20 caracteres")
-    private String nome;
+    private String nome = "default";
 
     private int nivel = 1;
 

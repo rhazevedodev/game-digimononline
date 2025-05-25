@@ -3,31 +3,31 @@
     {
       "nome": "Digitama 1",
       "idValue": "1",
-      "possibleBaby1": ["Koromon", "Tsunomon"],
+      "possibleBaby1": ["Botamon", "Punimon"],
       "image": "../assets/digimons/digitama/digitama1.jpg"
     },
     {
       "nome": "Digitama 2",
       "idValue": "2",
-      "possibleBaby1": ["Yokomon", "Bukamon"],
+      "possibleBaby1": ["Yuramon", "Pichimon"],
       "image": "../assets/digimons/digitama/digitama2.jpeg"
     },
     {
       "nome": "Digitama 3",
       "idValue": "3",
-      "possibleBaby1": ["Motimon", "Tokomon"],
+      "possibleBaby1": ["Pabumon", "Poyomon"],
       "image": "../assets/digimons/digitama/digitama3.jpeg"
     },
     {
       "nome": "Digitama 4",
       "idValue": "4",
-      "possibleBaby1": ["Tokomon", "Yokomon"],
+      "possibleBaby1": ["Poyomon", "Yuramon"],
       "image": "../assets/digimons/digitama/digitama4.jpeg"
     },
     {
       "nome": "Digitama 5",
       "idValue": "5",
-      "possibleBaby1": ["Koromon", "Tsunomon", "Yokomon", "Bukamon", "Motimon", "Tokomon"],
+      "possibleBaby1": ["Botamon", "Punimon", "Yuramon", "Pabumon", "Pichimon", "Poyomon"],
       "image": "../assets/digimons/digitama/digitama5.jpeg"
     }
   ]
