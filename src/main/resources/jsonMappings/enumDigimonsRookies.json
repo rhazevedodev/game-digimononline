@@ -1,130 +1,25 @@
 {
   "digimonsRookies": [
-    {
-      "id": 1,
-      "nome": "Agumon",
-      "elemento": "FOGO",
-      "urlImg": "../assets/digimons/rookies/agumon.jpg"
-    },
-    {
-      "id": 2,
-      "nome": "Gabumon",
-      "elemento": "FOGO",
-      "urlImg": "../assets/digimons/rookies/gabumon.jpg"
-    },
-    {
-      "id": 3,
-      "nome": "Piyomon",
-      "elemento": "VENTO",
-      "urlImg": "../assets/digimons/rookies/piyomon.jpg"
-    },
-    {
-      "id": 4,
-      "nome": "Tentomon",
-      "elemento": "RAIO",
-      "urlImg": "../assets/digimons/rookies/tentomon.jpg"
-    },
-    {
-      "id": 5,
-      "nome": "Palmon",
-      "elemento": "PLANTA",
-      "urlImg": "../assets/digimons/rookies/palmon.jpg"
-    },
-    {
-      "id": 6,
-      "nome": "Gomamon",
-      "elemento": "AGUA",
-      "urlImg": "../assets/digimons/rookies/gomamon.jpg"
-    },
-    {
-      "id": 7,
-      "nome": "Patamon",
-      "elemento": "LUZ",
-      "urlImg": "../assets/digimons/rookies/patamon.jpg"
-    },
-    {
-      "id": 8,
-      "nome": "Salamon",
-      "elemento": "LUZ",
-      "urlImg": "../assets/digimons/rookies/salamon.jpg"
-    },
-    {
-      "id": 9,
-      "nome": "Veemon",
-      "elemento": "FOGO",
-      "urlImg": "../assets/digimons/rookies/veemon.jpg"
-    },
-    {
-      "id": 10,
-      "nome": "Wormmon",
-      "elemento": "TREVAS",
-      "urlImg": "../assets/digimons/rookies/wormmon.jpg"
-    },
-    {
-      "id": 11,
-      "nome": "Bearmon",
-      "elemento": "TERRA",
-      "urlImg": "../assets/digimons/rookies/bearmon.jpg"
-    },
-    {
-      "id": 12,
-      "nome": "Guilmon",
-      "elemento": "FOGO",
-      "urlImg": "../assets/digimons/rookies/guilmon.jpg"
-    },
-    {
-      "id": 13,
-      "nome": "Terriermon",
-      "elemento": "VENTO",
-      "urlImg": "../assets/digimons/rookies/terriermon.jpg"
-    },
-    {
-      "id": 14,
-      "nome": "Renamon",
-      "elemento": "VENTO",
-      "urlImg": "../assets/digimons/rookies/renamon.jpg"
-    },
-    {
-      "id": 15,
-      "nome": "Hawkmon",
-      "elemento": "VENTO",
-      "urlImg": "../assets/digimons/rookies/hawkmon.jpg"
-    },
-    {
-      "id": 16,
-      "nome": "Armadillomon",
-      "elemento": "TERRA",
-      "urlImg": "../assets/digimons/rookies/armadillomon.jpg"
-    },
-    {
-      "id": 17,
-      "nome": "Impmon",
-      "elemento": "TREVAS",
-      "urlImg": "../assets/digimons/rookies/impmon.jpg"
-    },
-    {
-      "id": 18,
-      "nome": "Devidevimon",
-      "elemento": "TREVAS",
-      "urlImg": "../assets/digimons/rookies/devidevimon.jpg"
-    },
-    {
-      "id": 19,
-      "nome": "Monodramon",
-      "elemento": "TREVAS",
-      "urlImg": "../assets/digimons/rookies/monodramon.jpg"
-    },
-    {
-      "id": 20,
-      "nome": "Lopmon",
-      "elemento": "GELO",
-      "urlImg": "../assets/digimons/rookies/lopmon.jpg"
-    },
-    {
-      "id": 21,
-      "nome": "Betamon",
-      "elemento": "PLANTA",
-      "urlImg": "../assets/digimons/rookies/betamon.jpg"
-    }
+    { "id": 1, "nome": "Agumon", "image": "../assets/digimons/rookies/agumon.jpg", "elemento": "Fogo" },
+    { "id": 2, "nome": "Gabumon", "image": "../assets/digimons/rookies/gabumon.jpg", "elemento": "Fogo" },
+    { "id": 3, "nome": "Piyomon", "image": "../assets/digimons/rookies/piyomon.jpg", "elemento": "Vento" },
+    { "id": 4, "nome": "Tentomon", "image": "../assets/digimons/rookies/tentomon.jpg", "elemento": "Raio" },
+    { "id": 5, "nome": "Palmon", "image": "../assets/digimons/rookies/palmon.jpg", "elemento": "Planta" },
+    { "id": 6, "nome": "Gomamon", "image": "../assets/digimons/rookies/gomamon.jpg", "elemento": "Agua" },
+    { "id": 7, "nome": "Patamon", "image": "../assets/digimons/rookies/patamon.jpg", "elemento": "Luz" },
+    { "id": 8, "nome": "Salamon", "image": "../assets/digimons/rookies/salamon.jpg", "elemento": "Luz" },
+    { "id": 9, "nome": "Veemon", "image": "../assets/digimons/rookies/veemon.jpg", "elemento": "Fogo" },
+    { "id": 10, "nome": "Wormmon", "image": "../assets/digimons/rookies/wormmon.jpg", "elemento": "Trevas" },
+    { "id": 11, "nome": "Bearmon", "image": "../assets/digimons/rookies/bearmon.jpg", "elemento": "Terra" },
+    { "id": 12, "nome": "Guilmon", "image": "../assets/digimons/rookies/guilmon.jpg", "elemento": "Fogo" },
+    { "id": 13, "nome": "Terriermon", "image": "../assets/digimons/rookies/terriermon.jpg", "elemento": "Vento" },
+    { "id": 14, "nome": "Renamon", "image": "../assets/digimons/rookies/renamon.jpg", "elemento": "Vento" },
+    { "id": 15, "nome": "Hawkmon", "image": "../assets/digimons/rookies/hawkmon.jpg", "elemento": "Vento" },
+    { "id": 16, "nome": "Armadillomon", "image": "../assets/digimons/rookies/armadillomon.jpg", "elemento": "Terra" },
+    { "id": 17, "nome": "Impmon", "image": "../assets/digimons/rookies/impmon.jpg", "elemento": "Trevas" },
+    { "id": 18, "nome": "Devidevimon", "image": "../assets/digimons/rookies/devidevimon.jpg", "elemento": "Trevas" },
+    { "id": 19, "nome": "Monodramon", "image": "../assets/digimons/rookies/monodramon.jpg", "elemento": "Trevas" },
+    { "id": 20, "nome": "Lopmon", "image": "../assets/digimons/rookies/lopmon.jpg", "elemento": "Gelo" },
+    { "id": 21, "nome": "Betamon", "image": "../assets/digimons/rookies/betamon.jpg", "elemento": "Planta" }
   ]
 }

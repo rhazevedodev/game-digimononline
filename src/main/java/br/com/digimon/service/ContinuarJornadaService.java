@@ -9,6 +9,8 @@ import br.com.digimon.domain.enums.EnumDigimonChampion;
 import br.com.digimon.domain.enums.EnumDigimonMega;
 import br.com.digimon.domain.enums.EnumDigimonRookie;
 import br.com.digimon.domain.enums.EnumDigimonUltimate;
+import br.com.digimon.domain.fromJson.ListaDigimonBabys1Json;
+import br.com.digimon.domain.fromJson.DigimonBaby1Json;
 import br.com.digimon.utils.HeaderExtract;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -83,11 +86,25 @@ public class ContinuarJornadaService {
             carregarImagemContinuarJornadaDTO.setUrlImagemDigimon(champion.getUrlImg());
             carregarImagemContinuarJornadaDTO.setNomeDigimon(champion.getDescricao());
             carregarImagemContinuarJornadaDTO.setTierDigimon(digimon.getTierChampion());
-        } else {
+        } else if (digimon.getIdRookie() != 0) {
             EnumDigimonRookie rookie = EnumDigimonRookie.getEnumById(digimon.getIdRookie());
             carregarImagemContinuarJornadaDTO.setUrlImagemDigimon(rookie.getUrlImg());
             carregarImagemContinuarJornadaDTO.setNomeDigimon(rookie.getDescricao());
             carregarImagemContinuarJornadaDTO.setTierDigimon(digimon.getTierRookie());
+        } else if (digimon.getIdBaby2() != 0) {
+            //carregarImagemContinuarJornadaDTO.setUrlImagemDigimon(digimon.getImageBaby2());
+            //carregarImagemContinuarJornadaDTO.setNomeDigimon(digimon.getNomeBaby2());
+            //carregarImagemContinuarJornadaDTO.setTierDigimon(digimon.getTierBaby2());
+        } else if (digimon.getIdBaby1() != 0) {
+            ListaDigimonBabys1Json listaDigimonBabys1Json = digimonService.getDigiBabys1();
+            for (DigimonBaby1Json baby1 : listaDigimonBabys1Json.getDigimonsBaby1()) {
+                if (baby1.getId() == digimon.getIdBaby1()) {
+                    carregarImagemContinuarJornadaDTO.setUrlImagemDigimon(baby1.getImage());
+                    carregarImagemContinuarJornadaDTO.setNomeDigimon(baby1.getNome());
+                    carregarImagemContinuarJornadaDTO.setTierDigimon(0);
+                    break;
+                }
+            }
         }
         return carregarImagemContinuarJornadaDTO;
     }

@@ -5,6 +5,7 @@ import br.com.digimon.domain.UsuarioEntity;
 import br.com.digimon.domain.dto.AtributosBaseDTO;
 import br.com.digimon.domain.enums.*;
 import br.com.digimon.utils.Data;
+import br.com.digimon.utils.GetByJsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +51,9 @@ public class CarregarTelaStatusService {
 
         String apelidoDigimon = digimon.getNome();
 
-        String digimonRookie = EnumDigimonRookie.getDescricaoById(digimon.getIdRookie());
+        String digimonBaby1 = (digimon.getIdBaby1() != 0) ? GetByJsonUtils.filtrarDigimonsBaby1PorId(digimon.getIdBaby1()).getNome() : "-";
+        String digimonBaby2 = (digimon.getIdBaby2() != 0) ? GetByJsonUtils.filtrarDigimonsBaby2PorId(digimon.getIdBaby2()).getNome() : "-";
+        String digimonRookie = (digimon.getIdRookie() != 0) ? EnumDigimonRookie.getDescricaoById(digimon.getIdRookie()) : "-";
         String digimonChampion = (digimon.getIdChampion() != 0) ? EnumDigimonChampion.getDescricaoById(digimon.getIdChampion()) : "-";
         String digimonUltimate = (digimon.getIdUltimate() != 0) ? EnumDigimonUltimate.getDescricaoById(digimon.getIdUltimate()) : "-";
         String digimonMega = (digimon.getIdMega() != 0) ? EnumDigimonMega.getDescricaoById(digimon.getIdMega()) : "-";
@@ -62,7 +65,7 @@ public class CarregarTelaStatusService {
         String bonusBits = digimon.isBonusBitsAtivo() ? "Ativo" : "Inativo";
 
         preencherResponseInformacoes(response, dataJogoDesde, indicacao, reservaBits, reservaDiamantes, apelidoDigimon, digimonRookie, digimonChampion,
-                digimonUltimate, digimonMega, tierDigimon, nivelDigimon, bonusExperiencia, bonusBits);
+                digimonUltimate, digimonMega, tierDigimon, nivelDigimon, bonusExperiencia, bonusBits, digimonBaby1, digimonBaby2);
 
         return response;
     }
@@ -82,12 +85,15 @@ public class CarregarTelaStatusService {
 
     private void preencherResponseInformacoes(Map<String, Object> response, String dataJogoDesde, String indicacao, int reservaBits, int reservaDiamantes,
                                               String apelidoDigimon, String digimonRookie, String digimonChampion, String digimonUltimate, String digimonMega,
-                                              String tierDigimon, int nivelDigimon, String bonusExperiencia, String bonusBits) {
+                                              String tierDigimon, int nivelDigimon, String bonusExperiencia, String bonusBits,
+                                              String digimonBaby1, String digimonBaby2) {
         response.put("dataJogoDesde", dataJogoDesde);
         response.put("indicacao", indicacao);
         response.put("reservaBits", reservaBits);
         response.put("reservaDiamantes", reservaDiamantes);
         response.put("apelidoDigimon", apelidoDigimon);
+        response.put("digimonBaby1", digimonBaby1);
+        response.put("digimonBaby2", digimonBaby2);
         response.put("digimonRookie", digimonRookie);
         response.put("digimonChampion", digimonChampion);
         response.put("digimonUltimate", digimonUltimate);
