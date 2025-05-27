@@ -1,15 +1,10 @@
 package br.com.digimon.service;
 
 
-import br.com.digimon.domain.*;
-import br.com.digimon.domain.enums.*;
-import br.com.digimon.domain.fromJson.ListaDigimonBabys1Json;
-import br.com.digimon.domain.fromJson.ListaDigitamasJson;
-import br.com.digimon.domain.fromJson.ListaAtributosBaseDigimonsBaby1;
+import br.com.digimon.domain.DigimonEntity;
+import br.com.digimon.domain.enums.EnumDigimonRookie;
 import br.com.digimon.repository.DigimonRepository;
-import br.com.digimon.utils.GetByJsonUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
@@ -18,7 +13,7 @@ import java.util.Map;
 
 @Slf4j
 @Service
-public class DigimonService{
+public class DigimonService {
 
     private DigimonRepository digimonRepository;
 
@@ -37,12 +32,12 @@ public class DigimonService{
         return digimonRepository.verificarSeApelidoDigimonJaExiste(apelidoDigimon);
     }
 
-      public DigimonEntity criarDigimon (DigimonEntity digimonSelecionado) {
-            log.info("Criando novo Digimon: {}", digimonSelecionado.getNome());
-            return digimonRepository.criarDigimon(digimonSelecionado);
-      }
+    public DigimonEntity criarDigimon(DigimonEntity digimonSelecionado) {
+        log.info("Criando novo Digimon: {}", digimonSelecionado.getNome());
+        return digimonRepository.criarDigimon(digimonSelecionado);
+    }
 
-    public int verificarQuantidadeDigimon(Long id){
+    public int verificarQuantidadeDigimon(Long id) {
         log.info("Verificando quantidade de Digimons para o jogador: {}", id);
         int quantidadeDigimons = digimonRepository.countBySacrificadoFalseAndIdJogador(id);
         log.info("Quantidade de Digimons encontrados: {}", quantidadeDigimons);
@@ -91,22 +86,24 @@ public class DigimonService{
         return digimonRepository.existsById(idDigimon);
     }
 
-    @Cacheable(value = "digitamasJson")
-    public ListaDigitamasJson getDigitamasByJson() {
-        log.info("Carregando Digitamas do cache ou JSON");
-        return GetByJsonUtils.carregarDigitamas();
-    }
+    public String getProxTierDigimon(Long idDigimon) {
+        DigimonEntity digimon = digimonRepository.getDigimonById(idDigimon);
 
-    @Cacheable(value = "digiBabys1Json")
-    public ListaDigimonBabys1Json getDigiBabys1() {
-        log.info("Carregando DigiBabys1 do cache ou JSON");
-        return GetByJsonUtils.carregarDigiBabys1();
-    }
-
-    @Cacheable(value = "atributosBaseDigiBabys1Json")
-    public ListaAtributosBaseDigimonsBaby1 getAtributosBaseDigiBabys1() {
-        log.info("Carregando DigiBabys1 do cache ou JSON");
-        return GetByJsonUtils.carregarAtributosBaseDigimonsBaby1();
+        String tier;
+        if (digimon.getIdMega() != 0) {
+            tier = "Jogress";
+        } else if (digimon.getIdUltimate() != 0) {
+            tier = "Mega";
+        } else if (digimon.getIdChampion() != 0) {
+            tier = "Ultimate";
+        } else if (digimon.getIdRookie() != 0) {
+            tier = "Champion";
+        } else if (digimon.getIdBaby2() != 0) {
+            tier = "Rookie";
+        } else {
+            tier = "Baby 2";
+        }
+        return tier;
     }
 
 }

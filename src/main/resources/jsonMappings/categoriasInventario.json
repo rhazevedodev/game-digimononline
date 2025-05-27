@@ -1,0 +1,9 @@
+{
+  "categoriasInventario": [
+    {"id":1,"nomeCategoria":"ITENS"},
+    {"id":2,"nomeCategoria":"EQUIPAMENTOS"},
+    {"id":3,"nomeCategoria":"CONSUMIVEIS"},
+    {"id":4,"nomeCategoria":"FRAGMENTOS"},
+    {"id":5,"nomeCategoria":"EMBLEMAS"}
+  ]
+}

@@ -31,11 +31,13 @@ public class ContinuarJornadaService {
 
     private TokenService tokenService;
 
+    private JsonService jsonService;
 
-    public ContinuarJornadaService(DigimonService digimonService, UsuarioService usuarioService, TokenService tokenService) {
+    public ContinuarJornadaService(DigimonService digimonService, UsuarioService usuarioService, TokenService tokenService, JsonService jsonService) {
         this.digimonService = digimonService;
         this.usuarioService = usuarioService;
         this.tokenService = tokenService;
+        this.jsonService = jsonService;
     }
 
     public VerificaSlotsJogadorDTO validarSlotsDigimon(HttpServletRequest request) {
@@ -96,7 +98,7 @@ public class ContinuarJornadaService {
             //carregarImagemContinuarJornadaDTO.setNomeDigimon(digimon.getNomeBaby2());
             //carregarImagemContinuarJornadaDTO.setTierDigimon(digimon.getTierBaby2());
         } else if (digimon.getIdBaby1() != 0) {
-            ListaDigimonBabys1Json listaDigimonBabys1Json = digimonService.getDigiBabys1();
+            ListaDigimonBabys1Json listaDigimonBabys1Json = jsonService.carregarDigiBabys1();
             for (DigimonBaby1Json baby1 : listaDigimonBabys1Json.getDigimonsBaby1()) {
                 if (baby1.getId() == digimon.getIdBaby1()) {
                     carregarImagemContinuarJornadaDTO.setUrlImagemDigimon(baby1.getImage());

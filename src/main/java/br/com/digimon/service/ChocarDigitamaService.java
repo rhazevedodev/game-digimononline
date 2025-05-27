@@ -24,18 +24,21 @@ public class ChocarDigitamaService {
 
     private UsuarioService usuarioService;
 
-    public ChocarDigitamaService(TokenService tokenService, DigimonService digimonService, UsuarioService usuarioService) {
+    private JsonService jsonService;
+
+    public ChocarDigitamaService(TokenService tokenService, DigimonService digimonService, UsuarioService usuarioService, JsonService jsonService) {
         this.tokenService = tokenService;
         this.digimonService = digimonService;
         this.usuarioService = usuarioService;
+        this.jsonService = jsonService;
     }
 
     public ResponseChocarDigitamaDTO chocarDigitama(String idDigitama, HttpServletRequest request) {
         log.info("Chocando Digitama: {}", idDigitama);
         try {
             // Busca os dados das Digitamas
-            ListaDigitamasJson listaDigitamasJson = digimonService.getDigitamasByJson();
-            ListaDigimonBabys1Json listaDigimonBabys1Json = digimonService.getDigiBabys1();
+            ListaDigitamasJson listaDigitamasJson = jsonService.carregarDigitamas();
+            ListaDigimonBabys1Json listaDigimonBabys1Json = jsonService.carregarDigiBabys1();
 
             List<String> possibleBaby1 = null;
             String selectedImage = null;

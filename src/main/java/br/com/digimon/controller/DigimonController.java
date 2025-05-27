@@ -34,6 +34,9 @@ public class DigimonController {
     @Autowired
     private LogService logService;
 
+    @Autowired
+    private JsonService jsonService;
+
     @PostMapping("/selecionar")
     public ResponseEntity<?> selecionarDigimon(@Valid @RequestBody RequestSelecaoDigimonDTO requestSelecaoDigimonDTO, HttpServletRequest request) {
         log.info("Iniciando seleção de Digimon: {}", requestSelecaoDigimonDTO.getApelidoDigimon());
@@ -58,7 +61,7 @@ public class DigimonController {
     @GetMapping("/carregarDigitamas")
     public ResponseEntity<?> carregarDigitamas() {
         log.info("Requisição para carregar digitamas recebida");
-        ListaDigitamasJson response = digimonService.getDigitamasByJson();
+        ListaDigitamasJson response = jsonService.carregarDigitamas();
         log.info("Digitamas carregadas: {}", response);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

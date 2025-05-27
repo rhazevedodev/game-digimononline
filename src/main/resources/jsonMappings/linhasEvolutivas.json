@@ -1,292 +1,330 @@
 {
-  "digimons": {
-    "Baby I": {
-      "Botamon": {
-        "evolvesTo": [
-          { "name": "Koromon", "level": 5, "fragments": 3 }
-        ]
-      },
-      "Punimon": {
-        "evolvesTo": [
-          { "name": "Tsunomon", "level": 5, "fragments": 3 }
-        ]
-      },
-      "Yuramon": {
-        "evolvesTo": [
-          { "name": "Yokomon", "level": 5, "fragments": 3 },
-          { "name": "Tanemon", "level": 5, "fragments": 3 }
-        ]
-      },
-      "Pabumon": {
-        "evolvesTo": [
-          { "name": "Motimon", "level": 5, "fragments": 3 }
-        ]
-      },
-      "Pichimon": {
-        "evolvesTo": [
-          { "name": "Bukamon", "level": 5, "fragments": 3 }
-        ]
-      },
-      "Poyomon": {
-        "evolvesTo": [
-          { "name": "Tokomon", "level": 5, "fragments": 3 }
-        ]
-      }
+  "digimons": [
+    {
+      "stage": "Baby 1",
+      "digimons": [
+        {
+          "name": "Botamon",
+          "evolvesTo": [
+            { "name": "Koromon", "level": 5, "fragments": 3 }
+          ]
+        },
+        {
+          "name": "Punimon",
+          "evolvesTo": [
+            { "name": "Tsunomon", "level": 5, "fragments": 3 }
+          ]
+        },
+        {
+          "name": "Yuramon",
+          "evolvesTo": [
+            { "name": "Yokomon", "level": 5, "fragments": 3 },
+            { "name": "Tanemon", "level": 5, "fragments": 3 }
+          ]
+        },
+        {
+          "name": "Pabumon",
+          "evolvesTo": [
+            { "name": "Motimon", "level": 5, "fragments": 3 }
+          ]
+        },
+        {
+          "name": "Pichimon",
+          "evolvesTo": [
+            { "name": "Bukamon", "level": 5, "fragments": 3 }
+          ]
+        },
+        {
+          "name": "Poyomon",
+          "evolvesTo": [
+            { "name": "Tokomon", "level": 5, "fragments": 3 }
+          ]
+        }
+      ]
     },
-    "Baby II": {
-      "Koromon": {
-        "evolvesTo": [
-          { "name": "Agumon", "level": 10, "fragments": 5 }
-        ]
-      },
-      "Tsunomon": {
-        "evolvesTo": [
-          { "name": "Gabumon", "level": 10, "fragments": 5 }
-        ]
-      },
-      "Yokomon": {
-        "evolvesTo": [
-          { "name": "Piyomon", "level": 10, "fragments": 5 }
-        ]
-      },
-      "Tanemon": {
-        "evolvesTo": [
-          { "name": "Palmon", "level": 10, "fragments": 5 }
-        ]
-      },
-      "Motimon": {
-        "evolvesTo": [
-          { "name": "Tentomon", "level": 10, "fragments": 5 }
-        ]
-      },
-      "Bukamon": {
-        "evolvesTo": [
-          { "name": "Gomamon", "level": 10, "fragments": 5 }
-        ]
-      },
-      "Tokomon": {
-        "evolvesTo": [
-          { "name": "Patamon", "level": 10, "fragments": 5 }
-        ]
-      }
+    {
+      "stage": "Baby 2",
+      "digimons": [
+        {
+          "name": "Koromon",
+          "evolvesTo": [
+            { "name": "Agumon", "level": 10, "fragments": 5 }
+          ]
+        },
+        {
+          "name": "Tsunomon",
+          "evolvesTo": [
+            { "name": "Gabumon", "level": 10, "fragments": 5 }
+          ]
+        },
+        {
+          "name": "Yokomon",
+          "evolvesTo": [
+            { "name": "Piyomon", "level": 10, "fragments": 5 }
+          ]
+        },
+        {
+          "name": "Tanemon",
+          "evolvesTo": [
+            { "name": "Palmon", "level": 10, "fragments": 5 }
+          ]
+        },
+        {
+          "name": "Motimon",
+          "evolvesTo": [
+            { "name": "Tentomon", "level": 10, "fragments": 5 }
+          ]
+        },
+        {
+          "name": "Bukamon",
+          "evolvesTo": [
+            { "name": "Gomamon", "level": 10, "fragments": 5 }
+          ]
+        },
+        {
+          "name": "Tokomon",
+          "evolvesTo": [
+            { "name": "Patamon", "level": 10, "fragments": 5 }
+          ]
+        }
+      ]
     },
-    "Rookie": {
-      "Agumon": {
-        "evolvesTo": [
-          { "name": "Greymon", "level": 20, "fragments": 10 }
-        ]
-      },
-      "Gabumon": {
-        "evolvesTo": [
-          { "name": "Garurumon", "level": 20, "fragments": 10 }
-        ]
-      },
-      "Piyomon": {
-        "evolvesTo": [
-          { "name": "Birdramon", "level": 20, "fragments": 10 }
-        ]
-      },
-      "Tentomon": {
-        "evolvesTo": [
-          { "name": "Kabuterimon", "level": 20, "fragments": 10 }
-        ]
-      },
-      "Palmon": {
-        "evolvesTo": [
-          { "name": "Togemon", "level": 20, "fragments": 10 }
-        ]
-      },
-      "Gomamon": {
-        "evolvesTo": [
-          { "name": "Ikakkumon", "level": 20, "fragments": 10 }
-        ]
-      },
-      "Patamon": {
-        "evolvesTo": [
-          { "name": "Angemon", "level": 20, "fragments": 10 }
-        ]
-      }
+    {
+      "stage": "Rookie",
+      "digimons": [
+        {
+          "name": "Agumon",
+          "evolvesTo": [
+            { "name": "Greymon", "level": 20, "fragments": 10 }
+          ]
+        },
+        {
+          "name": "Gabumon",
+          "evolvesTo": [
+            { "name": "Garurumon", "level": 20, "fragments": 10 }
+          ]
+        },
+        {
+          "name": "Piyomon",
+          "evolvesTo": [
+            { "name": "Birdramon", "level": 20, "fragments": 10 }
+          ]
+        },
+        {
+          "name": "Tentomon",
+          "evolvesTo": [
+            { "name": "Kabuterimon", "level": 20, "fragments": 10 }
+          ]
+        },
+        {
+          "name": "Palmon",
+          "evolvesTo": [
+            { "name": "Togemon", "level": 20, "fragments": 10 }
+          ]
+        },
+        {
+          "name": "Gomamon",
+          "evolvesTo": [
+            { "name": "Ikakkumon", "level": 20, "fragments": 10 }
+          ]
+        },
+        {
+          "name": "Patamon",
+          "evolvesTo": [
+            { "name": "Angemon", "level": 20, "fragments": 10 }
+          ]
+        }
+      ]
     },
-    "Champion": {
-      "Greymon": {
-        "evolvesTo": [
-          {
-            "name": "MetalGreymon",
-            "level": 30,
-            "fragments": 15,
-            "item": "Courage Core",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "Garurumon": {
-        "evolvesTo": [
-          {
-            "name": "WereGarurumon",
-            "level": 30,
-            "fragments": 15,
-            "item": "Friendship Core",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "Birdramon": {
-        "evolvesTo": [
-          {
-            "name": "Garudamon",
-            "level": 30,
-            "fragments": 15,
-            "item": "Sky Feather",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "Kabuterimon": {
-        "evolvesTo": [
-          {
-            "name": "MetalKabuterimon",
-            "level": 30,
-            "fragments": 15,
-            "item": "Bug Chip",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "Togemon": {
-        "evolvesTo": [
-          {
-            "name": "Lillymon",
-            "level": 30,
-            "fragments": 15,
-            "item": "Flora Essence",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "Ikakkumon": {
-        "evolvesTo": [
-          {
-            "name": "Zudomon",
-            "level": 30,
-            "fragments": 15,
-            "item": "Ocean Scale",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "Angemon": {
-        "evolvesTo": [
-          {
-            "name": "MagnaAngemon",
-            "level": 30,
-            "fragments": 15,
-            "item": "Divine Orb",
-            "itemQuantity": 1
-          }
-        ]
-      }
+    {
+      "stage": "Champion",
+      "digimons": [
+        {
+          "name": "Greymon",
+          "evolvesTo": [
+            {
+              "name": "MetalGreymon",
+              "level": 30,
+              "fragments": 15,
+              "item": "Courage Core",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Garurumon",
+          "evolvesTo": [
+            {
+              "name": "WereGarurumon",
+              "level": 30,
+              "fragments": 15,
+              "item": "Friendship Core",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Birdramon",
+          "evolvesTo": [
+            {
+              "name": "Garudamon",
+              "level": 30,
+              "fragments": 15,
+              "item": "Sky Feather",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Kabuterimon",
+          "evolvesTo": [
+            {
+              "name": "MetalKabuterimon",
+              "level": 30,
+              "fragments": 15,
+              "item": "Bug Chip",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Togemon",
+          "evolvesTo": [
+            {
+              "name": "Lillymon",
+              "level": 30,
+              "fragments": 15,
+              "item": "Flora Essence",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Ikakkumon",
+          "evolvesTo": [
+            {
+              "name": "Zudomon",
+              "level": 30,
+              "fragments": 15,
+              "item": "Ocean Scale",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Angemon",
+          "evolvesTo": [
+            {
+              "name": "MagnaAngemon",
+              "level": 30,
+              "fragments": 15,
+              "item": "Divine Orb",
+              "itemQuantity": 1
+            }
+          ]
+        }
+      ]
     },
-    "Ultimate": {
-      "MetalGreymon": {
-        "evolvesTo": [
-          {
-            "name": "WarGreymon",
-            "level": 40,
-            "fragments": 20,
-            "item": "Bravery Core",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "WereGarurumon": {
-        "evolvesTo": [
-          {
-            "name": "MetalGarurumon",
-            "level": 40,
-            "fragments": 20,
-            "item": "Loyalty Core",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "Garudamon": {
-        "evolvesTo": [
-          {
-            "name": "Phoenixmon",
-            "level": 40,
-            "fragments": 20,
-            "item": "Wings of Fire",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "MetalKabuterimon": {
-        "evolvesTo": [
-          {
-            "name": "HerculesKabuterimon",
-            "level": 40,
-            "fragments": 20,
-            "item": "Insect Medal",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "Lillymon": {
-        "evolvesTo": [
-          {
-            "name": "Rosemon",
-            "level": 40,
-            "fragments": 20,
-            "item": "Flower Crown",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "Zudomon": {
-        "evolvesTo": [
-          {
-            "name": "Vikemon",
-            "level": 40,
-            "fragments": 20,
-            "item": "Frozen Core",
-            "itemQuantity": 1
-          }
-        ]
-      },
-      "MagnaAngemon": {
-        "evolvesTo": [
-          {
-            "name": "Seraphimon",
-            "level": 40,
-            "fragments": 20,
-            "item": "Holy Ring",
-            "itemQuantity": 1
-          }
-        ]
-      }
+    {
+      "stage": "Ultimate",
+      "digimons": [
+        {
+          "name": "MetalGreymon",
+          "evolvesTo": [
+            {
+              "name": "WarGreymon",
+              "level": 40,
+              "fragments": 20,
+              "item": "Bravery Core",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "WereGarurumon",
+          "evolvesTo": [
+            {
+              "name": "MetalGarurumon",
+              "level": 40,
+              "fragments": 20,
+              "item": "Loyalty Core",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Garudamon",
+          "evolvesTo": [
+            {
+              "name": "Phoenixmon",
+              "level": 40,
+              "fragments": 20,
+              "item": "Wings of Fire",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "MetalKabuterimon",
+          "evolvesTo": [
+            {
+              "name": "HerculesKabuterimon",
+              "level": 40,
+              "fragments": 20,
+              "item": "Insect Medal",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Lillymon",
+          "evolvesTo": [
+            {
+              "name": "Rosemon",
+              "level": 40,
+              "fragments": 20,
+              "item": "Flower Crown",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "Zudomon",
+          "evolvesTo": [
+            {
+              "name": "Vikemon",
+              "level": 40,
+              "fragments": 20,
+              "item": "Frozen Core",
+              "itemQuantity": 1
+            }
+          ]
+        },
+        {
+          "name": "MagnaAngemon",
+          "evolvesTo": [
+            {
+              "name": "Seraphimon",
+              "level": 40,
+              "fragments": 20,
+              "item": "Holy Ring",
+              "itemQuantity": 1
+            }
+          ]
+        }
+      ]
     },
-    "Mega": {
-      "WarGreymon": {
-        "evolvesTo": []
-      },
-      "MetalGarurumon": {
-        "evolvesTo": []
-      },
-      "Phoenixmon": {
-        "evolvesTo": []
-      },
-      "HerculesKabuterimon": {
-        "evolvesTo": []
-      },
-      "Rosemon": {
-        "evolvesTo": []
-      },
-      "Vikemon": {
-        "evolvesTo": []
-      },
-      "Seraphimon": {
-        "evolvesTo": []
-      }
+    {
+      "stage": "Mega",
+      "digimons": [
+        { "name": "WarGreymon", "evolvesTo": [] },
+        { "name": "MetalGarurumon", "evolvesTo": [] },
+        { "name": "Phoenixmon", "evolvesTo": [] },
+        { "name": "HerculesKabuterimon", "evolvesTo": [] },
+        { "name": "Rosemon", "evolvesTo": [] },
+        { "name": "Vikemon", "evolvesTo": [] },
+        { "name": "Seraphimon", "evolvesTo": [] }
+      ]
     }
-  }
+  ]
 }

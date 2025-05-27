@@ -18,10 +18,13 @@ public class SelecionarDigitamaService {
 
     private TokenService tokenService;
 
-    public SelecionarDigitamaService(DigimonService digimonService, UsuarioService usuarioService, TokenService tokenService) {
+    private JsonService jsonService;
+
+    public SelecionarDigitamaService(DigimonService digimonService, UsuarioService usuarioService, TokenService tokenService, JsonService jsonService) {
         this.digimonService = digimonService;
         this.usuarioService = usuarioService;
         this.tokenService = tokenService;
+        this.jsonService = jsonService;
     }
 
     /**
@@ -37,7 +40,7 @@ public class SelecionarDigitamaService {
         try {
 
             // Busca os dados das Digitamas
-            ListaDigitamasJson listaDigitamasJson = digimonService.getDigitamasByJson();
+            ListaDigitamasJson listaDigitamasJson = jsonService.carregarDigitamas();
 
             ResponseSelecaoDigitamaDTO responseSelecaoDigitamaDTO = new ResponseSelecaoDigitamaDTO();
 
