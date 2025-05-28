@@ -49,4 +49,24 @@ public class JsonService {
     public DigimonBaby2Json filtrarDigimonBaby2PorNome(String nome) {
         return GetByJsonUtils.filtrarDigimonBaby2PorNome(nome);
     }
+
+    public DigimonRookieJson filtrarDigimonsRookiePorId(int idRookie) {
+        return GetByJsonUtils.filtrarDigimonsRookiePorId(idRookie);
+    }
+
+    public DigimonRookieJson filtrarDigimonRookiePorNome(String name) {
+        return GetByJsonUtils.filtrarDigimonRookiePorNome(name);
+    }
+
+    public ListaDigimonRookiesJson carregarDigiRookies() {
+        return GetByJsonUtils.carregarDigiRookies();
+    }
+
+    public DigimonChampionJson filtrarDigimonsChampionPorId(int idChampion) {
+        return GetByJsonUtils.filtrarDigimonsChampionPorId(idChampion);
+    }
+
+    public DigimonChampionJson filtrarDigimonChampionPorNome(String name) {
+        return GetByJsonUtils.filtrarDigimonChampionPorNome(name);
+    }
 }

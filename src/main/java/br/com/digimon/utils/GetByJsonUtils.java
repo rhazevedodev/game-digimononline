@@ -27,19 +27,37 @@ public class GetByJsonUtils {
         }
     }
 
-    public static ListaAtributosBaseDigimonsBaby1 carregarAtributosBaseDigimonsBaby1() {
+    public static ListaDigimonBabys2Json carregarDigiBabys2() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(new File("src/main/resources/jsonMappings/atributosBaseDigimonsBaby1.json"), ListaAtributosBaseDigimonsBaby1.class);
+            return objectMapper.readValue(new File("src/main/resources/jsonMappings/enumDigimonsBaby2.json"), ListaDigimonBabys2Json.class);
         } catch (IOException e) {
             throw new RuntimeException("Erro ao carregar o arquivo JSON: " + e.getMessage(), e);
         }
     }
 
-    public static ListaDigimonBabys2Json carregarDigiBabys2() {
+    public static ListaDigimonRookiesJson carregarDigiRookies() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(new File("src/main/resources/jsonMappings/enumDigimonsBaby2.json"), ListaDigimonBabys2Json.class);
+            return objectMapper.readValue(new File("src/main/resources/jsonMappings/enumDigimonsRookies.json"), ListaDigimonRookiesJson.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Erro ao carregar o arquivo JSON: " + e.getMessage(), e);
+        }
+    }
+
+    public static ListaDigimonChampionsJson carregarDigiChampions() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(new File("src/main/resources/jsonMappings/enumDigimonsChampions.json"), ListaDigimonChampionsJson.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Erro ao carregar o arquivo JSON: " + e.getMessage(), e);
+        }
+    }
+
+    public static ListaAtributosBaseDigimonsBaby1 carregarAtributosBaseDigimonsBaby1() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(new File("src/main/resources/jsonMappings/atributosBaseDigimonsBaby1.json"), ListaAtributosBaseDigimonsBaby1.class);
         } catch (IOException e) {
             throw new RuntimeException("Erro ao carregar o arquivo JSON: " + e.getMessage(), e);
         }
@@ -64,6 +82,25 @@ public class GetByJsonUtils {
         }
         throw new RuntimeException("ID de Digimon Baby1 inválido: " + id);
     }
+    public static DigimonRookieJson filtrarDigimonsRookiePorId(int idRookie) {
+        ListaDigimonRookiesJson lista = carregarDigiRookies();
+        for(DigimonRookieJson digimon : lista.getDigimonsRookies()) {
+            if (digimon.getId() == idRookie) {
+                return digimon;
+            }
+        }
+        throw new RuntimeException("ID de Digimon Rookie inválido: " + idRookie);
+    }
+
+    public static DigimonChampionJson filtrarDigimonsChampionPorId(int idChampion) {
+        ListaDigimonChampionsJson lista = carregarDigiChampions();
+        for (DigimonChampionJson digimon : lista.getDigimonsChampions()) {
+            if (digimon.getId() == idChampion) {
+                return digimon;
+            }
+        }
+        throw new RuntimeException("ID de Digimon Champion inválido: " + idChampion);
+    }
 
     public static DigimonBaby2Json filtrarDigimonBaby2PorNome(String nome) {
         ListaDigimonBabys2Json lista = carregarDigiBabys2();
@@ -73,6 +110,26 @@ public class GetByJsonUtils {
             }
         }
         throw new RuntimeException("Nome de Digimon Baby2 inválido: " + nome);
+    }
+
+    public static DigimonRookieJson filtrarDigimonRookiePorNome(String name) {
+        ListaDigimonRookiesJson lista = carregarDigiRookies();
+        for (DigimonRookieJson digimon : lista.getDigimonsRookies()) {
+            if (digimon.getNome().equalsIgnoreCase(name)) {
+                return digimon;
+            }
+        }
+        throw new RuntimeException("Nome de Digimon Rookie inválido: " + name);
+    }
+
+    public static DigimonChampionJson filtrarDigimonChampionPorNome(String name) {
+        ListaDigimonChampionsJson lista = carregarDigiChampions();
+        for (DigimonChampionJson digimon : lista.getDigimonsChampions()) {
+            if (digimon.getNome().equalsIgnoreCase(name)) {
+                return digimon;
+            }
+        }
+        throw new RuntimeException("Nome de Digimon Champion inválido: " + name);
     }
 
     public static LinhasEvolutivasJson carregarLinhasEvolutivas() {
@@ -99,6 +156,4 @@ public class GetByJsonUtils {
 
         throw new RuntimeException("Evoluções não encontradas para o Digimon: " + nomeDigimon + " no tier: " + tierAtual);
     }
-
-
 }
