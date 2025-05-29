@@ -73,20 +73,35 @@ public class ContinuarJornadaService {
         DigimonEntity digimon = digimonService.getDigimonById(idDigimon);
 
         if(digimon.getIdMega() != 0) {
-            EnumDigimonMega mega = EnumDigimonMega.getEnumById(digimon.getIdMega());
-            carregarImagemContinuarJornadaDTO.setUrlImagemDigimon(mega.getUrlImg());
-            carregarImagemContinuarJornadaDTO.setNomeDigimon(mega.getDescricao());
-            carregarImagemContinuarJornadaDTO.setTierDigimon(digimon.getTierMega());
+            ListaDigimonMegasJson listaDigimonMegasJson = jsonService.carregarDigiMegas();
+            for (DigimonMegaJson mega : listaDigimonMegasJson.getDigimonsMegas()) {
+                if (mega.getId() == digimon.getIdMega()) {
+                    carregarImagemContinuarJornadaDTO.setUrlImagemDigimon(mega.getImage());
+                    carregarImagemContinuarJornadaDTO.setNomeDigimon(mega.getNome());
+                    carregarImagemContinuarJornadaDTO.setTierDigimon(digimon.getTierMega());
+                    break;
+                }
+            }
         } else if (digimon.getIdUltimate() != 0) {
-            EnumDigimonUltimate ultimate = EnumDigimonUltimate.getEnumById(digimon.getIdUltimate());
-            carregarImagemContinuarJornadaDTO.setUrlImagemDigimon(ultimate.getUrlImg());
-            carregarImagemContinuarJornadaDTO.setNomeDigimon(ultimate.getDescricao());
-            carregarImagemContinuarJornadaDTO.setTierDigimon(digimon.getTierUltimate());
+            ListaDigimonUltimatesJson listaDigimonUltimatesJson = jsonService.carregarDigiUltimates();
+            for (DigimonUltimateJson ultimate : listaDigimonUltimatesJson.getDigimonsUltimates()) {
+                if (ultimate.getId() == digimon.getIdUltimate()) {
+                    carregarImagemContinuarJornadaDTO.setUrlImagemDigimon(ultimate.getImage());
+                    carregarImagemContinuarJornadaDTO.setNomeDigimon(ultimate.getNome());
+                    carregarImagemContinuarJornadaDTO.setTierDigimon(digimon.getTierUltimate());
+                    break;
+                }
+            }
         } else if (digimon.getIdChampion() != 0) {
-            EnumDigimonChampion champion = EnumDigimonChampion.getEnumById(digimon.getIdChampion());
-            carregarImagemContinuarJornadaDTO.setUrlImagemDigimon(champion.getUrlImg());
-            carregarImagemContinuarJornadaDTO.setNomeDigimon(champion.getDescricao());
-            carregarImagemContinuarJornadaDTO.setTierDigimon(digimon.getTierChampion());
+            ListaDigimonChampionsJson listaDigimonChampionsJson = jsonService.carregarDigiChampions();
+            for (DigimonChampionJson champion : listaDigimonChampionsJson.getDigimonsChampions()) {
+                if (champion.getId() == digimon.getIdChampion()) {
+                    carregarImagemContinuarJornadaDTO.setUrlImagemDigimon(champion.getImage());
+                    carregarImagemContinuarJornadaDTO.setNomeDigimon(champion.getNome());
+                    carregarImagemContinuarJornadaDTO.setTierDigimon(digimon.getTierChampion());
+                    break;
+                }
+            }
         } else if (digimon.getIdRookie() != 0) {
             ListaDigimonRookiesJson listaDigimonRookiesJson = jsonService.carregarDigiRookies();
             for (DigimonRookieJson rookie : listaDigimonRookiesJson.getDigimonsRookies()) {

@@ -66,10 +66,12 @@ public class DigievolucaoService {
                 linhasEvolutivas = jsonService.filtrarEvolucoesPorTierENome(tierAtual, digimonChampion.getNome());
                 break;
             case "Ultimate":
-                //linhasEvolutivas = digimonService.getDigimonsUltimate();
+                DigimonUltimateJson digimonUltimate = jsonService.filtrarDigimonsUltimatePorId(digimon.getIdUltimate());
+                linhasEvolutivas = jsonService.filtrarEvolucoesPorTierENome(tierAtual, digimonUltimate.getNome());
                 break;
             case "Mega":
-                //linhasEvolutivas = digimonService.getDigimonsMega();
+                DigimonMegaJson digimonMega = jsonService.filtrarDigimonsMegaPorId(digimon.getIdMega());
+                linhasEvolutivas = jsonService.filtrarEvolucoesPorTierENome(tierAtual, digimonMega.getNome());
                 break;
             case "Jogress":
                 //linhasEvolutivas = digimonService.getDigimonsJogress();
@@ -131,6 +133,38 @@ public class DigievolucaoService {
             response.setIdDigimonDestino(digimonChampion.getId());
             response.setDigimonDestino(digimonChampion.getNome());
             response.setPathImagemDigimonDestino(digimonChampion.getImage());
+            response.setFragmentosNecessarios(evolucaoJson.getFragments());
+            response.setFragmentosDisponiveis(0);
+            response.setNivelMinimo(evolucaoJson.getLevel());
+            response.setNivelAtual(digimon.getNivel());
+        }
+        //EVOLUINDO PARA ULTIMATE
+        if(tierAtual.equals("Champion")){
+            //DE CHAMPION
+            response.setIdDigimonOrigem(digimon.getIdChampion());
+            response.setDigimonOrigem(evolucaoJson.getName());
+
+            //PARA ULTIMATE
+            DigimonUltimateJson digimonUltimate = jsonService.filtrarDigimonUltimatePorNome(evolucaoJson.getName());
+            response.setIdDigimonDestino(digimonUltimate.getId());
+            response.setDigimonDestino(digimonUltimate.getNome());
+            response.setPathImagemDigimonDestino(digimonUltimate.getImage());
+            response.setFragmentosNecessarios(evolucaoJson.getFragments());
+            response.setFragmentosDisponiveis(0);
+            response.setNivelMinimo(evolucaoJson.getLevel());
+            response.setNivelAtual(digimon.getNivel());
+        }
+        //EVOLUINDO PARA MEGA
+        if(tierAtual.equals("Ultimate")){
+            //DE ULTIMATE
+            response.setIdDigimonOrigem(digimon.getIdUltimate());
+            response.setDigimonOrigem(evolucaoJson.getName());
+
+            //PARA MEGA
+            DigimonMegaJson digimonMega = jsonService.filtrarDigimonMegaPorNome(evolucaoJson.getName());
+            response.setIdDigimonDestino(digimonMega.getId());
+            response.setDigimonDestino(digimonMega.getNome());
+            response.setPathImagemDigimonDestino(digimonMega.getImage());
             response.setFragmentosNecessarios(evolucaoJson.getFragments());
             response.setFragmentosDisponiveis(0);
             response.setNivelMinimo(evolucaoJson.getLevel());

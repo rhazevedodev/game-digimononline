@@ -1,0 +1,46 @@
+{
+  "digimonsMegas": [
+    {
+      "id": 1,
+      "nome": "Wargreymon",
+      "elemento": "Fogo",
+      "image": "../assets/digimons/mega/wargreymon.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "Metalgarurumon",
+      "elemento": "Gelo",
+      "image": "../assets/digimons/mega/metalgarurumon.jpg"
+    },
+    {
+      "id": 3,
+      "nome": "Phoenixmon",
+      "elemento": "Vento",
+      "image": "../assets/digimons/mega/phoenixmon.jpg"
+    },
+    {
+      "id": 4,
+      "nome": "Herculeskabuterimon",
+      "elemento": "Metal",
+      "image": "../assets/digimons/mega/herculeskabuterimon.jpg"
+    },
+    {
+      "id": 5,
+      "nome": "Rosemon",
+      "elemento": "Planta",
+      "image": "../assets/digimons/mega/rosemon.jpg"
+    },
+    {
+      "id": 6,
+      "nome": "Vikemon",
+      "elemento": "Agua",
+      "image": "../assets/digimons/mega/vikemon.jpg"
+    },
+    {
+      "id": 7,
+      "nome": "Seraphimon",
+      "elemento": "Luz",
+      "image": "../assets/digimons/mega/seraphimon.jpg"
+    }
+  ]
+}

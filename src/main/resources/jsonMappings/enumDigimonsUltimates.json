@@ -1,0 +1,46 @@
+{
+  "digimonsUltimates": [
+    {
+      "id": 1,
+      "nome": "MetalGreymon",
+      "elemento": "Fogo",
+      "image": "../assets/digimons/ultimate/metalgreymon.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "WereGarurumon",
+      "elemento": "Gelo",
+      "image": "../assets/digimons/ultimate/weregarurumon.jpg"
+    },
+    {
+      "id": 3,
+      "nome": "Garudamon",
+      "elemento": "Vento",
+      "image": "../assets/digimons/ultimate/garudamon.jpg"
+    },
+    {
+      "id": 4,
+      "nome": "Megakabuterimon",
+      "elemento": "Metal",
+      "image": "../assets/digimons/ultimate/megakabuterimon.jpg"
+    },
+    {
+      "id": 5,
+      "nome": "Lillimon",
+      "elemento": "Planta",
+      "image": "../assets/digimons/ultimate/lillimon.jpg"
+    },
+    {
+      "id": 6,
+      "nome": "Zudomon",
+      "elemento": "Agua",
+      "image": "../assets/digimons/ultimate/zudomon.jpg"
+    },
+    {
+      "id": 7,
+      "nome": "Magnaangemon",
+      "elemento": "Luz",
+      "image": "../assets/digimons/ultimate/magnaangemon.jpg"
+    }
+  ]
+}

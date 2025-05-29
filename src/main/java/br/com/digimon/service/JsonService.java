@@ -69,4 +69,32 @@ public class JsonService {
     public DigimonChampionJson filtrarDigimonChampionPorNome(String name) {
         return GetByJsonUtils.filtrarDigimonChampionPorNome(name);
     }
+
+    public ListaDigimonChampionsJson carregarDigiChampions() {
+        return GetByJsonUtils.carregarDigiChampions();
+    }
+
+    public ListaDigimonUltimatesJson carregarDigiUltimates() {
+        return GetByJsonUtils.carregarDigiUltimates();
+    }
+
+    public ListaDigimonMegasJson carregarDigiMegas() {
+        return GetByJsonUtils.carregarDigiMegas();
+    }
+
+    public DigimonUltimateJson filtrarDigimonsUltimatePorId(int idUltimate) {
+        return GetByJsonUtils.filtrarDigimonsUltimatePorId(idUltimate);
+    }
+
+    public DigimonMegaJson filtrarDigimonsMegaPorId(int idMega) {
+        return GetByJsonUtils.filtrarDigimonsMegaPorId(idMega);
+    }
+
+    public DigimonUltimateJson filtrarDigimonUltimatePorNome(String name) {
+        return GetByJsonUtils.filtrarDigimonUltimatePorNome(name);
+    }
+
+    public DigimonMegaJson filtrarDigimonMegaPorNome(String name) {
+        return GetByJsonUtils.filtrarDigimonMegaPorNome(name);
+    }
 }

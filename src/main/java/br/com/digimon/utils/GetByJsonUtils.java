@@ -54,6 +54,24 @@ public class GetByJsonUtils {
         }
     }
 
+    public static ListaDigimonUltimatesJson carregarDigiUltimates() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(new File("src/main/resources/jsonMappings/enumDigimonsUltimates.json"), ListaDigimonUltimatesJson.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Erro ao carregar o arquivo JSON: " + e.getMessage(), e);
+        }
+    }
+
+    public static ListaDigimonMegasJson carregarDigiMegas() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(new File("src/main/resources/jsonMappings/enumDigimonsMegas.json"), ListaDigimonMegasJson.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Erro ao carregar o arquivo JSON: " + e.getMessage(), e);
+        }
+    }
+
     public static ListaAtributosBaseDigimonsBaby1 carregarAtributosBaseDigimonsBaby1() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
@@ -102,6 +120,26 @@ public class GetByJsonUtils {
         throw new RuntimeException("ID de Digimon Champion inválido: " + idChampion);
     }
 
+    public static DigimonUltimateJson filtrarDigimonsUltimatePorId(int idUltimate) {
+        ListaDigimonUltimatesJson lista = carregarDigiUltimates();
+        for (DigimonUltimateJson digimon : lista.getDigimonsUltimates()) {
+            if (digimon.getId() == idUltimate) {
+                return digimon;
+            }
+        }
+        throw new RuntimeException("ID de Digimon Ultimate inválido: " + idUltimate);
+    }
+
+    public static DigimonMegaJson filtrarDigimonsMegaPorId(int idMega) {
+        ListaDigimonMegasJson lista = carregarDigiMegas();
+        for (DigimonMegaJson digimon : lista.getDigimonsMegas()) {
+            if (digimon.getId() == idMega) {
+                return digimon;
+            }
+        }
+        throw new RuntimeException("ID de Digimon Mega inválido: " + idMega);
+    }
+
     public static DigimonBaby2Json filtrarDigimonBaby2PorNome(String nome) {
         ListaDigimonBabys2Json lista = carregarDigiBabys2();
         for(DigimonBaby2Json digimon : lista.getDigimonsBaby2()) {
@@ -130,6 +168,26 @@ public class GetByJsonUtils {
             }
         }
         throw new RuntimeException("Nome de Digimon Champion inválido: " + name);
+    }
+
+    public static DigimonUltimateJson filtrarDigimonUltimatePorNome(String name) {
+        ListaDigimonUltimatesJson lista = carregarDigiUltimates();
+        for (DigimonUltimateJson digimon : lista.getDigimonsUltimates()) {
+            if (digimon.getNome().equalsIgnoreCase(name)) {
+                return digimon;
+            }
+        }
+        throw new RuntimeException("Nome de Digimon Ultimate inválido: " + name);
+    }
+
+    public static DigimonMegaJson filtrarDigimonMegaPorNome(String name) {
+        ListaDigimonMegasJson lista = carregarDigiMegas();
+        for (DigimonMegaJson digimon : lista.getDigimonsMegas()) {
+            if (digimon.getNome().equalsIgnoreCase(name)) {
+                return digimon;
+            }
+        }
+        throw new RuntimeException("Nome de Digimon Mega inválido: " + name);
     }
 
     public static LinhasEvolutivasJson carregarLinhasEvolutivas() {
