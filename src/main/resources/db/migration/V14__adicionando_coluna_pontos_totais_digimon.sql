@@ -1,0 +1,2 @@
+ALTER TABLE digimon
+ADD COLUMN poder_total INTEGER DEFAULT 0;

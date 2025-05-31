@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Slf4j
 @Repository
 public class CacadaRepositoryImpl implements CacadaRepository {
@@ -15,12 +17,27 @@ public class CacadaRepositoryImpl implements CacadaRepository {
     private SpringDataCacadaRepository springDataCacadaRepository;
 
     @Override
-    public boolean existsByIdDigimonAndRecompensaResgatadaFalse(Long idDigimon) {
-        return springDataCacadaRepository.existsByIdDigimonAndRecompensaResgatadaFalse(idDigimon);
+    public void save(CacadaEntity cacadaEntity) {
+        log.info("Salvando caçada: {}", cacadaEntity);
+        try {
+            springDataCacadaRepository.save(cacadaEntity);
+            log.info("Caçada salva com sucesso: {}", cacadaEntity);
+        } catch (Exception e) {
+            log.error("Erro ao salvar caçada: {}", e.getMessage());
+            throw new RuntimeException("Erro ao salvar caçada", e);
+        }
     }
 
     @Override
-    public CacadaEntity findByIdDigimonAndRecompensaResgatadaFalse(Long idDigimon) {
-        return springDataCacadaRepository.findByIdDigimonAndRecompensaResgatadaFalse(idDigimon);
+    public List<CacadaEntity> findByIdDigimonAndRecompensaResgatadaFalse(Long idDigimon) {
+        log.info("Buscando caçadas não resgatadas para o Digimon com ID: {}", idDigimon);
+        try {
+            List<CacadaEntity> cacadas = springDataCacadaRepository.findByIdDigimonAndRecompensaResgatadaFalse(idDigimon);
+            log.info("Caçadas encontradas: {}", cacadas.size());
+            return cacadas;
+        } catch (Exception e) {
+            log.error("Erro ao buscar caçadas: {}", e.getMessage());
+            throw new RuntimeException("Erro ao buscar caçadas", e);
+        }
     }
 }

@@ -1,0 +1,36 @@
+{
+  "id": 7,
+  "nome": "Fortaleza Espectral",
+  "tier": "SS",
+  "poder": 5000,
+  "duracao_minutos": 15,
+  "recompensa": {
+    "itens": [
+      { "nome": "Cristal Sombrio", "quantidade": 1 },
+      { "nome": "Poção Suprema", "quantidade": 2 }
+    ],
+    "exp_min": 800,
+    "exp_max": 1000,
+    "bits_min": 2000,
+    "bits_max": 2500
+  },
+  "requisitos": {
+    "nivel_minimo": 25,
+    "tipo_digimon": ["Fantasma", "Trevas"],
+    "digimon_necessario": "Devimon",
+    "quantidade_minima": 3,
+    "item_necessario": "Chave Espectral",
+    "custo_bits": 1000,
+    "custo_energia": 15,
+    "item_consumivel": "Essência de Caçada",
+    "cooldown_horas": 24,
+    "disponivel_em": ["Sexta-feira", "Sábado"],
+    "horario_inicio": "20:00",
+    "horario_fim": "23:59",
+    "afinidade_npc": {
+      "nome": "Wizardmon",
+      "nivel_minimo": 4
+    },
+    "missao_previa_obrigatoria": [3, 5]
+  }
+}

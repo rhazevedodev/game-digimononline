@@ -2,9 +2,11 @@ package br.com.digimon.repository;
 
 import br.com.digimon.domain.CacadaEntity;
 
+import java.util.List;
+
 public interface CacadaRepository {
-    boolean existsByIdDigimonAndRecompensaResgatadaFalse(Long idDigimon);
 
-    CacadaEntity findByIdDigimonAndRecompensaResgatadaFalse(Long idDigimon);
+    void save(CacadaEntity cacadaEntity);
 
+    List<CacadaEntity> findByIdDigimonAndRecompensaResgatadaFalse(Long idDigimon);
 }

@@ -8,7 +8,7 @@ public interface TokenRepository {
 
     void criarToken(TokenEntity tokenEntity);
 
-    Optional<TokenEntity> findByToken(String token);
+    Optional<TokenEntity> findFirstByToken(String token);
 
     Optional<TokenEntity> findByUsername(String usuario);
 

@@ -25,9 +25,11 @@ public class CacadaEntity {
 
     private Long idDigimon;
 
+    private int idCacada;
+
     private LocalDate data = LocalDate.now();
 
-    private int minutos;
+    private int segundos;
 
     private LocalDateTime horaResgateDisponivel;
 
@@ -36,16 +38,16 @@ public class CacadaEntity {
     private LocalDateTime ultimaAlteracao = LocalDateTime.now();
 
 
-    public CacadaEntity(Long idDigimon, int minutos, LocalDateTime horaResgateDisponivel, boolean recompensaResgatada) {
+    public CacadaEntity(Long idDigimon, int segundos, LocalDateTime horaResgateDisponivel, boolean recompensaResgatada) {
         this.idDigimon = idDigimon;
-        this.minutos = minutos;
+        this.segundos = segundos;
         this.horaResgateDisponivel = horaResgateDisponivel;
         this.recompensaResgatada = recompensaResgatada;
     }
 
-    public CacadaEntity(Long idDigimon, int minutos, LocalDateTime horaResgateDisponivel, boolean recompensaResgatada, LocalDateTime ultimaAlteracao) {
+    public CacadaEntity(Long idDigimon, int segundos, LocalDateTime horaResgateDisponivel, boolean recompensaResgatada, LocalDateTime ultimaAlteracao) {
         this.idDigimon = idDigimon;
-        this.minutos = minutos;
+        this.segundos = segundos;
         this.horaResgateDisponivel = horaResgateDisponivel;
         this.recompensaResgatada = recompensaResgatada;
         this.ultimaAlteracao = ultimaAlteracao;
@@ -75,12 +77,12 @@ public class CacadaEntity {
         this.data = data;
     }
 
-    public int getMinutos() {
-        return minutos;
+    public int getSegundos() {
+        return segundos;
     }
 
-    public void setMinutos(int minutos) {
-        this.minutos = minutos;
+    public void setSegundos(int segundos) {
+        this.segundos = segundos;
     }
 
     public LocalDateTime getHoraResgateDisponivel() {

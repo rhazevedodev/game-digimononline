@@ -2,98 +2,101 @@ package br.com.digimon.service;
 
 import br.com.digimon.domain.CacadaEntity;
 import br.com.digimon.domain.DigimonEntity;
-import br.com.digimon.domain.TempoDisponivelCacadaEntity;
+import br.com.digimon.domain.UsuarioEntity;
+import br.com.digimon.domain.fromJson.cacada.Cacada;
+import br.com.digimon.domain.fromJson.cacada.CacadaAtiva;
+import br.com.digimon.domain.fromJson.cacada.CacadaListWrapper;
 import br.com.digimon.repository.CacadaRepository;
-import br.com.digimon.repository.TempoDisponivelCacadaRepository;
-import br.com.digimon.utils.Data;
-import br.com.digimon.utils.Feriados;
+import br.com.digimon.utils.HeaderExtract;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.List;
 
+@Slf4j
 @Service
 public class CacadaService {
 
-    private CacadaRepository cacadaRepository;
-    private TempoDisponivelCacadaRepository tempoDisponivelRepository;
+    @Autowired
+    private JsonService jsonService;
+    @Autowired
+    private TokenService tokenService;
+    @Autowired
+    private UsuarioService usuarioService;
+    @Autowired
     private DigimonService digimonService;
+    @Autowired
+    private CacadaRepository cacadaRepository;
 
-    public CacadaService(CacadaRepository cacadaRepository, TempoDisponivelCacadaRepository tempoDisponivelRepository, DigimonService digimonService) {
-        this.cacadaRepository = cacadaRepository;
-        this.tempoDisponivelRepository = tempoDisponivelRepository;
-        this.digimonService = digimonService;
-    }
+    public ResponseEntity<?> carregarCacadasJogador(Long idDigimon, HttpServletRequest request) {
+        log.info("Carregando caçadas do jogador");
+        String jwt = HeaderExtract.extrairTokenDoHeader(request);
+        String nomeUsuario = tokenService.obterUsuarioPorToken(jwt);
+        UsuarioEntity usuarioEntity = usuarioService.obterUsuarioPorNome(nomeUsuario);
 
-    public Map<String, Object> carregarTelaCacada(Long idDigimon) {
-        Map<String, Object> response = new LinkedHashMap<>();
-
+        // Recupera o Digimon pelo id
         DigimonEntity digimon = digimonService.getDigimonById(idDigimon);
 
-        // Chama os métodos existentes e adiciona os resultados ao response
-        response.putAll(carregarDadosCacada(idDigimon));
-//        response.put("nivel", digimon.getNivel());
-//        response.put("vida", digimon.getAtributos().getPontosVida());
-//        response.put("energia", digimon.getAtributos().getPontosEnergia());
+        // Carrega todas as caçadas disponíveis
+        CacadaListWrapper cacadas = jsonService.carregarCacadas();
 
-        return response;
+        // Filtra as caçadas que atendem aos requisitos do Digimon
+        List<Cacada> cacadasValidas = cacadas.getCacadas().stream()
+                .filter(cacada -> digimon.getNivel() >= cacada.getRequisitos().getNivelMinimo() &&
+                        digimon.getPoderTotal() >= cacada.getRequisitos().getPoderTotal())
+                .toList();
+
+        // Busca as caçadas com recompensaResgatada = false para o idDigimon
+        List<CacadaEntity> cacadasNaoResgatadas = cacadaRepository.findByIdDigimonAndRecompensaResgatadaFalse(idDigimon);
+
+        // Verifica se o idCacada de cacadasNaoResgatadas coincide com cacadasValidas
+        cacadasNaoResgatadas.forEach(cacadaNaoResgatada -> {
+            cacadasValidas.stream()
+                    .filter(cacadaValida -> cacadaValida.getId() == cacadaNaoResgatada.getIdCacada())
+                    .findFirst()
+                    .ifPresent(cacadaValida -> {
+                        int segundosRestantes = (int) Duration.between(LocalDateTime.now(), cacadaNaoResgatada.getHoraResgateDisponivel()).getSeconds();
+                        if(segundosRestantes < 0) {
+                            segundosRestantes = 0; // Se o tempo já passou, define como 0
+                        }
+                        cacadaValida.setCacadaAtiva(new CacadaAtiva(segundosRestantes));
+                    });
+        });
+
+        // Retorna as caçadas válidas
+        return ResponseEntity.ok(cacadasValidas);
     }
 
-    public Map<String, Object> carregarDadosCacada(Long idDigimon) {
-        Map<String, Object> response = new LinkedHashMap<>();
+    public ResponseEntity<?> iniciarCacada(Long idDigimon, Cacada cacada){
+        log.info("Iniciando caçada para o Digimon com ID: {}", idDigimon);
 
-        response.put("tempoDisponivel", verificarTempoDisponivelCacada(idDigimon));
-        response.put("emAndamento", verificarCacadaEmAndamento(idDigimon));
-        response.put("horaResgate", buscarTempoResgateCacadaEmAndamento(idDigimon));
-        response.put("resgateDisponivel", validarResgateDisponivelCacada(idDigimon));
+        // Busca as caçadas com recompensaResgatada = false para o idDigimon
+        List<CacadaEntity> cacadasNaoResgatadas = cacadaRepository.findByIdDigimonAndRecompensaResgatadaFalse(idDigimon);
 
-        return response;
-    }
+        // Verifica se já existe uma caçada ativa com o mesmo idCacada
+        boolean cacadaJaAtiva = cacadasNaoResgatadas.stream()
+                .anyMatch(cacadaNaoResgatada -> cacadaNaoResgatada.getIdCacada() == (cacada.getId()));
 
-    public int verificarTempoDisponivelCacada(Long idDigimon) {
-        if (!digimonService.verificarExistenciaDigimon(idDigimon)) {
-            throw new RuntimeException("Digimon não encontrado");
+        if (cacadaJaAtiva) {
+            throw new IllegalStateException("Já existe uma caçada ativa com o ID: " + cacada.getId());
         }
-        LocalDate hoje = LocalDate.now();
-        Optional<TempoDisponivelCacadaEntity> registro = tempoDisponivelRepository.findByIdDigimonAndDataCadastro(idDigimon, hoje);
 
-        // Verifica se o registro está vazio ou se hoje é final de semana
-        if (registro.isEmpty() || Data.validarFinalDeSemana(hoje)) {
-            int tempoDisponivel = (Feriados.isFeriado(hoje) || Data.validarFinalDeSemana(hoje)) ? 120 : 60;
+        CacadaEntity cacadaEntity = new CacadaEntity();
+        cacadaEntity.setIdDigimon(idDigimon);
+        cacadaEntity.setIdCacada(cacada.getId());
+        cacadaEntity.setSegundos(cacada.getDuracaoSegundos());
+        cacadaEntity.setHoraResgateDisponivel(LocalDateTime.now().plusSeconds(cacada.getDuracaoSegundos()));
+        cacadaEntity.setRecompensaResgatada(false);
 
-            // Salva o novo registro se necessário
-            if (registro.isEmpty()) {
-                tempoDisponivelRepository.save(new TempoDisponivelCacadaEntity(idDigimon, hoje, tempoDisponivel));
-            }
-            return tempoDisponivel;
-        }
+        cacadaRepository.save(cacadaEntity);
 
-        // Retorna o tempo disponível do registro existente
-        return registro.get().getTempoDisponivel();
-    }
-
-    public boolean verificarCacadaEmAndamento(Long idDigimon) {
-        return cacadaRepository.existsByIdDigimonAndRecompensaResgatadaFalse(idDigimon);
-    }
-
-    public String buscarTempoResgateCacadaEmAndamento(Long idDigimon) {
-        if (!verificarCacadaEmAndamento(idDigimon)) {
-            return "Não há caçada em andamento";
-        }
-        CacadaEntity cacada = cacadaRepository.findByIdDigimonAndRecompensaResgatadaFalse(idDigimon);
-        String dataFormatada = Data.formatarDataCadastroParaTelaStatus(cacada.getHoraResgateDisponivel());
-        return dataFormatada;
-    }
-
-    public boolean validarResgateDisponivelCacada(Long idDigimon) {
-        if (!verificarCacadaEmAndamento(idDigimon)) {
-            return false;
-        }
-        CacadaEntity cacada = cacadaRepository.findByIdDigimonAndRecompensaResgatadaFalse(idDigimon);
-        LocalDateTime horaResgateDisponivel = cacada.getHoraResgateDisponivel();
-        return LocalDateTime.now().isAfter(horaResgateDisponivel);
+        return ResponseEntity.ok("Cacada iniciada com sucesso!");
     }
 }

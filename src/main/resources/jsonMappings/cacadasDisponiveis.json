@@ -1,0 +1,139 @@
+{
+  "cacadas": [
+    {
+      "id": 1,
+      "nome": "Fortaleza do Apocalipse",
+      "tier": "SS",
+      "requisitos": {
+        "nivel_minimo": 35,
+        "poder_total": 6000
+      },
+      "duracao_segundos": 900,
+      "recompensas_possiveis": {
+        "itens": [
+          { "nome": "Núcleo Supremo", "quantidade_min": 1, "quantidade_max": 2 },
+          { "nome": "Poção Suprema", "quantidade_min": 2, "quantidade_max": 4 }
+        ],
+        "exp_min": 1000,
+        "exp_max": 1500,
+        "bits_min": 2500,
+        "bits_max": 4000
+      }
+    },
+    {
+      "id": 2,
+      "nome": "Floresta Sombria",
+      "tier": "S",
+      "requisitos": {
+        "nivel_minimo": 28,
+        "poder_total": 3200
+      },
+      "duracao_segundos": 720,
+      "recompensas_possiveis": {
+        "itens": [
+          { "nome": "Item Raro", "quantidade_min": 1, "quantidade_max": 3 },
+          { "nome": "Poção Curativa", "quantidade_min": 3, "quantidade_max": 7 }
+        ],
+        "exp_min": 450,
+        "exp_max": 600,
+        "bits_min": 1000,
+        "bits_max": 1500
+      }
+    },
+    {
+      "id": 3,
+      "nome": "Ruínas Digitais",
+      "tier": "A",
+      "requisitos": {
+        "nivel_minimo": 22,
+        "poder_total": 2800
+      },
+      "duracao_segundos": 600,
+      "recompensas_possiveis": {
+        "itens": [
+          { "nome": "Fragmento Digital", "quantidade_min": 1, "quantidade_max": 2 }
+        ],
+        "exp_min": 250,
+        "exp_max": 350,
+        "bits_min": 700,
+        "bits_max": 900
+      }
+    },
+    {
+      "id": 4,
+      "nome": "Caverna Subterrânea",
+      "tier": "B",
+      "requisitos": {
+        "nivel_minimo": 16,
+        "poder_total": 2100
+      },
+      "duracao_segundos": 480,
+      "recompensas_possiveis": {
+        "itens": [
+          { "nome": "Poção", "quantidade_min": 2, "quantidade_max": 4 }
+        ],
+        "exp_min": 120,
+        "exp_max": 180,
+        "bits_min": 300,
+        "bits_max": 500
+      }
+    },
+    {
+      "id": 5,
+      "nome": "Campos Rochosos",
+      "tier": "C",
+      "requisitos": {
+        "nivel_minimo": 10,
+        "poder_total": 1600
+      },
+      "duracao_segundos": 360,
+      "recompensas_possiveis": {
+        "itens": [
+          { "nome": "Erva Curativa", "quantidade_min": 1, "quantidade_max": 2 }
+        ],
+        "exp_min": 80,
+        "exp_max": 120,
+        "bits_min": 200,
+        "bits_max": 300
+      }
+    },
+    {
+      "id": 6,
+      "nome": "Planícies Geladas",
+      "tier": "D",
+      "requisitos": {
+        "nivel_minimo": 5,
+        "poder_total": 1000
+      },
+      "duracao_segundos": 300,
+      "recompensas_possiveis": {
+        "itens": [
+          { "nome": "Fragmento de Gelo", "quantidade_min": 1, "quantidade_max": 1 }
+        ],
+        "exp_min": 40,
+        "exp_max": 60,
+        "bits_min": 100,
+        "bits_max": 200
+      }
+    },
+    {
+      "id": 7,
+      "nome": "Floresta de Treinamento",
+      "tier": "E",
+      "requisitos": {
+        "nivel_minimo": 1,
+        "poder_total": 0
+      },
+      "duracao_segundos": 180,
+      "recompensas_possiveis": {
+        "itens": [
+          { "nome": "Fruta de Treinamento", "quantidade_min": 1, "quantidade_max": 1 }
+        ],
+        "exp_min": 20,
+        "exp_max": 30,
+        "bits_min": 50,
+        "bits_max": 100
+      }
+    }
+  ]
+}

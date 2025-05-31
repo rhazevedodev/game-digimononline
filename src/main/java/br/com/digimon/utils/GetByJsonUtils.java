@@ -1,6 +1,7 @@
 package br.com.digimon.utils;
 
 import br.com.digimon.domain.fromJson.*;
+import br.com.digimon.domain.fromJson.cacada.CacadaListWrapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -213,5 +214,14 @@ public class GetByJsonUtils {
         }
 
         throw new RuntimeException("Evoluções não encontradas para o Digimon: " + nomeDigimon + " no tier: " + tierAtual);
+    }
+
+    public static CacadaListWrapper carregarCacadas() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(new File("src/main/resources/jsonMappings/cacadasDisponiveis.json"), CacadaListWrapper.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Erro ao carregar o arquivo JSON: " + e.getMessage(), e);
+        }
     }
 }

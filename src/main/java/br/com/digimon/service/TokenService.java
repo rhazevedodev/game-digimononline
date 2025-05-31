@@ -18,7 +18,7 @@ public class TokenService {
 
     public boolean validarToken(String token) {
         log.info("Validando token: {}", token);
-        Optional<TokenEntity> tokenEntityOptional = tokenRepositoryPort.findByToken(token);
+        Optional<TokenEntity> tokenEntityOptional = tokenRepositoryPort.findFirstByToken(token);
         if (tokenEntityOptional.isEmpty()) {
             return false;
         }
@@ -43,7 +43,7 @@ public class TokenService {
 
     public String obterUsuarioPorToken(String token) {
         log.info("Obtendo usuário por token: {}", token);
-        Optional<TokenEntity> tokenEntityOptional = tokenRepositoryPort.findByToken(token);
+        Optional<TokenEntity> tokenEntityOptional = tokenRepositoryPort.findFirstByToken(token);
         if (tokenEntityOptional.isPresent()) {
             return tokenEntityOptional.get().getUsername();
         }

@@ -1,6 +1,7 @@
 package br.com.digimon.service;
 
 import br.com.digimon.domain.fromJson.*;
+import br.com.digimon.domain.fromJson.cacada.CacadaListWrapper;
 import br.com.digimon.utils.GetByJsonUtils;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -96,5 +97,9 @@ public class JsonService {
 
     public DigimonMegaJson filtrarDigimonMegaPorNome(String name) {
         return GetByJsonUtils.filtrarDigimonMegaPorNome(name);
+    }
+
+    public CacadaListWrapper carregarCacadas() {
+        return GetByJsonUtils.carregarCacadas();
     }
 }

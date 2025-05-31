@@ -60,6 +60,9 @@ public class DigimonEntity {
 
     private int pontosExperiencia;
 
+    @Column(name = "poder_total")
+    private int poderTotal = 0;
+
     @Embedded
     private AtributosEntity atributos;
 

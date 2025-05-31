@@ -1,0 +1,2 @@
+ALTER TABLE cacada
+ADD COLUMN id_cacada BIGINT;

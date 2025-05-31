@@ -22,8 +22,8 @@ public class TokenRepositoryImpl implements TokenRepository {
     }
 
     @Override
-    public Optional<TokenEntity> findByToken(String token) {
-        return springDataTokenRepository.findByToken(token);
+    public Optional<TokenEntity> findFirstByToken(String token) {
+        return springDataTokenRepository.findFirstByToken(token);
     }
 
     @Override

@@ -34,7 +34,7 @@ public class TokenFilterConfig extends OncePerRequestFilter {
         if(authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
 
-            tokenRepository.findByToken(token)
+            tokenRepository.findFirstByToken(token)
                     .filter(t -> t.getExpirationTime().isAfter(LocalDateTime.now()))
                     .ifPresent(t -> {
                         UserDetails userDetails = userDetailsService.loadUserByUsername(t.getUsername());
