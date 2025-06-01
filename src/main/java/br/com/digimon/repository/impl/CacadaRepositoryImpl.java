@@ -40,4 +40,9 @@ public class CacadaRepositoryImpl implements CacadaRepository {
             throw new RuntimeException("Erro ao buscar caçadas", e);
         }
     }
+
+    @Override
+    public CacadaEntity findByIdDigimonAndIdCacadaAndRecompensaResgatadaFalse(Long idDigimon, int idCacada) {
+        return springDataCacadaRepository.findByIdDigimonAndIdCacadaAndRecompensaResgatadaFalse(idDigimon, idCacada);
+    }
 }

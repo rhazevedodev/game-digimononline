@@ -191,6 +191,12 @@ public class CacadaService {
         //Guardando no inventario
         inventarioService.adicionarItemAoInventario(idDigimon, guardarNoInventario);
 
+        //Finalizando caçada
+        CacadaEntity cacadaEntity = cacadaRepository.findByIdDigimonAndIdCacadaAndRecompensaResgatadaFalse(idDigimon, idCacada);
+        if (cacadaEntity == null) {
+            throw new IllegalStateException("Caçada não encontrada ou já resgatada.");
+        }
+        atualizarCacada(cacadaEntity);
 
         return recompensaCacada;
     }
@@ -221,5 +227,11 @@ public class CacadaService {
             changing.setQuantidade(quantidade);
         }
         return changing;
+    }
+
+    private void atualizarCacada(CacadaEntity cacada) {
+        cacada.setRecompensaResgatada(true);
+        cacada.setUltimaAlteracao(LocalDateTime.now());
+        cacadaRepository.save(cacada);
     }
 }

@@ -8,4 +8,6 @@ import java.util.List;
 public interface SpringDataCacadaRepository extends JpaRepository<CacadaEntity, Long> {
 
     List<CacadaEntity> findByIdDigimonAndRecompensaResgatadaFalse(Long idDigimon);
+
+    CacadaEntity findByIdDigimonAndIdCacadaAndRecompensaResgatadaFalse(Long idDigimon, int idCacada);
 }
