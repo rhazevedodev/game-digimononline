@@ -1,0 +1,51 @@
+{
+  "itens": [{
+    "itens_fragmentos_evolucao": {
+      "Baby 2": [
+        { "id": 1001, "idCategoria": 5, "nome": "Fragmento Digital Koromon", "descricao": "Fragmento essencial para evoluir para Koromon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 1002, "idCategoria": 5, "nome": "Fragmento Digital Tsunomon", "descricao": "Fragmento essencial para evoluir para Tsunomon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 1003, "idCategoria": 5, "nome": "Fragmento Digital Yokomon", "descricao": "Fragmento essencial para evoluir para Yokomon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 1004, "idCategoria": 5, "nome": "Fragmento Digital Motimon", "descricao": "Fragmento essencial para evoluir para Motimon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 1005, "idCategoria": 5, "nome": "Fragmento Digital Tanemon", "descricao": "Fragmento essencial para evoluir para Tanemon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 1006, "idCategoria": 5, "nome": "Fragmento Digital Bukamon", "descricao": "Fragmento essencial para evoluir para Bukamon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 1007, "idCategoria": 5, "nome": "Fragmento Digital Tokomon", "descricao": "Fragmento essencial para evoluir para Tokomon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false }
+      ],
+      "Rookie": [
+        { "id": 2001, "idCategoria": 5, "nome": "Fragmento Digital Agumon", "descricao": "Fragmento necessário para recrutar ou treinar Agumon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 2002, "idCategoria": 5, "nome": "Fragmento Digital Gabumon", "descricao": "Fragmento necessário para recrutar ou treinar Gabumon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 2003, "idCategoria": 5, "nome": "Fragmento Digital Piyomon", "descricao": "Fragmento necessário para recrutar ou treinar Piyomon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 2004, "idCategoria": 5, "nome": "Fragmento Digital Tentomon", "descricao": "Fragmento necessário para recrutar ou treinar Tentomon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 2005, "idCategoria": 5, "nome": "Fragmento Digital Gomamon", "descricao": "Fragmento necessário para recrutar ou treinar Gomamon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 2006, "idCategoria": 5, "nome": "Fragmento Digital Palmon", "descricao": "Fragmento necessário para recrutar ou treinar Palmon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 2007, "idCategoria": 5, "nome": "Fragmento Digital Patamon", "descricao": "Fragmento necessário para recrutar ou treinar Patamon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false }
+      ],
+      "Champion": [
+        { "id": 3001, "idCategoria": 5, "nome": "Fragmento Digital Greymon", "descricao": "Fragmento necessário para evoluir Agumon para Greymon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 3002, "idCategoria": 5, "nome": "Fragmento Digital Garurumon", "descricao": "Fragmento necessário para evoluir Gabumon para Garurumon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 3003, "idCategoria": 5, "nome": "Fragmento Digital Birdramon", "descricao": "Fragmento necessário para evoluir Piyomon para Birdramon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 3004, "idCategoria": 5, "nome": "Fragmento Digital Kabuterimon", "descricao": "Fragmento necessário para evoluir Tentomon para Kabuterimon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 3005, "idCategoria": 5, "nome": "Fragmento Digital Gomamon", "descricao": "Fragmento necessário para evoluir Gomamon para Ikkakumon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 3006, "idCategoria": 5, "nome": "Fragmento Digital Togemon", "descricao": "Fragmento necessário para evoluir Palmon para Togemon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 3007, "idCategoria": 5, "nome": "Fragmento Digital Angemon", "descricao": "Fragmento necessário para evoluir Patamon para Angemon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false }
+      ],
+      "Ultimate": [
+        { "id": 4001, "idCategoria": 5, "nome": "Fragmento Digital MetalGreymon", "descricao": "Fragmento necessário para evoluir Greymon para MetalGreymon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 4002, "idCategoria": 5, "nome": "Fragmento Digital WereGarurumon", "descricao": "Fragmento necessário para evoluir Garurumon para WereGarurumon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 4003, "idCategoria": 5, "nome": "Fragmento Digital Garudamon", "descricao": "Fragmento necessário para evoluir Birdramon para Garudamon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 4004, "idCategoria": 5, "nome": "Fragmento Digital MegaKabuterimon", "descricao": "Fragmento necessário para evoluir Kabuterimon para MegaKabuterimon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 4005, "idCategoria": 5, "nome": "Fragmento Digital Ikkakumon", "descricao": "Fragmento necessário para evoluir Gomamon para Ikkakumon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 4006, "idCategoria": 5, "nome": "Fragmento Digital Togemon", "descricao": "Fragmento necessário para evoluir Togemon para Lilymon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 4007, "idCategoria": 5, "nome": "Fragmento Digital MagnaAngemon", "descricao": "Fragmento necessário para evoluir Angemon para MagnaAngemon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false }
+      ],
+      "Mega": [
+        { "id": 5001, "idCategoria": 5, "nome": "Fragmento Digital WarGreymon", "descricao": "Fragmento necessário para evoluir MetalGreymon para WarGreymon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 5002, "idCategoria": 5, "nome": "Fragmento Digital MetalGarurumon", "descricao": "Fragmento necessário para evoluir WereGarurumon para MetalGarurumon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 5003, "idCategoria": 5, "nome": "Fragmento Digital Hououmon", "descricao": "Fragmento necessário para evoluir Garudamon para Hououmon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 5004, "idCategoria": 5, "nome": "Fragmento Digital MegaKabuterimon", "descricao": "Fragmento necessário para evoluir MegaKabuterimon para HerculesKabuterimon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 5005, "idCategoria": 5, "nome": "Fragmento Digital Vikemon", "descricao": "Fragmento necessário para evoluir Ikkakumon para Vikemon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 5006, "idCategoria": 5, "nome": "Fragmento Digital Lilymon", "descricao": "Fragmento necessário para evoluir Lilymon para Rosemon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false },
+        { "id": 5007, "idCategoria": 5, "nome": "Fragmento Digital Seraphimon", "descricao": "Fragmento necessário para evoluir MagnaAngemon para Seraphimon.", "valor_compra": 0, "valor_venda": 0, "pode_vender": false, "pode_trocar": true, "is_global": false }
+      ]
+    }
+  }]
+}

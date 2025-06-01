@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RecompensasPossiveisCacada {
-    private List<ItemRecompensaCacada> itens;
+    private List<PossivelItemRecompensaCacada> itens;
     @JsonProperty("exp_min")
     private int expMin;
     @JsonProperty("exp_max")

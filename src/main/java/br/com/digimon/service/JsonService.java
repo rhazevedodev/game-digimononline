@@ -1,9 +1,12 @@
 package br.com.digimon.service;
 
 import br.com.digimon.domain.fromJson.*;
+import br.com.digimon.domain.fromJson.cacada.Cacada;
 import br.com.digimon.domain.fromJson.cacada.CacadaListWrapper;
+import br.com.digimon.domain.fromJson.itens.FragmentoEvolucao;
+import br.com.digimon.domain.fromJson.itens.Itens;
+import br.com.digimon.domain.fromJson.itens.ItensWrapper;
 import br.com.digimon.utils.GetByJsonUtils;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -101,5 +104,21 @@ public class JsonService {
 
     public CacadaListWrapper carregarCacadas() {
         return GetByJsonUtils.carregarCacadas();
+    }
+
+    public Cacada filtrarCacadaPorId(int id) {
+        return GetByJsonUtils.filtrarCacadaPorId(id);
+    }
+
+    public List<FragmentoEvolucao> carregarFragmentosEvolucao(String nivel) {
+        return GetByJsonUtils.filtrarFragmentosPorNivel(nivel);
+    }
+
+    public List<FragmentoEvolucao> listarTodosFragmentosEvolucao() {
+        return GetByJsonUtils.listarTodosFragmentosEvolucao();
+    }
+
+    public ItensWrapper carregarItensFragmentosEvolucaoWrapper() {
+        return GetByJsonUtils.carregarItensFragmentosEvolucaoWrapper();
     }
 }

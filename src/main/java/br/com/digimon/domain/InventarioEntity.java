@@ -51,4 +51,6 @@ public class InventarioEntity {
     private boolean podeTrocar;
 
     private LocalDateTime dataUltimaAlteracao;
+
+    private boolean isGlobal;
 }

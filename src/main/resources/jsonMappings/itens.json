@@ -1,0 +1,33 @@
+{
+  "itens": {
+    "cards_digimon": [
+      { "id": 1,"idCategoria":1, "nome": "Card Agumon", "descricao": "Um card que representa Agumon. Pode ser usado para desbloquear ou fortalecer esse Digimon.", "valor_compra": 10000, "valor_venda": 0, "pode_vender": true, "pode_trocar": true, "is_global": false },
+      { "id": 2,"idCategoria":1, "nome": "Card Gabumon", "descricao": "Um card que representa Gabumon. Pode ser usado para desbloquear ou fortalecer esse Digimon.", "valor_compra": 10000, "valor_venda": 0, "pode_vender": true, "pode_trocar": true, "is_global": false },
+      { "id": 3,"idCategoria":1, "nome": "Card Patamon", "descricao": "Um card que representa Patamon. Pode ser usado para desbloquear ou fortalecer esse Digimon.", "valor_compra": 10000, "valor_venda": 0, "pode_vender": true, "pode_trocar": true, "is_global": false },
+      { "id": 4,"idCategoria":1, "nome": "Card Gommamon", "descricao": "Um card que representa Gommamon. Pode ser usado para desbloquear ou fortalecer esse Digimon.", "valor_compra": 10000, "valor_venda": 0, "pode_vender": true, "pode_trocar": true, "is_global": false },
+      { "id": 5,"idCategoria":1, "nome": "Card Palmon", "descricao": "Um card que representa Palmon. Pode ser usado para desbloquear ou fortalecer esse Digimon.", "valor_compra": 10000, "valor_venda": 0, "pode_vender": true, "pode_trocar": true, "is_global": false },
+      { "id": 6,"idCategoria":1, "nome": "Card Tentomon", "descricao": "Um card que representa Tentomon. Pode ser usado para desbloquear ou fortalecer esse Digimon.", "valor_compra": 10000, "valor_venda": 0, "pode_vender": true, "pode_trocar": true, "is_global": false },
+      { "id": 7,"idCategoria":1, "nome": "Card Biyomon", "descricao": "Um card que representa Biyomon. Pode ser usado para desbloquear ou fortalecer esse Digimon.", "valor_compra": 10000, "valor_venda": 0, "pode_vender": true, "pode_trocar": true, "is_global": false }
+    ],
+    "itens_cura": [
+      { "id": 201,"idCategoria":2, "nome": "Programa de Recuperação", "descricao": "Recupera uma pequena quantidade de HP.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false },
+      { "id": 202,"idCategoria":2, "nome": "Programa de Recuperação Intermediário", "descricao": "Recupera uma quantidade moderada de HP.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false },
+      { "id": 203,"idCategoria":2, "nome": "Programa de Recuperação Avançado", "descricao": "Recupera completamente o HP.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false },
+      { "id": 204,"idCategoria":2, "nome": "Antídoto Digital", "descricao": "Remove condições negativas como envenenamento ou paralisia.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false },
+      { "id": 205,"idCategoria":2, "nome": "Programa de Restauração", "descricao": "Recupera a energia do Digimon utilizada em batalhas ou ações especiais.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false },
+      { "id": 206,"idCategoria":2, "nome": "Programa de Restauração Intermediário", "descricao": "Aumenta temporariamente a energia do Digimon em batalha.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false }
+     ,{ "id": 207,"idCategoria":2, "nome": "Programa de Restauração Avançado", "descricao": "Recupera completamente a energia do Digimon.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false }
+    ],
+    "itens_atributos": [
+      { "id": 301,"idCategoria":3, "nome": "Chip de Ataque", "descricao": "Aumenta temporariamente o ataque do Digimon em batalha.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false },
+      { "id": 302,"idCategoria":3, "nome": "Chip de Defesa", "descricao": "Aumenta temporariamente a defesa do Digimon em batalha.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false },
+      { "id": 303,"idCategoria":3, "nome": "Chip de Velocidade", "descricao": "Aumenta temporariamente a velocidade do Digimon em batalha.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false },
+      { "id": 304,"idCategoria":3, "nome": "Upgrade de Dados", "descricao": "Aumenta permanentemente um pequeno atributo do Digimon.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false }
+    ],
+    "itens_diversos": [
+      { "id": 401,"idCategoria":4, "nome": "Núcleo de Energia", "descricao": "Fonte de energia que pode ser usada em eventos especiais.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false },
+      { "id": 402,"idCategoria":4, "nome": "Fruta de Treinamento", "descricao": "Usada para aumentar a experiência do Digimon.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false },
+      { "id": 403,"idCategoria":4, "nome": "Dados Misteriosos", "descricao": "Contém informações ocultas, pode ser trocado por recompensas.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false }
+    ]
+  }
+}

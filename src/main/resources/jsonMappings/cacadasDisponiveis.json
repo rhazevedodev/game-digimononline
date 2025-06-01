@@ -127,7 +127,9 @@
       "duracao_segundos": 180,
       "recompensas_possiveis": {
         "itens": [
-          { "nome": "Fruta de Treinamento", "quantidade_min": 1, "quantidade_max": 1 }
+          { "nome": "Programa de Recuperação", "quantidade_min": 1, "quantidade_max": 2 },
+          { "nome": "Programa de Restauração", "quantidade_min": 1, "quantidade_max": 3 },
+          { "nome": "Dados Misteriosos", "quantidade_min": 1, "quantidade_max": 2 }
         ],
         "exp_min": 20,
         "exp_max": 30,

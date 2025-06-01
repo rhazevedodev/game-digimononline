@@ -27,4 +27,9 @@ public class CacadaController {
     public ResponseEntity<?> iniciarCacada(@RequestBody RequestIniciarCacadaDTO request, HttpServletRequest httpServletRequest) {
         return cacadaService.iniciarCacada(request.getIdDigimon(), request.getCacadaSelecionada());
     }
+
+    @GetMapping("/resgatarRecompensa/{idCacada}/{idDigimon}")
+    public ResponseEntity<?> resgatarRecompensa(@PathVariable int idCacada, @PathVariable Long idDigimon, HttpServletRequest request) {
+        return ResponseEntity.ok(cacadaService.resgatarRecompensa(idDigimon, idCacada, request));
+    }
 }

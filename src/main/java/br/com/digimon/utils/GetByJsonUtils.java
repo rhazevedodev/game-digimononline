@@ -1,12 +1,19 @@
 package br.com.digimon.utils;
 
 import br.com.digimon.domain.fromJson.*;
+import br.com.digimon.domain.fromJson.cacada.Cacada;
 import br.com.digimon.domain.fromJson.cacada.CacadaListWrapper;
+import br.com.digimon.domain.fromJson.itens.CategoriaFragmentos;
+import br.com.digimon.domain.fromJson.itens.FragmentoEvolucao;
+import br.com.digimon.domain.fromJson.itens.Itens;
+import br.com.digimon.domain.fromJson.itens.ItensWrapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class GetByJsonUtils {
 
@@ -220,6 +227,66 @@ public class GetByJsonUtils {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.readValue(new File("src/main/resources/jsonMappings/cacadasDisponiveis.json"), CacadaListWrapper.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Erro ao carregar o arquivo JSON: " + e.getMessage(), e);
+        }
+    }
+
+    public static Cacada filtrarCacadaPorId(int id) {
+        CacadaListWrapper cacadas = carregarCacadas();
+        return cacadas.getCacadas().stream()
+                .filter(cacada -> cacada.getId() == id)
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Caçada com ID " + id + " não encontrada."));
+    }
+
+
+    public static List<FragmentoEvolucao> filtrarFragmentosPorNivel(String nivel) {
+        // Carrega os itens e fragmentos de evolução
+        ItensWrapper itensContainer = carregarItensFragmentosEvolucaoWrapper();
+
+        if (itensContainer == null || itensContainer.getItens() == null || itensContainer.getItens().isEmpty()) {
+            throw new RuntimeException("Dados de itens não carregados corretamente.");
+        }
+
+        // Considerando que só tem um item no array 'itens'
+        Itens item = itensContainer.getItens().get(0);
+
+        // Obtém o mapa de níveis para listas de fragmentos
+        Map<String, List<FragmentoEvolucao>> fragmentosPorNivel = item.getItensFragmentosEvolucao();
+
+        // Atenção: no JSON as chaves são tipo "Baby 2", "Rookie", "Champion" (com maiúsculas e espaços),
+        // então cuidado ao usar toLowerCase() — é melhor comparar sem mudar a caixa.
+
+        List<FragmentoEvolucao> fragmentos = fragmentosPorNivel.get(nivel);
+
+        if (fragmentos == null) {
+            throw new RuntimeException("Nível inválido ou não encontrado: " + nivel);
+        }
+
+        return fragmentos;
+    }
+
+    public static List<FragmentoEvolucao> listarTodosFragmentosEvolucao() {
+        // Carrega o wrapper de itens
+        ItensWrapper itensWrapper = carregarItensFragmentosEvolucaoWrapper();
+
+        // Lista para armazenar todos os fragmentos
+        List<FragmentoEvolucao> todosFragmentos = new ArrayList<>();
+
+        // Itera sobre todos os itens no wrapper
+        for (Itens item : itensWrapper.getItens()) {
+            // Itera sobre os valores do mapa e adiciona os fragmentos à lista
+            item.getItensFragmentosEvolucao().values().forEach(todosFragmentos::addAll);
+        }
+
+        return todosFragmentos;
+    }
+
+    public static ItensWrapper carregarItensFragmentosEvolucaoWrapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(new File("src/main/resources/jsonMappings/itensFragmentosEvolucao.json"), ItensWrapper.class);
         } catch (IOException e) {
             throw new RuntimeException("Erro ao carregar o arquivo JSON: " + e.getMessage(), e);
         }
