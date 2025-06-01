@@ -45,4 +45,9 @@ public class DigimonRepositoryImpl implements DigimonRepository {
     public Boolean existsById(Long idDigimon) {
         return springDataDigimonRepository.existsById(idDigimon);
     }
+
+    @Override
+    public DigimonEntity save(DigimonEntity digimon) {
+        return springDataDigimonRepository.save(digimon);
+    }
 }

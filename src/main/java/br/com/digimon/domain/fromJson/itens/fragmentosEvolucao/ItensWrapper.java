@@ -1,9 +1,8 @@
-package br.com.digimon.domain.fromJson.itens;
+package br.com.digimon.domain.fromJson.itens.fragmentosEvolucao;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package br.com.digimon.domain.fromJson.itens;
+package br.com.digimon.domain.fromJson.itens.fragmentosEvolucao;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

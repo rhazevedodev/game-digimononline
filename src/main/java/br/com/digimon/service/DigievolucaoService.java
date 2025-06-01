@@ -44,8 +44,8 @@ public class DigievolucaoService {
         }
 
         List<EvolucaoJson> linhasEvolutivas = new ArrayList<>();
-        List<InventarioEntity> inventarioFragmentos = inventarioService.getInventarioDoJogador(Long.valueOf(idDigimonUsuario), 4);
-        List<InventarioEntity> inventarioEmblemas = inventarioService.getInventarioDoJogador(Long.valueOf(idDigimonUsuario), 5);
+        List<InventarioEntity> inventarioFragmentos = inventarioService.getInventarioDoJogador(Long.valueOf(idDigimonUsuario), 5);
+//        List<InventarioEntity> inventarioEmblemas = inventarioService.getInventarioDoJogador(Long.valueOf(idDigimonUsuario), 5);
         List<ResponseListarDigievolucoes> evolucoesPossiveis = new ArrayList<>();
 
         switch (tierAtual){
@@ -79,7 +79,7 @@ public class DigievolucaoService {
         }
 
         for(EvolucaoJson evolucaoJson : linhasEvolutivas){
-            ResponseListarDigievolucoes response = criarResponseEvolucao(evolucaoJson, inventarioFragmentos, inventarioEmblemas, digimon, tierAtual);
+            ResponseListarDigievolucoes response = criarResponseEvolucao(evolucaoJson, inventarioFragmentos, null, digimon, tierAtual);
             evolucoesPossiveis.add(response);
         }
 

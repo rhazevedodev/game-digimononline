@@ -3,13 +3,16 @@ package br.com.digimon.service;
 import br.com.digimon.domain.CacadaEntity;
 import br.com.digimon.domain.DigimonEntity;
 import br.com.digimon.domain.UsuarioEntity;
+import br.com.digimon.domain.dto.GuardarNoInventarioRecompensaCacadaDTO;
 import br.com.digimon.domain.fromJson.cacada.*;
-import br.com.digimon.domain.fromJson.itens.FragmentoEvolucao;
-import br.com.digimon.domain.fromJson.itens.Itens;
-import br.com.digimon.domain.fromJson.itens.ItensWrapper;
+import br.com.digimon.domain.fromJson.itens.fragmentosEvolucao.FragmentoEvolucao;
+import br.com.digimon.domain.fromJson.itens.fragmentosEvolucao.ItensWrapper;
+import br.com.digimon.domain.fromJson.itens.outros.ItensWrapperOutros;
+import br.com.digimon.domain.fromJson.itens.outros.Outros;
 import br.com.digimon.repository.CacadaRepository;
 import br.com.digimon.utils.HeaderExtract;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +38,8 @@ public class CacadaService {
     private DigimonService digimonService;
     @Autowired
     private CacadaRepository cacadaRepository;
+    @Autowired
+    private InventarioService inventarioService;
 
     public ResponseEntity<?> carregarCacadasJogador(Long idDigimon, HttpServletRequest request) {
         log.info("Carregando caçadas do jogador");
@@ -75,6 +80,7 @@ public class CacadaService {
         return ResponseEntity.ok(cacadasValidas);
     }
 
+    @Transactional
     public ResponseEntity<?> iniciarCacada(Long idDigimon, Cacada cacada) {
         log.info("Iniciando caçada para o Digimon com ID: {}", idDigimon);
 
@@ -97,6 +103,9 @@ public class CacadaService {
         cacadaEntity.setRecompensaResgatada(false);
 
         cacadaRepository.save(cacadaEntity);
+
+        DigimonEntity digimon = digimonService.getDigimonById(idDigimon);
+        digimonService.atualizarEnergiaDigimon(digimon, -10); // Deduz energia do Digimon
 
         return ResponseEntity.ok("Cacada iniciada com sucesso!");
     }
@@ -132,7 +141,7 @@ public class CacadaService {
         int quantiaExpSorteada = random.nextInt(cacadaFiltrada.getRecompensasPossiveis().getExpMax() - cacadaFiltrada.getRecompensasPossiveis().getExpMin() + 1) + cacadaFiltrada.getRecompensasPossiveis().getExpMin();
 
         // Sorteando o fragmento de evolução
-        ItensWrapper itensWRapper = jsonService.carregarItensFragmentosEvolucaoWrapper();
+        ItensWrapper itensEvolucaoWrapper = jsonService.carregarItensFragmentosEvolucaoWrapper();
 
         String tierRecompensa = digimonService.getProxTierDigimon(idDigimon);
         FragmentoEvolucao fragmentoSorteado = null;
@@ -154,21 +163,63 @@ public class CacadaService {
         // Criando retorno
         RecompensaCacada recompensaCacada = new RecompensaCacada();
         List<ItemRecompensaCacada> itens = new ArrayList<>();
+        List<GuardarNoInventarioRecompensaCacadaDTO> guardarNoInventario = new ArrayList<>();
 
         ItemRecompensaCacada itemRecompensaCacada = new ItemRecompensaCacada();
         itemRecompensaCacada.setNome(itemSorteado.getNome());
         itemRecompensaCacada.setQuantidade(quantidadeSorteada);
         itens.add(itemRecompensaCacada);
+        guardarNoInventario.add(changingType(null, quantidadeSorteada, jsonService.carregarItemPorNome(itemSorteado.getNome())));
 
         ItemRecompensaCacada itemFragmento = new ItemRecompensaCacada();
         itemFragmento.setNome(fragmentoSorteado.getNome());
         itemFragmento.setQuantidade(quantiaFragmentos);
         itens.add(itemFragmento);
+        guardarNoInventario.add(changingType(fragmentoSorteado, quantiaFragmentos,null));
 
         recompensaCacada.setItens(itens);
         recompensaCacada.setExp(quantiaExpSorteada);
         recompensaCacada.setBits(quantiaBitsSorteada);
 
+        //Atualiza dados digimon
+        digimonService.atualizarDigimonExpBits(idDigimon, quantiaExpSorteada, quantiaBitsSorteada);
+
+        //Dando 1 ponto digital pela ação de concluir caçada
+        usuarioEntity.setPontosDigitais(usuarioEntity.getPontosDigitais() + 1);
+        usuarioService.updateUsuario(usuarioEntity);
+
+        //Guardando no inventario
+        inventarioService.adicionarItemAoInventario(idDigimon, guardarNoInventario);
+
+
         return recompensaCacada;
+    }
+
+    private GuardarNoInventarioRecompensaCacadaDTO changingType(FragmentoEvolucao fragmentoSorteado, int quantidade, Outros outros){
+        GuardarNoInventarioRecompensaCacadaDTO changing = new GuardarNoInventarioRecompensaCacadaDTO();
+        if(fragmentoSorteado == null) {
+            changing.setId(outros.getId());
+            changing.setIdCategoria(outros.getIdCategoria());
+            changing.setNome(outros.getNome());
+            changing.setDescricao(outros.getDescricao());
+            changing.setValorCompra(outros.getValorCompra());
+            changing.setValorVenda(outros.getValorVenda());
+            changing.setPodeVender(outros.isPodeVender());
+            changing.setPodeTrocar(outros.isPodeTrocar());
+            changing.setGlobal(outros.isGlobal());
+            changing.setQuantidade(quantidade);
+        } else {
+            changing.setId(fragmentoSorteado.getId());
+            changing.setIdCategoria(fragmentoSorteado.getIdCategoria());
+            changing.setNome(fragmentoSorteado.getNome());
+            changing.setDescricao(fragmentoSorteado.getDescricao());
+            changing.setValorCompra(fragmentoSorteado.getValorCompra());
+            changing.setValorVenda(fragmentoSorteado.getValorVenda());
+            changing.setPodeVender(fragmentoSorteado.isPodeVender());
+            changing.setPodeTrocar(fragmentoSorteado.isPodeTrocar());
+            changing.setGlobal(fragmentoSorteado.isGlobal());
+            changing.setQuantidade(quantidade);
+        }
+        return changing;
     }
 }

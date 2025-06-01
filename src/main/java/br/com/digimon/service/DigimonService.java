@@ -1,12 +1,17 @@
 package br.com.digimon.service;
 
 
+import br.com.digimon.domain.AtributosEntity;
+import br.com.digimon.domain.AtributosModificadoresEntity;
 import br.com.digimon.domain.DigimonEntity;
 import br.com.digimon.domain.enums.EnumDigimonRookie;
+import br.com.digimon.domain.enums.EnumNivelDigimon;
 import br.com.digimon.repository.DigimonRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -106,4 +111,79 @@ public class DigimonService {
         return tier;
     }
 
+    public void atualizarDigimonExpBits(Long idDigimon, int quantiaExpSorteada, int quantiaBitsSorteada) {
+        DigimonEntity digimon = getDigimonById(idDigimon);
+        atualizarExpDigimon(digimon, quantiaExpSorteada);
+        atualizarBitsDigimon(digimon, quantiaBitsSorteada);
+        digimon.setDataUltimaAlteracao(LocalDateTime.now());
+        digimonRepository.save(digimon);
+    }
+
+    @Transactional
+    public void atualizarBitsDigimon(DigimonEntity digimon, int recompensaBits) {
+        int bitsDigimon = digimon.getBits();
+        if (bitsDigimon != 0) {
+            digimon.setBits(bitsDigimon + recompensaBits);
+        } else {
+            digimon.setBits(recompensaBits);
+        }
+    }
+
+
+    @Transactional
+    public void atualizarExpDigimon(DigimonEntity digimon, int recompensaExp) {
+        int expDigimon = digimon.getPontosExperiencia();
+        if (expDigimon != 0) {
+            digimon.setPontosExperiencia(expDigimon + recompensaExp);
+        } else {
+            digimon.setPontosExperiencia(recompensaExp);
+        }
+
+        int nivelAtual = digimon.getNivel();
+        if (nivelAtual != 100) {
+            int novoNivel = verificarNivel(digimon);
+            if (novoNivel > nivelAtual) {
+                digimon.setNivel(novoNivel);
+                digimon.setPontosExperiencia(0);
+            }
+        }
+    }
+
+    public int verificarNivel(DigimonEntity digimon) {
+        int nivelAtual = digimon.getNivel();
+        int experienciaAtual = digimon.getPontosExperiencia();
+        int experienciaNecessaria = EnumNivelDigimon.getExperienciaNecessaria(nivelAtual);
+        while (experienciaAtual >= experienciaNecessaria) {
+            nivelAtual++;
+            experienciaAtual -= experienciaNecessaria;
+            experienciaNecessaria = EnumNivelDigimon.getExperienciaNecessaria(nivelAtual);
+            definidarNovaVidaDigimon(digimon);
+//            registroConquistasService.salvarRegistroSubirNivel(digimon);
+        }
+        return nivelAtual;
+    }
+
+    public DigimonEntity definidarNovaVidaDigimon(DigimonEntity digimon){
+        AtributosEntity atributos = digimon.getAtributos();
+        int vidaAtual = atributos.getPontosVida();
+        int vidaNova = 25 * (digimon.getNivel()+1)+vidaAtual;
+        int modificadorVida = vidaNova - vidaAtual;
+        AtributosModificadoresEntity atributosModificadores = digimon.getAtributosModificadores();
+        if(atributosModificadores.getModificadorVida() == 0) {
+            atributosModificadores.setModificadorVida(modificadorVida);
+        } else {
+            atributosModificadores.setModificadorVida(atributosModificadores.getModificadorVida() + modificadorVida);
+        }
+        atributos.setPontosVida(vidaNova);
+        digimon.setAtributos(atributos);
+        return digimonRepository.save(digimon);
+    }
+
+    public void atualizarEnergiaDigimon(DigimonEntity digimon, int i) {
+        AtributosEntity atributos = digimon.getAtributos();
+        int energiaAtual = atributos.getPontosEnergia();
+        atributos.setPontosEnergia(energiaAtual + i);
+        digimon.setAtributos(atributos);
+        digimonRepository.save(digimon);
+    }
 }

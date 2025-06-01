@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface SpringDataInventarioRepository extends JpaRepository<InventarioEntity, Long> {
     List<InventarioEntity> findByIdDigimonAndIdCategoria(Long idDigimon, int idCategoria);
+
+    List<InventarioEntity> findByIdDigimon(Long idDigimon);
 }

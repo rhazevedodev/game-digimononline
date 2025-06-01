@@ -20,4 +20,16 @@ public class InventarioRepositoryImpl implements InventarioRepository {
     public List<InventarioEntity> findByIdDigimonAndIdCategoria(Long idDigimon, int idCategoria) {
         return springDataInventarioRepository.findByIdDigimonAndIdCategoria(idDigimon, idCategoria);
     }
+
+    @Override
+    public List<InventarioEntity> findByIdDigimon(Long idDigimon) {
+        return springDataInventarioRepository.findByIdDigimon(idDigimon);
+    }
+
+    @Override
+    public void save(InventarioEntity novoItem) {
+        log.info("Salvando novo item no inventário: {}", novoItem);
+        springDataInventarioRepository.save(novoItem);
+        log.info("Item salvo com sucesso: {}", novoItem);
+    }
 }

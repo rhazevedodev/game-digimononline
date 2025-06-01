@@ -3,10 +3,11 @@ package br.com.digimon.utils;
 import br.com.digimon.domain.fromJson.*;
 import br.com.digimon.domain.fromJson.cacada.Cacada;
 import br.com.digimon.domain.fromJson.cacada.CacadaListWrapper;
-import br.com.digimon.domain.fromJson.itens.CategoriaFragmentos;
-import br.com.digimon.domain.fromJson.itens.FragmentoEvolucao;
-import br.com.digimon.domain.fromJson.itens.Itens;
-import br.com.digimon.domain.fromJson.itens.ItensWrapper;
+import br.com.digimon.domain.fromJson.itens.fragmentosEvolucao.FragmentoEvolucao;
+import br.com.digimon.domain.fromJson.itens.fragmentosEvolucao.Itens;
+import br.com.digimon.domain.fromJson.itens.fragmentosEvolucao.ItensWrapper;
+import br.com.digimon.domain.fromJson.itens.outros.ItensWrapperOutros;
+import br.com.digimon.domain.fromJson.itens.outros.Outros;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class GetByJsonUtils {
 
@@ -290,5 +292,33 @@ public class GetByJsonUtils {
         } catch (IOException e) {
             throw new RuntimeException("Erro ao carregar o arquivo JSON: " + e.getMessage(), e);
         }
+    }
+
+    public static ItensWrapperOutros carregarItens() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(new File("src/main/resources/jsonMappings/itens.json"), ItensWrapperOutros.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Erro ao carregar o arquivo JSON: " + e.getMessage(), e);
+        }
+    }
+
+    public static Outros carregarItemPorNome(String nomeItem) {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+            // Carrega o wrapper de itens
+            ItensWrapperOutros itensWrapper = carregarItens();
+            List<Outros> cardsDigimon = itensWrapper.getItens().get(0).getCardsDigimon();
+            List<Outros> itensCura = itensWrapper.getItens().get(0).getItensCura();
+            List<Outros> itensAtributos = itensWrapper.getItens().get(0).getItensAtributos();
+            List<Outros> itensDiversos = itensWrapper.getItens().get(0).getItensDiversos();
+
+            // Procura o item pelo nome em todas as listas
+            return Stream.of(cardsDigimon, itensCura, itensAtributos, itensDiversos)
+                    .flatMap(List::stream)
+                    .filter(item -> item.getNome().equalsIgnoreCase(nomeItem))
+                    .findFirst()
+                    .orElseThrow(() -> new RuntimeException("Item com o nome '" + nomeItem + "' não encontrado."));
+
     }
 }

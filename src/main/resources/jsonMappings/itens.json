@@ -1,5 +1,5 @@
 {
-  "itens": {
+  "itens": [{
     "cards_digimon": [
       { "id": 1,"idCategoria":1, "nome": "Card Agumon", "descricao": "Um card que representa Agumon. Pode ser usado para desbloquear ou fortalecer esse Digimon.", "valor_compra": 10000, "valor_venda": 0, "pode_vender": true, "pode_trocar": true, "is_global": false },
       { "id": 2,"idCategoria":1, "nome": "Card Gabumon", "descricao": "Um card que representa Gabumon. Pode ser usado para desbloquear ou fortalecer esse Digimon.", "valor_compra": 10000, "valor_venda": 0, "pode_vender": true, "pode_trocar": true, "is_global": false },
@@ -29,5 +29,5 @@
       { "id": 402,"idCategoria":4, "nome": "Fruta de Treinamento", "descricao": "Usada para aumentar a experiência do Digimon.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false },
       { "id": 403,"idCategoria":4, "nome": "Dados Misteriosos", "descricao": "Contém informações ocultas, pode ser trocado por recompensas.", "valor_compra": 1000, "valor_venda": 0, "pode_vender": false, "pode_trocar": false, "is_global": false }
     ]
-  }
+  }]
 }

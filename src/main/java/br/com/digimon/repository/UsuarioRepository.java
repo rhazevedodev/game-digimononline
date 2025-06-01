@@ -20,4 +20,6 @@ public interface UsuarioRepository {
     void salvarUsuario(UsuarioEntity usuario);
 
     Optional<UsuarioEntity> findById(Long idJogador);
+
+    void save(UsuarioEntity usuario);
 }

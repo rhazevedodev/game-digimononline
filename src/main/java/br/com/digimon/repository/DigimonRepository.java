@@ -16,4 +16,6 @@ public interface DigimonRepository {
     DigimonEntity getDigimonById(Long id);
 
     Boolean existsById(Long idDigimon);
+
+    DigimonEntity save(DigimonEntity digimon);
 }

@@ -6,13 +6,14 @@
       "tier": "SS",
       "requisitos": {
         "nivel_minimo": 35,
-        "poder_total": 6000
+        "poder_total": 0
       },
       "duracao_segundos": 900,
       "recompensas_possiveis": {
         "itens": [
-          { "nome": "Núcleo Supremo", "quantidade_min": 1, "quantidade_max": 2 },
-          { "nome": "Poção Suprema", "quantidade_min": 2, "quantidade_max": 4 }
+          { "nome": "Programa de Recuperação", "quantidade_min": 1, "quantidade_max": 2 },
+          { "nome": "Programa de Restauração", "quantidade_min": 1, "quantidade_max": 3 },
+          { "nome": "Dados Misteriosos", "quantidade_min": 1, "quantidade_max": 2 }
         ],
         "exp_min": 1000,
         "exp_max": 1500,
@@ -26,13 +27,14 @@
       "tier": "S",
       "requisitos": {
         "nivel_minimo": 28,
-        "poder_total": 3200
+        "poder_total": 0
       },
       "duracao_segundos": 720,
       "recompensas_possiveis": {
         "itens": [
-          { "nome": "Item Raro", "quantidade_min": 1, "quantidade_max": 3 },
-          { "nome": "Poção Curativa", "quantidade_min": 3, "quantidade_max": 7 }
+          { "nome": "Programa de Recuperação", "quantidade_min": 1, "quantidade_max": 2 },
+          { "nome": "Programa de Restauração", "quantidade_min": 1, "quantidade_max": 3 },
+          { "nome": "Dados Misteriosos", "quantidade_min": 1, "quantidade_max": 2 }
         ],
         "exp_min": 450,
         "exp_max": 600,
@@ -46,12 +48,14 @@
       "tier": "A",
       "requisitos": {
         "nivel_minimo": 22,
-        "poder_total": 2800
+        "poder_total": 0
       },
       "duracao_segundos": 600,
       "recompensas_possiveis": {
         "itens": [
-          { "nome": "Fragmento Digital", "quantidade_min": 1, "quantidade_max": 2 }
+          { "nome": "Programa de Recuperação", "quantidade_min": 1, "quantidade_max": 2 },
+          { "nome": "Programa de Restauração", "quantidade_min": 1, "quantidade_max": 3 },
+          { "nome": "Dados Misteriosos", "quantidade_min": 1, "quantidade_max": 2 }
         ],
         "exp_min": 250,
         "exp_max": 350,
@@ -65,12 +69,14 @@
       "tier": "B",
       "requisitos": {
         "nivel_minimo": 16,
-        "poder_total": 2100
+        "poder_total": 0
       },
       "duracao_segundos": 480,
       "recompensas_possiveis": {
         "itens": [
-          { "nome": "Poção", "quantidade_min": 2, "quantidade_max": 4 }
+          { "nome": "Programa de Recuperação", "quantidade_min": 1, "quantidade_max": 2 },
+          { "nome": "Programa de Restauração", "quantidade_min": 1, "quantidade_max": 3 },
+          { "nome": "Dados Misteriosos", "quantidade_min": 1, "quantidade_max": 2 }
         ],
         "exp_min": 120,
         "exp_max": 180,
@@ -84,12 +90,14 @@
       "tier": "C",
       "requisitos": {
         "nivel_minimo": 10,
-        "poder_total": 1600
+        "poder_total": 0
       },
       "duracao_segundos": 360,
       "recompensas_possiveis": {
         "itens": [
-          { "nome": "Erva Curativa", "quantidade_min": 1, "quantidade_max": 2 }
+          { "nome": "Programa de Recuperação", "quantidade_min": 1, "quantidade_max": 2 },
+          { "nome": "Programa de Restauração", "quantidade_min": 1, "quantidade_max": 3 },
+          { "nome": "Dados Misteriosos", "quantidade_min": 1, "quantidade_max": 2 }
         ],
         "exp_min": 80,
         "exp_max": 120,
@@ -103,12 +111,14 @@
       "tier": "D",
       "requisitos": {
         "nivel_minimo": 5,
-        "poder_total": 1000
+        "poder_total": 0
       },
       "duracao_segundos": 300,
       "recompensas_possiveis": {
         "itens": [
-          { "nome": "Fragmento de Gelo", "quantidade_min": 1, "quantidade_max": 1 }
+          { "nome": "Programa de Recuperação", "quantidade_min": 1, "quantidade_max": 2 },
+          { "nome": "Programa de Restauração", "quantidade_min": 1, "quantidade_max": 3 },
+          { "nome": "Dados Misteriosos", "quantidade_min": 1, "quantidade_max": 2 }
         ],
         "exp_min": 40,
         "exp_max": 60,

@@ -78,8 +78,14 @@ public class CarregarTelaStatusService {
             return "Ultimate";
         } else if (digimon.getIdChampion() != 0) {
             return "Champion";
-        } else {
+        } else if (digimon.getIdRookie() != 0) {
             return "Rookie";
+        } else if (digimon.getIdBaby2() != 0) {
+            return "Baby 2";
+        } else if (digimon.getIdBaby1() != 0) {
+            return "Baby 1";
+        } else {
+            return "Desconhecido";
         }
     }
 

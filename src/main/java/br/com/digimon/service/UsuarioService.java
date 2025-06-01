@@ -124,7 +124,6 @@ public class UsuarioService {
         }
     }
 
-
     public UsuarioEntity getJogadorById(Long idJogador) {
         log.info("Buscando jogador pelo ID: {}", idJogador);
         Optional<UsuarioEntity> usuarioOptional = usuarioRepositoryPort.findById(idJogador);
@@ -133,5 +132,10 @@ public class UsuarioService {
         } else {
             throw new UsuarioNaoExisteException("Usuário não encontrado");
         }
+    }
+
+    public void updateUsuario(UsuarioEntity usuario) {
+        log.info("Atualizando usuário: {}", usuario.getNomeUsuario());
+        usuarioRepositoryPort.save(usuario);
     }
 }

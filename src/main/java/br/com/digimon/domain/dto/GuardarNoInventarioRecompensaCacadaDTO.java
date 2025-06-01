@@ -1,14 +1,16 @@
-package br.com.digimon.domain.fromJson.itens;
+package br.com.digimon.domain.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FragmentoEvolucao {
+public class GuardarNoInventarioRecompensaCacadaDTO {
     private int id;
     private int idCategoria;
     private String nome;
@@ -23,4 +25,5 @@ public class FragmentoEvolucao {
     private boolean podeTrocar;
     @JsonProperty("is_global")
     private boolean isGlobal;
+    private int quantidade;
 }
