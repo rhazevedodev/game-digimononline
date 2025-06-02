@@ -102,7 +102,8 @@ public class DigievolucaoService {
             response.setDigimonDestino(digimonBaby2.getNome());
             response.setPathImagemDigimonDestino(digimonBaby2.getImage());
             response.setFragmentosNecessarios(evolucaoJson.getFragments());
-            response.setFragmentosDisponiveis(0);
+            response.setFragmentosDisponiveis(
+                    getFragmentosPorEvolucao(inventarioFragmentos, evolucaoJson.getName()));
             response.setNivelMinimo(evolucaoJson.getLevel());
             response.setNivelAtual(digimon.getNivel());
         }
@@ -118,7 +119,8 @@ public class DigievolucaoService {
             response.setDigimonDestino(digimonRookie.getNome());
             response.setPathImagemDigimonDestino(digimonRookie.getImage());
             response.setFragmentosNecessarios(evolucaoJson.getFragments());
-            response.setFragmentosDisponiveis(0);
+            response.setFragmentosDisponiveis(
+                    getFragmentosPorEvolucao(inventarioFragmentos, evolucaoJson.getName()));
             response.setNivelMinimo(evolucaoJson.getLevel());
             response.setNivelAtual(digimon.getNivel());
         }
@@ -134,7 +136,8 @@ public class DigievolucaoService {
             response.setDigimonDestino(digimonChampion.getNome());
             response.setPathImagemDigimonDestino(digimonChampion.getImage());
             response.setFragmentosNecessarios(evolucaoJson.getFragments());
-            response.setFragmentosDisponiveis(0);
+            response.setFragmentosDisponiveis(
+                    getFragmentosPorEvolucao(inventarioFragmentos, evolucaoJson.getName()));
             response.setNivelMinimo(evolucaoJson.getLevel());
             response.setNivelAtual(digimon.getNivel());
         }
@@ -150,7 +153,8 @@ public class DigievolucaoService {
             response.setDigimonDestino(digimonUltimate.getNome());
             response.setPathImagemDigimonDestino(digimonUltimate.getImage());
             response.setFragmentosNecessarios(evolucaoJson.getFragments());
-            response.setFragmentosDisponiveis(0);
+            response.setFragmentosDisponiveis(
+                    getFragmentosPorEvolucao(inventarioFragmentos, evolucaoJson.getName()));
             response.setNivelMinimo(evolucaoJson.getLevel());
             response.setNivelAtual(digimon.getNivel());
         }
@@ -166,11 +170,23 @@ public class DigievolucaoService {
             response.setDigimonDestino(digimonMega.getNome());
             response.setPathImagemDigimonDestino(digimonMega.getImage());
             response.setFragmentosNecessarios(evolucaoJson.getFragments());
-            response.setFragmentosDisponiveis(0);
+            response.setFragmentosDisponiveis(
+                    getFragmentosPorEvolucao(inventarioFragmentos, evolucaoJson.getName()));
             response.setNivelMinimo(evolucaoJson.getLevel());
             response.setNivelAtual(digimon.getNivel());
         }
 
         return response;
+    }
+
+    public int getFragmentosPorEvolucao(List<InventarioEntity> inventarioFragmentos, String digimon){
+        for (InventarioEntity inventario : inventarioFragmentos) {
+            if((inventario.getNomeItem().contains("Fragmento")) && (inventario.getNomeItem().contains(digimon))) {
+                    System.out.println("Fragmento encontrado: " + inventario.getNomeItem() + " - Quantidade: " + inventario.getQuantidade());
+                    return inventario.getQuantidade();
+                }
+            }
+        System.out.println("Fragmento não encontrado para o Digimon: " + digimon);
+        return 0; // Retorna 0 se nenhum fragmento for encontrado
     }
 }

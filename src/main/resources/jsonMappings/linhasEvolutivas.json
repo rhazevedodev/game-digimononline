@@ -18,8 +18,8 @@
         {
           "name": "Yuramon",
           "evolvesTo": [
-            { "name": "Yokomon", "level": 5, "fragments": 3 },
-            { "name": "Tanemon", "level": 5, "fragments": 3 }
+            { "name": "Yokomon", "level": 5, "fragments": 5 },
+            { "name": "Tanemon", "level": 5, "fragments": 5 }
           ]
         },
         {
